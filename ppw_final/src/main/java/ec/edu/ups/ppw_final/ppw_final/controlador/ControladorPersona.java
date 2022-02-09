@@ -3,13 +3,17 @@ package ec.edu.ups.ppw_final.ppw_final.controlador;
 import java.util.Collections;
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 
-public class ControladorPersona extends ControladorGenerico<OsPersona> {
+@Stateless
+public class ControladorPersona{
 
-	@Override
+	/*@Override
 	public List<OsPersona> findAll() {
 		Query consulta = getEm().createNamedQuery("OsPersona.findAll");
 		var lista = consulta.getResultList();
@@ -23,6 +27,37 @@ public class ControladorPersona extends ControladorGenerico<OsPersona> {
 	@Override
 	public int codigo() {
 		return 0;
+	}*/
+	
+	@PersistenceContext
+	private EntityManager em;
+
+	public void insert(OsPersona p) {
+		em.persist(p);
+
+	}
+
+	public void update(OsPersona p) {
+		em.merge(p);
+	}
+
+
+	public void delete(String usuario) {
+		OsPersona p = em.find(OsPersona.class, usuario);
+		em.remove(p);
+	}
+	
+	public OsPersona read(String cedula){
+		OsPersona p = em.find(OsPersona.class, cedula);
+		return p;
+	}
+	
+	public List<OsPersona> findAll(){
+		String jpql = "SELECT o FROM OsPersona o";
+		
+		Query q = em.createQuery(jpql, OsPersona.class);
+		
+		return q.getResultList();
 	}
 
 }
