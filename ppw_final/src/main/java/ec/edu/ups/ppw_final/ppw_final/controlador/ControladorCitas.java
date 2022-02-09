@@ -14,17 +14,34 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsCita;
 public class ControladorCitas {
 
 	@PersistenceContext
-    private EntityManager em;
-	
+	private EntityManager em;
 
-	public List<OsCita> findAll() {
-		
+	public void insert(OsCita p) {
+		em.persist(p);
+
+	}
+
+	public void update(OsCita p) {
+		em.merge(p);
+	}
+
+
+	public void delete(int id) {
+		OsCita p = em.find(OsCita.class, id);
+		em.remove(p);
+	}
+	
+	public OsCita read(int id){
+		OsCita p = em.find(OsCita.class, id);
+		return p;
+	}
+	
+	public List<OsCita> findAll(){
 		String jpql = "SELECT o FROM OsCita o";
 		
 		Query q = em.createQuery(jpql, OsCita.class);
 		
 		return q.getResultList();
 	}
-
 
 }

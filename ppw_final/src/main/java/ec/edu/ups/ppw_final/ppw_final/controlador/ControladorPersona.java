@@ -42,8 +42,8 @@ public class ControladorPersona{
 	}
 
 
-	public void delete(String usuario) {
-		OsPersona p = em.find(OsPersona.class, usuario);
+	public void delete(String cedula) {
+		OsPersona p = em.find(OsPersona.class, cedula);
 		em.remove(p);
 	}
 	

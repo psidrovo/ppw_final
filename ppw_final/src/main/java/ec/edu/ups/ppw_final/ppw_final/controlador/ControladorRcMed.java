@@ -3,14 +3,18 @@ package ec.edu.ups.ppw_final.ppw_final.controlador;
 import java.util.Collections;
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import ec.edu.ups.ppw_final.ppw_final.modelo.OsHstClinica;
+
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsRcMed;
 
-public class ControladorRcMed extends ControladorGenerico<OsRcMed>{
+@Stateless
+public class ControladorRcMed {
 
-	@Override
+	/*@Override
 	public List<OsRcMed> findAll() {
 		Query consulta = getEm().createNamedQuery("OsRcMed.findAll");
 		var lista = consulta.getResultList();
@@ -32,6 +36,37 @@ public class ControladorRcMed extends ControladorGenerico<OsRcMed>{
 		} else {
 			return 1;
 		}
+	}*/
+	
+	@PersistenceContext
+	private EntityManager em;
+
+	public void insert(OsRcMed p) {
+		em.persist(p);
+
+	}
+
+	public void update(OsRcMed p) {
+		em.merge(p);
+	}
+
+
+	public void delete(int id) {
+		OsRcMed p = em.find(OsRcMed.class, id);
+		em.remove(p);
+	}
+	
+	public OsRcMed read(int id){
+		OsRcMed p = em.find(OsRcMed.class, id);
+		return p;
+	}
+	
+	public List<OsRcMed> findAll(){
+		String jpql = "SELECT o FROM OsRcMed o";
+		
+		Query q = em.createQuery(jpql, OsRcMed.class);
+		
+		return q.getResultList();
 	}
 
 }
