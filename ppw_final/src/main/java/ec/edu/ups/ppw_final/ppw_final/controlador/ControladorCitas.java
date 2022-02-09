@@ -15,7 +15,7 @@ public class ControladorCitas extends ControladorGenerico<OsCita> {
 		var lista = consulta.getResultList();
 
 		if (lista.size() > 0) {
-			Collections.sort(lista, (OsCita o1, OsCita o2) -> o2.getCtId().compareTo(o1.getCtId()));
+			//Collections.sort(lista, (OsCita o1, OsCita o2) -> o2.getCtId().compareTo(o1.getCtId()));
 		}
 		return consulta.getResultList();
 	}
@@ -25,8 +25,9 @@ public class ControladorCitas extends ControladorGenerico<OsCita> {
 		var lista = findAll();
 
 		if (lista.size() > 0) {
-			Collections.sort(lista, (OsCita o1, OsCita o2) -> o2.getCtId().compareTo(o1.getCtId()));
-			return (int) (lista.get(lista.size() - 1).getCtId() + 1);
+			//Collections.sort(lista, (OsCita o1, OsCita o2) -> o2.getCtId().compareTo(o1.getCtId()));
+			//return (int) (lista.get(lista.size() - 1).getCtId() + 1);
+			return 0;
 		} else {
 			return 1;
 		}

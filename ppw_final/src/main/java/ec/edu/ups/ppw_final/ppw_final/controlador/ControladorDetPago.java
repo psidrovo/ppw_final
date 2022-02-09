@@ -16,7 +16,7 @@ public class ControladorDetPago extends ControladorGenerico<OsDetPago> {
 		var lista = consulta.getResultList();
 
 		if (lista.size() > 0) {
-			Collections.sort(lista,(OsDetPago o1, OsDetPago o2) -> o1.getDetPgId().compareTo(o2.getDetPgId()));
+			//Collections.sort(lista,(OsDetPago o1, OsDetPago o2) -> o1.getDetPgId().compareTo(o2.getDetPgId()));
 		}
 		return consulta.getResultList();
 	}
@@ -26,8 +26,9 @@ public class ControladorDetPago extends ControladorGenerico<OsDetPago> {
 		var lista = findAll();
 
 		if (lista.size() > 0) {
-			Collections.sort(lista, (OsDetPago o1, OsDetPago o2) -> o1.getDetPgId().compareTo(o2.getDetPgId()));
-			return (int) (lista.get(lista.size() - 1).getDetPgId() + 1);
+			//Collections.sort(lista, (OsDetPago o1, OsDetPago o2) -> o1.getDetPgId().compareTo(o2.getDetPgId()));
+			//return (int) (lista.get(lista.size() - 1).getDetPgId() + 1);
+			return 0;
 		} else {
 			return 1;
 		}

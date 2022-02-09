@@ -15,7 +15,7 @@ public class ControladorDetDentadura extends ControladorGenerico<OsDetDentadura>
 		var lista = consulta.getResultList();
 
 		if (lista.size() > 0) {
-			Collections.sort(lista,(OsDetDentadura o1, OsDetDentadura o2) -> o1.getDetDentId().compareTo(o2.getDetDentId()));
+			//Collections.sort(lista,(OsDetDentadura o1, OsDetDentadura o2) -> o1.getDetDentId().compareTo(o2.getDetDentId()));
 		}
 		return consulta.getResultList();
 	}
@@ -25,8 +25,9 @@ public class ControladorDetDentadura extends ControladorGenerico<OsDetDentadura>
 		var lista = findAll();
 
 		if (lista.size() > 0) {
-			Collections.sort(lista, (OsDetDentadura o1, OsDetDentadura o2) -> o2.getDetDentId().compareTo(o1.getDetDentId()));
-			return (int) (lista.get(lista.size() - 1).getDetDentId() + 1);
+			//Collections.sort(lista, (OsDetDentadura o1, OsDetDentadura o2) -> o2.getDetDentId().compareTo(o1.getDetDentId()));
+			//return (int) (lista.get(lista.size() - 1).getDetDentId() + 1);
+			return 0;
 		} else {
 			return 1;
 		}

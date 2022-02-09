@@ -16,7 +16,7 @@ public class ControladorHstClinica extends ControladorGenerico<OsHstClinica> {
 		var lista = consulta.getResultList();
 
 		if (lista.size() > 0) {
-			Collections.sort(lista, (OsHstClinica o1, OsHstClinica o2) -> o1.getHstClId().compareTo(o2.getHstClId()));
+			//Collections.sort(lista, (OsHstClinica o1, OsHstClinica o2) -> o1.getHstClId().compareTo(o2.getHstClId()));
 		}
 		return consulta.getResultList();
 	}
@@ -26,8 +26,9 @@ public class ControladorHstClinica extends ControladorGenerico<OsHstClinica> {
 		var lista = findAll();
 
 		if (lista.size() > 0) {
-			Collections.sort(lista, (OsHstClinica o1, OsHstClinica o2) -> o1.getHstClId().compareTo(o2.getHstClId()));
-			return (int) (lista.get(lista.size() - 1).getHstClId() + 1);
+			//Collections.sort(lista, (OsHstClinica o1, OsHstClinica o2) -> o1.getHstClId().compareTo(o2.getHstClId()));
+			//return (int) (lista.get(lista.size() - 1).getHstClId() + 1);
+			return 0;
 		} else {
 			return 1;
 		}

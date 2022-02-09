@@ -16,7 +16,7 @@ public class ControladorRcMed extends ControladorGenerico<OsRcMed>{
 		var lista = consulta.getResultList();
 
 		if (lista.size() > 0) {
-			Collections.sort(lista,(OsRcMed o1, OsRcMed o2) -> o1.getRcMedId().compareTo(o2.getRcMedId()));
+			//Collections.sort(lista,(OsRcMed o1, OsRcMed o2) -> o1.getRcMedId().compareTo(o2.getRcMedId()));
 		}
 		return consulta.getResultList();
 	}
@@ -26,8 +26,9 @@ public class ControladorRcMed extends ControladorGenerico<OsRcMed>{
 		var lista = findAll();
 
 		if (lista.size() > 0) {
-			Collections.sort(lista, (OsRcMed o1, OsRcMed o2) -> o1.getRcMedId().compareTo(o2.getRcMedId()));
-			return (int) (lista.get(lista.size() - 1).getRcMedId() + 1);
+			//Collections.sort(lista, (OsRcMed o1, OsRcMed o2) -> o1.getRcMedId().compareTo(o2.getRcMedId()));
+			//return (int) (lista.get(lista.size() - 1).getRcMedId() + 1);
+			return 0;
 		} else {
 			return 1;
 		}
