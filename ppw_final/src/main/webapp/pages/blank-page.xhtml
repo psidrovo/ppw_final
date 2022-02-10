@@ -18,6 +18,8 @@
 <meta name="keywords" content="" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="../plugins/fullcalendar/dist/fullcalendar.min.css" />
 <link rel="icon" href="../favicon.ico" type="image/x-icon" />
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800"
@@ -234,7 +236,22 @@
 								<div class="nav-item">
 									<a href="javascript:void(0)"><i class="ik ik-list" /><span>Listar</span></a>
 								</div>
+							</div>
+						</div>
+						<div class="nav-item has-sub">
+							<a href="#"><i class="ik ik-clipboard" /><span>Consultas</span></a>
+							<div class="submenu-content">
+								<div class="nav-item">
+									<a href="registrar_paciente.xhtml"><i class="ik ik-plus" /><span>Registrar</span></a>
+								</div>
 
+								<div class="nav-item">
+									<a href="editar_paciente.xhtml"><i class="ik ik-check" /><span>Confirmar</span></a>
+								</div>
+
+								<div class="nav-item">
+									<a href="calendario.xhtml"><i class="ik ik-calendar" /><span>Calendario</span></a>
+								</div>
 							</div>
 						</div>
 
@@ -247,13 +264,12 @@
 				<div class="main-content">
 					<div class="container-fluid">
 						<div class="row">
-							<div class="col-md-12">
-								<div class="row">
-									<div class="col-md-8">
-										<ui:insert name="content" />
-									</div>
-								</div>
+							<div class="col-md-2"></div>
+							<div class="col">
+								<ui:insert name="content" />
 							</div>
+							<div class="col-md-2"></div>
+
 						</div>
 					</div>
 				</div>
@@ -272,6 +288,7 @@
 		</div>
 	</div>
 
+
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script>
@@ -286,6 +303,7 @@
 		src="../plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
 
 	<script src="../plugins/screenfull/dist/screenfull.js"></script>
+	
 
 	<script src="../plugins/datatables.net/js/jquery.dataTables.min.js"></script>
 
@@ -317,7 +335,13 @@
 
 	<script src="../js/charts.js"></script>
 
+<script src="../plugins/moment/moment.js"></script>
+	<script src="../plugins/fullcalendar/dist/fullcalendar.min.js"></script>
 	<script src="../dist/js/theme.min.js"></script>
+	<script src="../js/calendar.js"></script>
+
+	
+
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
 	<script>
