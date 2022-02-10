@@ -64,4 +64,9 @@ public class OsUsuario implements Serializable {
 		this.osPersona = osPersona;
 	}
 
+	@Override
+	public String toString() {
+		return "OsUsuario [usCorreo=" + usCorreo + ", usPassword=" + usPassword + ", usTipo=" + usTipo + "]";
+	}
+
 }

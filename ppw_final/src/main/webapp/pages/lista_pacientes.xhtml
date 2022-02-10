@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
 
 	<f:metadata>
@@ -19,90 +20,56 @@
 
 	<ui:define name="content">
 		<div class="card-header">
-			<h3>Data Table</h3>
+			<h3>Pacientes</h3>
 		</div>
 		<div class="card-body">
 			<table id="data_table" class="table">
 				<thead>
 					<tr>
-						<th>Id</th>
+						<th>Cedula</th>
 						<th class="nosort">Avatar</th>
-						<th>Name</th>
-						<th>Email</th>
+						<th>Nombre</th>
+						<th>Deuda</th>
+						<th>Correo</th>
 						<th class="nosort">&nbsp;</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>001</td>
-						<td><img src="../img/users/women.jpg" class="table-user-thumb"
-							alt=""/></td>
+						<td><img src="../img/users/women.jpg"
+							class="table-user-thumb" alt="" /></td>
 						<td>Erich Heaney</td>
+						<td>0.00</td>
 						<td>erich@example.com</td>
 						<td>
 							<div class="table-actions">
-								<a href="#"><i class="ik ik-eye"></i></a> <a href="#"><i
-									class="ik ik-edit-2"></i></a> <a href="#"><i
-									class="ik ik-trash-2"></i></a>
+								<a title="Abrir Historia Clinica" href="#"><i
+									class="ik ik-eye text-blue"></i></a> <a title="Editar Paciente"
+									href="editar_paciente.xhtml"><i class="ik ik-edit-2 text-green"></i></a>
+									<a title="Abrir Reporte de Pagos"
+									href="pagos_paciente.xhtml"><i class="ik ik-dollar-sign text-orange"></i></a>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td>002</td>
 						<td><img src="../img/users/men.jpg" class="table-user-thumb"
-							alt=""/></td>
+							alt="" /></td>
 						<td>Abraham Douglas</td>
+						<td>0.00</td>
 						<td>jgraham@example.com</td>
 						<td>
 							<div class="table-actions">
-								<a href="#"><i class="ik ik-eye"></i></a> <a href="#"><i
-									class="ik ik-edit-2"></i></a> <a href="#"><i
-									class="ik ik-trash-2"></i></a>
+								<a title="Abrir Historia Clinica" href="#"><i
+									class="ik ik-eye text-blue"></i></a> <a title="Editar Paciente"
+									href="editar_paciente.xhtml"><i class="ik ik-edit-2 text-green"></i></a>
+									<a title="Abrir Reporte de Pagos"
+									href="pagos_paciente.xhtml"><i class="ik ik-dollar-sign text-orange"></i></a>
 							</div>
 						</td>
 					</tr>
-					<tr>
-						<td>003</td>
-						<td><img src="../img/users/women.jpg"
-							class="table-user-thumb" alt="" /></td>
-						<td>Roderick Simonis</td>
-						<td>grant.simonis@example.com</td>
-						<td>
-							<div class="table-actions">
-								<a href="#"><i class="ik ik-eye"></i></a> <a href="#"><i
-									class="ik ik-edit-2"></i></a> <a href="#"><i
-									class="ik ik-trash-2"></i></a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>004</td>
-						<td><img src="../img/users/men.jpg" class="table-user-thumb"
-							alt="" /></td>
-						<td>Christopher Henry</td>
-						<td>henry.chris@example.com</td>
-						<td>
-							<div class="table-actions">
-								<a href="#"><i class="ik ik-eye"></i></a> <a href="#"><i
-									class="ik ik-edit-2"></i></a> <a href="#"><i
-									class="ik ik-trash-2"></i></a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>005</td>
-						<td><img src="../img/users/women.jpg"
-							class="table-user-thumb" alt="" /></td>
-						<td>Sonia Wilkinson</td>
-						<td>boyle.aglea@example.com</td>
-						<td>
-							<div class="table-actions">
-								<a href="#"><i class="ik ik-eye"></i></a> <a href="#"><i
-									class="ik ik-edit-2"></i></a> <a href="#"><i
-									class="ik ik-trash-2"></i></a>
-							</div>
-						</td>
-					</tr>
+					
 				</tbody>
 			</table>
 		</div>

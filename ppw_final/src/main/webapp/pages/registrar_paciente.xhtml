@@ -3,14 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
 
-	<f:metadata>
-		<!-- <f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam>
+	<!-- f:metadata>
+		<f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam>
 		<f:viewAction action="#{clientesBean.loadDatos()}"></f:viewAction>
-		-->
-	</f:metadata>
+		
+	</f:metadata-->
 
 
 </h:head>
@@ -26,40 +27,47 @@
 				<div class="card-body">
 					<h:form class="forms-sample">
 						<div class="form-group">
-							<label for="exampleInputName1">Cedula</label> <input type="text"
-								class="form-control" id="exampleInputCedula1"
-								placeholder="Cedula de Identidad" />
+							<label for="txtCedula">Cedula</label>
+							<h:inputText value="#{pacienteBean.persona.perCedula}"
+								a:type="number" class="form-control" id="txtCedula"
+								a:placeholder="Cedula de Identidad" a:required="true" />
 						</div>
 						<div class="form-group">
-							<label for="exampleInputName1">Nombre</label> <input type="text"
-								class="form-control" id="exampleInputName2"
-								placeholder="Nombre completo" />
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="exampleInputEmail3">Correo electronico</label> <input
-										type="email" class="form-control" id="exampleInputEmail3"
-										placeholder="Email" />
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="exampleSelectGender">Genero</label> <select
-										class="form-control" id="exampleSelectGender">
-										<option>Masculino</option>
-										<option>Femenino</option>
-									</select>
-								</div>
-							</div>
+							<label for="txtNombre">Nombres</label>
+							<h:inputText value="#{pacienteBean.persona.perNombre}"
+								a:type="text" class="form-control" id="txtNombre"
+								a:placeholder="Nombres" a:required="true" />
 						</div>
 						<div class="form-group">
-							<label for="exampleInputPassword4">Contraseña</label> <input
-								type="password" class="form-control" id="exampleInputPassword4"
-								placeholder="Contraseña del paciente" />
+							<label for="txtApellido">Apellidos</label>
+							<h:inputText value="#{pacienteBean.persona.perApellido}"
+								a:type="text" class="form-control" id="txtApellido"
+								a:placeholder="Apellidos" a:required="true" />
 						</div>
-						<button type="submit" class="btn btn-success">Resgistrar</button>
-						<button class="btn btn-light">Cancelar</button>
+						<div class="form-group">
+							<label for="txtDireccion">Direccion</label>
+							<h:inputText value="#{pacienteBean.persona.perDireccion}"
+								a:type="text" class="form-control" id="txtDireccion"
+								a:placeholder="Direccion" a:required="true" />
+						</div>
+						<div class="form-group">
+							<label for="txtEmail">Correo electronico</label>
+							<h:inputText value="#{pacienteBean.usuario.usCorreo}"
+								a:type="email" class="form-control" id="txtEmail"
+								a:placeholder="Email" a:required="true" />
+						</div>
+
+						<div class="form-group">
+							<label for="txtPassword">Contraseña</label>
+							<h:inputText value="#{pacienteBean.usuario.usPassword}"
+								a:type="password" class="form-control" id="txtPassword"
+								a:placeholder="Contraseña del paciente" a:required="true" />
+						</div>
+						<div class="nav justify-content-center">
+							<h:commandButton a:title = "Registrar Paciente" action="#{pacienteBean.guardar()}"
+								value="Resgistrar" class="btn btn-success">
+							</h:commandButton>
+						</div>
 					</h:form>
 				</div>
 
