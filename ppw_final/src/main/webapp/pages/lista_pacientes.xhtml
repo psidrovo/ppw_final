@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+
+	<f:metadata>
+		<!-- <f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam>
+		<f:viewAction action="#{clientesBean.loadDatos()}"></f:viewAction>
+		-->
+	</f:metadata>
+
+
+</h:head>
+
+<ui:composition template="blank-page.xhtml">
+
+	<ui:define name="content">
+		<div class="card-header">
+			<h3>Data Table</h3>
+		</div>
+		<div class="card-body">
+			<table id="data_table" class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th class="nosort">Avatar</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th class="nosort">&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>001</td>
+						<td><img src="../img/users/women.jpg" class="table-user-thumb"
+							alt=""/></td>
+						<td>Erich Heaney</td>
+						<td>erich@example.com</td>
+						<td>
+							<div class="table-actions">
+								<a href="#"><i class="ik ik-eye"></i></a> <a href="#"><i
+									class="ik ik-edit-2"></i></a> <a href="#"><i
+									class="ik ik-trash-2"></i></a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>002</td>
+						<td><img src="../img/users/men.jpg" class="table-user-thumb"
+							alt=""/></td>
+						<td>Abraham Douglas</td>
+						<td>jgraham@example.com</td>
+						<td>
+							<div class="table-actions">
+								<a href="#"><i class="ik ik-eye"></i></a> <a href="#"><i
+									class="ik ik-edit-2"></i></a> <a href="#"><i
+									class="ik ik-trash-2"></i></a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>003</td>
+						<td><img src="../img/users/women.jpg"
+							class="table-user-thumb" alt="" /></td>
+						<td>Roderick Simonis</td>
+						<td>grant.simonis@example.com</td>
+						<td>
+							<div class="table-actions">
+								<a href="#"><i class="ik ik-eye"></i></a> <a href="#"><i
+									class="ik ik-edit-2"></i></a> <a href="#"><i
+									class="ik ik-trash-2"></i></a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>004</td>
+						<td><img src="../img/users/men.jpg" class="table-user-thumb"
+							alt="" /></td>
+						<td>Christopher Henry</td>
+						<td>henry.chris@example.com</td>
+						<td>
+							<div class="table-actions">
+								<a href="#"><i class="ik ik-eye"></i></a> <a href="#"><i
+									class="ik ik-edit-2"></i></a> <a href="#"><i
+									class="ik ik-trash-2"></i></a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>005</td>
+						<td><img src="../img/users/women.jpg"
+							class="table-user-thumb" alt="" /></td>
+						<td>Sonia Wilkinson</td>
+						<td>boyle.aglea@example.com</td>
+						<td>
+							<div class="table-actions">
+								<a href="#"><i class="ik ik-eye"></i></a> <a href="#"><i
+									class="ik ik-edit-2"></i></a> <a href="#"><i
+									class="ik ik-trash-2"></i></a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
