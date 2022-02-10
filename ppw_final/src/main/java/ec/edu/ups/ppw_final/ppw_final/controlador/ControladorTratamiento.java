@@ -44,13 +44,13 @@ public class ControladorTratamiento {
 	}
 
 
-	public void delete(int id) {
-		OsTratamiento p = em.find(OsTratamiento.class, id);
+	public void delete(String nombre) {
+		OsTratamiento p = em.find(OsTratamiento.class, nombre);
 		em.remove(p);
 	}
 	
-	public OsTratamiento read(int id){
-		OsTratamiento p = em.find(OsTratamiento.class, id);
+	public OsTratamiento read(String nombre){
+		OsTratamiento p = em.find(OsTratamiento.class, nombre);
 		return p;
 	}
 	

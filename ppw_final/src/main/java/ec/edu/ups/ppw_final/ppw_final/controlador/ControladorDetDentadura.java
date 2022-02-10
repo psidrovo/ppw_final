@@ -62,7 +62,7 @@ public class ControladorDetDentadura {
 		return p;
 	}
 	
-	public List<OsDentadura> findAll(){
+	public List<OsDetDentadura> findAll(){
 		String jpql = "SELECT o FROM OsDetDentadura o";
 		
 		Query q = em.createQuery(jpql, OsDetDentadura.class);

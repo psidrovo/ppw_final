@@ -149,7 +149,8 @@ public class usuarioBean {
 
 
 
-
+//metodos
+	
 	public String guardar() {
 
 		OsPersona p = new OsPersona();
