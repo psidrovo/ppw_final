@@ -3,12 +3,18 @@ package ec.edu.ups.ppw_final.ppw_final.controlador;
 import java.util.Collections;
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetDentadura;
 
-public class ControladorDetDentadura extends ControladorGenerico<OsDetDentadura>{
+@Stateless
+public class ControladorDetDentadura {
 
+	/*
 	@Override
 	public List<OsDetDentadura> findAll() {
 		Query consulta = getEm().createNamedQuery("OsDetDentadura.findAll");
@@ -31,6 +37,38 @@ public class ControladorDetDentadura extends ControladorGenerico<OsDetDentadura>
 		} else {
 			return 1;
 		}
+	}*/
+	
+	@PersistenceContext
+	private EntityManager em;
+
+	public void insert(OsDetDentadura p) {
+		em.persist(p);
+
 	}
+
+	public void update(OsDetDentadura p) {
+		em.merge(p);
+	}
+
+
+	public void delete(int id) {
+		OsDetDentadura p = em.find(OsDetDentadura.class, id);
+		em.remove(p);
+	}
+	
+	public OsDetDentadura read(int id){
+		OsDetDentadura p = em.find(OsDetDentadura.class, id);
+		return p;
+	}
+	
+	public List<OsDetDentadura> findAll(){
+		String jpql = "SELECT o FROM OsDetDentadura o";
+		
+		Query q = em.createQuery(jpql, OsDetDentadura.class);
+		
+		return q.getResultList();
+	}
+	
 
 }

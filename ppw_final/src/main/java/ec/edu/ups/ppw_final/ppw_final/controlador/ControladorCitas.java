@@ -3,34 +3,45 @@ package ec.edu.ups.ppw_final.ppw_final.controlador;
 import java.util.Collections;
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsCita;
 
-public class ControladorCitas extends ControladorGenerico<OsCita> {
+@Stateless
+public class ControladorCitas {
 
-	@Override
-	public List<OsCita> findAll() {
-		Query consulta = getEm().createNamedQuery("OsCita.findAll");
-		var lista = consulta.getResultList();
+	@PersistenceContext
+	private EntityManager em;
 
-		if (lista.size() > 0) {
-			//Collections.sort(lista, (OsCita o1, OsCita o2) -> o2.getCtId().compareTo(o1.getCtId()));
-		}
-		return consulta.getResultList();
+	public void insert(OsCita p) {
+		em.persist(p);
+
 	}
 
-	@Override
-	public int codigo() {
-		var lista = findAll();
+	public void update(OsCita p) {
+		em.merge(p);
+	}
 
-		if (lista.size() > 0) {
-			//Collections.sort(lista, (OsCita o1, OsCita o2) -> o2.getCtId().compareTo(o1.getCtId()));
-			//return (int) (lista.get(lista.size() - 1).getCtId() + 1);
-			return 0;
-		} else {
-			return 1;
-		}
+
+	public void delete(int id) {
+		OsCita p = em.find(OsCita.class, id);
+		em.remove(p);
+	}
+	
+	public OsCita read(int id){
+		OsCita p = em.find(OsCita.class, id);
+		return p;
+	}
+	
+	public List<OsCita> findAll(){
+		String jpql = "SELECT o FROM OsCita o";
+		
+		Query q = em.createQuery(jpql, OsCita.class);
+		
+		return q.getResultList();
 	}
 
 }
