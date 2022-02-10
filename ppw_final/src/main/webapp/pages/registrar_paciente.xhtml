@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+
+	<f:metadata>
+		<!-- <f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam>
+		<f:viewAction action="#{clientesBean.loadDatos()}"></f:viewAction>
+		-->
+	</f:metadata>
+
+
+</h:head>
+
+<ui:composition template="blank-page.xhtml">
+
+	<ui:define name="content">
+		<div class="container-fluid">
+			<div class="card">
+				<div class="card-header">
+					<h3>Registrar Paciente</h3>
+				</div>
+				<div class="card-body">
+					<h:form class="forms-sample">
+						<div class="form-group">
+							<label for="exampleInputName1">Cedula</label> <input type="text"
+								class="form-control" id="exampleInputCedula1"
+								placeholder="Cedula de Identidad" />
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName1">Nombre</label> <input type="text"
+								class="form-control" id="exampleInputName2"
+								placeholder="Nombre completo" />
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="exampleInputEmail3">Correo electronico</label> <input
+										type="email" class="form-control" id="exampleInputEmail3"
+										placeholder="Email" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="exampleSelectGender">Genero</label> <select
+										class="form-control" id="exampleSelectGender">
+										<option>Masculino</option>
+										<option>Femenino</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword4">Contraseña</label> <input
+								type="password" class="form-control" id="exampleInputPassword4"
+								placeholder="Contraseña del paciente" />
+						</div>
+						<button type="submit" class="btn btn-success">Resgistrar</button>
+						<button class="btn btn-light">Cancelar</button>
+					</h:form>
+				</div>
+
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

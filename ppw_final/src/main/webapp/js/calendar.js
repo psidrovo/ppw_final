@@ -28,11 +28,7 @@ $(document).ready(function(t, e, i) {
             week: "week",
             day: "day"
         },
-        events: [{
-            title: "All Day Event",
-            start: new Date(r, n, 1),
-            className: "bg-purple"
-        }, {
+        events: [ {
             title: "Long Event",
             start: new Date(r, n, i - 5),
             end: new Date(r, n, i - 2),
