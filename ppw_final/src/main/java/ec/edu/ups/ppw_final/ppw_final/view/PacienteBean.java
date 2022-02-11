@@ -13,13 +13,11 @@ import ec.edu.ups.ppw_final.ppw_final.business.GestionUsuarioON;
 @Named
 @RequestScoped
 public class PacienteBean {
-	
+
 	private String cedula;
 	private String nombre;
 	private String apellido;
 	private String direccion;
-
-	
 
 	@Inject
 	private GestionPersonaON perOn;
@@ -72,7 +70,7 @@ public class PacienteBean {
 	public void setPerOn(GestionPersonaON perOn) {
 		this.perOn = perOn;
 	}
-	
+
 	public OsPersona getPersona() {
 		return persona;
 	}
@@ -88,7 +86,7 @@ public class PacienteBean {
 	public void setUsuario(OsUsuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 	public GestionUsuarioON getUseOn() {
 		return useOn;
 	}
@@ -96,18 +94,47 @@ public class PacienteBean {
 	public void setUseOn(GestionUsuarioON useOn) {
 		this.useOn = useOn;
 	}
-	
 
 	public String guardar() {
-		usuario.setUsTipo("PACIENTE");
-		usuario.setOsPersona(persona);
-		System.out.println("Guardar--> " + "\n" +persona +"\n"+usuario);
-		perOn.guardarPersona(persona);
+		OsPersona p = perOn.read(persona.getPerCedula());
+		if (p != null) {
+			usuario.setUsTipo("PACIENTE");
+			usuario.setOsPersona(p);
+			useOn.guardarUsuario(usuario);
+			System.out.println("Actualizado ->" + "\n" + persona + "\n" + usuario);
+		} else {
+			usuario.setUsTipo("PACIENTE");
+			usuario.setOsPersona(p);
+			perOn.guardarPersona(p);
+			useOn.guardarUsuario(usuario);
+			System.out.println("Nuevo ->" + "\n" + persona + "\n" + usuario);
+		}
+		this.init();
+		return null;
+		
+		/*
+		 * usuario.setUsTipo("PACIENTE"); 
+		 * usuario.setOsPersona(persona);
+		 * System.out.println("Guardar--> " + "\n" +persona +"\n"+usuario);
+		 * perOn.guardarPersona(persona); 
+		 * this.init(); 
+		 * return null;
+		 */
+	}
+
+	public String buscarPaciente() {
+		OsPersona p = perOn.read(persona.getPerCedula());
+		if (p != null) {
+			persona.setPerNombre(p.getPerNombre());
+			persona.setPerApellido(p.getPerApellido());
+			persona.setPerDireccion(p.getPerDireccion());
+			System.out.println("Se ha encontrado la persona exitosamente");
+		} else {
+			System.out.println("No se ha podido encontrar a la persona porque no existe");
+		}
+
 		this.init();
 		return null;
 	}
 
-	
-
-	
 }
