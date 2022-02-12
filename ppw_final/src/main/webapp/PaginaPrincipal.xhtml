@@ -1,138 +1,151 @@
 <!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
+	<!-- Required meta tags -->
+	<meta charset="utf-8"></meta>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
 
-    <!-- Metro 4 -->
-    <link rel="stylesheet" href="vendors/metro4/css/metro-all.min.css"/>
-    <link rel="stylesheet" href="css/index.css"/>
-    <title>Odonsoft :: Pagina Principal</title>
+	<!-- Metro 4 -->
+	<link rel="stylesheet" href="vendors/metro4/css/metro-all.min.css" />
+	<link rel="stylesheet" href="css/index.css" />
+	<title>Odonsoft :: Pagina Principal</title>
 
-    <style>
-        .bg-hero {
-            background-color: #4b646f;
-        }
-        .bg-footer {
-            background-color: #222D32;
-        }
-    </style>
+	<style>
+.bg-hero {
+	background-color: #4b646f;
+}
+
+.bg-footer {
+	background-color: #222D32;
+}
+</style>
 </h:head>
 <h:body class="m4-cloak" style="padding-top: 52px">
-<header data-role="appbar" data-expand-point="md">
-    <!--<a href="index.html" class="d-block brand no-hover"><span class="text-bold">ODONSOFT</span>&nbsp;|&nbsp;<span>Pagina Principal</span></a>-->
-    <ul class="app-bar-menu ml-auto text-upper">
-        <li><a href="#"><span class="mif-help"></span> AYUDA</a></li>
-        <li><a href="Registrarse.xhtml"><span class="mif-users"></span> REGISTRARSE</a></li>
-        <li><a href="Login2.xhtml"><span class="text-bold">INGRESAR</span></a></li>
-    </ul>
-</header>
+	<header data-role="appbar" data-expand-point="md">
+		<!--<a href="index.html" class="d-block brand no-hover"><span class="text-bold">ODONSOFT</span>&nbsp;|&nbsp;<span>Pagina Principal</span></a>-->
+		<ul class="app-bar-menu ml-auto text-upper">
+			<li><a href="#"><span class="mif-help"></span> AYUDA</a></li>
+			<li><a href="Registrarse.xhtml"><span class="mif-users"></span>
+					REGISTRARSE</a></li>
+			<li><a href="Login2.xhtml"><span class="text-bold">INGRESAR</span></a></li>
+		</ul>
+	</header>
 
-<div class="container-fluid bg-hero">
-    <div class="container">
-        <div class="hero d-flex flex-justify-center">
-            <div style="max-width: 400px;" class="text-center">
-                <h2 class="mt-0 fg-white text-light">Como podemos ayudar?</h2>
-                <h:inputTextarea type="text" data-role="input" data-search-button="true" data-prepend="Search"/>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="container-fluid bg-hero">
+		<div class="container">
+			<div class="hero d-flex flex-justify-center">
+				<div style="max-width: 400px;" class="text-center">
+					<h2 class="mt-0 fg-white text-light">Como podemos ayudar?</h2>
+					<h:inputTextarea type="text" data-role="input"
+						data-search-button="true" data-prepend="Search" />
+				</div>
+			</div>
+		</div>
+	</div>
 
-<div class="container-fluid bg-white">
-    <div class="container pt-10 pb-10">
-        <h5 class="text-center">INFORMACION</h5>
-        <div class="row">
-            <div class="cell-md-6 cell-lg-3 mt-4">
-                <a href="#" class="no-decor fg-dark text-center h-100">
-                    <div class="h-100 border bd-default p-4">                       
-                        <div><span class="mif-map2 mif-10x fg-grayMouse"></span></div>
-                        <div class="h4">REGISTRARTE</div>
-                        <div class="">Crea tu cuenta y obten una mejor experiencia</div>
-                        <hr class="thin bg-gray"/>
-                        <div class="text-small">
-							Empieza Hoy! y obten todo los beneficios de una experiencia mas personalizada. Es un procedimiento rapido y eficiente.
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="cell-md-6 cell-lg-3 mt-4">
-                <a href="#" class="no-decor fg-dark text-center h-100">
-                    <div class="h-100 border bd-default p-4">
-                        <div><span class="mif-cart mif-10x fg-grayMouse"></span></div>
-                        <div class="h4">Pagos</div>
-                        <div class="">Realiza tus pagos en linea</div>
-                        <hr class="thin bg-gray"/>
-                        <div class="text-small">
-                            Ahorrate mas tiempo al realizar los pagos en lineas.
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="cell-md-6 cell-lg-3 mt-4">
-                <a href="#" class="no-decor fg-dark text-center h-100">
-                    <div class="h-100 border bd-default p-4">
-                        <div><span class="mif-book-reference mif-10x fg-grayMouse"></span></div>
-                        <div class="h4">Reservado</div>
-                        <div class="">Reserva una cita</div>
-                        <hr class="thin bg-gray"/>
-                        <div class="text-small">
-                        	Todo desde la comodida de tu casa. Reserva na cita con el odontologo
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="cell-md-6 cell-lg-3 mt-4">
-                <a href="#" class="no-decor fg-dark text-center h-100">
-                    <div class="h-100 border bd-default p-4">
-                        <div><span class="mif-stethoscope mif-10x fg-grayMouse"></span></div>
-                        <div class="h4">Profesionalismo</div>
-                        <div class="">Trato cinco estrellas</div>
-                        <hr class="thin bg-gray"/>
-                        <div class="text-small">
-                        	Siempre es importante asegurar que tu primera experiencia sea la mejor. Te deamos el trato que te mereces.
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+	<div class="container-fluid bg-white">
+		<div class="container pt-10 pb-10">
+			<h5 class="text-center">INFORMACION</h5>
+			<div class="row">
+				<div class="cell-md-6 cell-lg-3 mt-4">
+					<a href="#" class="no-decor fg-dark text-center h-100">
+						<div class="h-100 border bd-default p-4">
+							<div>
+								<span class="mif-map2 mif-10x fg-grayMouse"></span>
+							</div>
+							<div class="h4">REGISTRARTE</div>
+							<div class="">Crea tu cuenta y obten una mejor experiencia</div>
+							<hr class="thin bg-gray" />
+							<div class="text-small">Empieza Hoy! y obten todo los
+								beneficios de una experiencia mas personalizada. Es un
+								procedimiento rapido y eficiente.</div>
+						</div>
+					</a>
+				</div>
+				<div class="cell-md-6 cell-lg-3 mt-4">
+					<a href="#" class="no-decor fg-dark text-center h-100">
+						<div class="h-100 border bd-default p-4">
+							<div>
+								<span class="mif-cart mif-10x fg-grayMouse"></span>
+							</div>
+							<div class="h4">Pagos</div>
+							<div class="">Realiza tus pagos en linea</div>
+							<hr class="thin bg-gray" />
+							<div class="text-small">Ahorrate mas tiempo al realizar los
+								pagos en lineas.</div>
+						</div>
+					</a>
+				</div>
+				<div class="cell-md-6 cell-lg-3 mt-4">
+					<a href="#" class="no-decor fg-dark text-center h-100">
+						<div class="h-100 border bd-default p-4">
+							<div>
+								<span class="mif-book-reference mif-10x fg-grayMouse"></span>
+							</div>
+							<div class="h4">Reservado</div>
+							<div class="">Reserva una cita</div>
+							<hr class="thin bg-gray" />
+							<div class="text-small">Todo desde la comodida de tu casa.
+								Reserva na cita con el odontologo</div>
+						</div>
+					</a>
+				</div>
+				<div class="cell-md-6 cell-lg-3 mt-4">
+					<a href="#" class="no-decor fg-dark text-center h-100">
+						<div class="h-100 border bd-default p-4">
+							<div>
+								<span class="mif-stethoscope mif-10x fg-grayMouse"></span>
+							</div>
+							<div class="h4">Profesionalismo</div>
+							<div class="">Trato cinco estrellas</div>
+							<hr class="thin bg-gray" />
+							<div class="text-small">Siempre es importante asegurar que
+								tu primera experiencia sea la mejor. Te deamos el trato que te
+								mereces.</div>
+						</div>
+					</a>
+				</div>
+			</div>
 
-        <br/>
+			<br />
 
-        <!-- <div class="text-center">
+			<!-- <div class="text-center">
             <button class="button primary">All Topics</button>
         </div>-->
-    </div>
-</div>
+		</div>
+	</div>
 
-<div class="container-fluid">
-    <div class="container">
-        <h5 class="text-center mt-20">INFORMACION DE SITIO</h5>
-        <div class="row mt-10 mb-20">
-            <div class="cell-md-4">
-                <ul class="unstyled-list text-center">
-                    <li><a href="#" class="fg-dark">Programa desarollado por Paul Idrovo, Denys Dutan</a></li>
-                </ul>
-            </div>
-            <div class="cell-md-4">
-                <ul class="unstyled-list text-center">
-                    <li><a href="#" class="fg-dark">Contacto al correo: Ddutans1@est.ups.edu.ec pidrovob@est.ups.edu.ec</a></li>
-                </ul>
-            </div>
-            <div class="cell-md-4">
-                <ul class="unstyled-list text-center">
-                    <li><a href="#" class="fg-dark">Practica final de programacion y plataformas web</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<footer class="container-fluid bg-footer fg-white p-4">
-    <!--<div class="container text-center">
+	<div class="container-fluid">
+		<div class="container">
+			<h5 class="text-center mt-20">INFORMACION DE SITIO</h5>
+			<div class="row mt-10 mb-20">
+				<div class="cell-md-4">
+					<ul class="unstyled-list text-center">
+						<li><a href="#" class="fg-dark">Programa desarollado por
+								Paul Idrovo, Denys Dutan</a></li>
+					</ul>
+				</div>
+				<div class="cell-md-4">
+					<ul class="unstyled-list text-center">
+						<li><a href="#" class="fg-dark">Contacto al correo:
+								Ddutans1@est.ups.edu.ec pidrovob@est.ups.edu.ec</a></li>
+					</ul>
+				</div>
+				<div class="cell-md-4">
+					<ul class="unstyled-list text-center">
+						<li><a href="#" class="fg-dark">Practica final de
+								programacion y plataformas web</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="container-fluid bg-footer fg-white p-4">
+		<!--<div class="container text-center">
         <ul class="inline-list reduce-1 m-0">
             <li><a href="#" class="no-decor fg-gray fg-white-hover">Home</a></li>
             <li><a href="#" class="no-decor fg-gray fg-white-hover">Privacy</a></li>
@@ -140,9 +153,9 @@
             <li><a href="#" class="no-decor fg-gray fg-white-hover">Documentation</a></li>
         </ul>
     </div>-->
-</footer>
+	</footer>
 
-<script src="vendors/jquery/jquery-3.4.1.min.js"></script>
-<script src="vendors/metro4/js/metro.min.js"></script>
+	<script src="vendors/jquery/jquery-3.4.1.min.js"></script>
+	<script src="vendors/metro4/js/metro.min.js"></script>
 </h:body>
 </html>

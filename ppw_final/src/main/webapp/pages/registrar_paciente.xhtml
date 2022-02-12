@@ -4,7 +4,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
 	<!-- f:metadata>
@@ -64,8 +65,10 @@
 								a:placeholder="Contraseña del paciente" a:required="true" />
 						</div>
 						<div class="nav justify-content-center">
-							<h:commandButton a:title = "Registrar Paciente" action="#{pacienteBean.guardar()}"
-								value="Resgistrar" class="btn btn-success">
+
+							<h:commandButton a:title="Registrar Paciente"
+								action="#{pacienteBean.guardar()}" value="Resgistrar"
+								class="btn btn-success">
 							</h:commandButton>
 						</div>
 					</h:form>
