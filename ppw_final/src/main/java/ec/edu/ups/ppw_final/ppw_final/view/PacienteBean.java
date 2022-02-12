@@ -128,6 +128,7 @@ public class PacienteBean {
 			persona.setPerNombre(p.getPerNombre());
 			persona.setPerApellido(p.getPerApellido());
 			persona.setPerDireccion(p.getPerDireccion());
+			//falta metodo para devolver los datos del usuario
 			System.out.println("Se ha encontrado la persona exitosamente");
 		} else {
 			System.out.println("No se ha podido encontrar a la persona porque no existe");
