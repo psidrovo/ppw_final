@@ -99,13 +99,13 @@ public class PacienteBean {
 		OsPersona p = perOn.read(persona.getPerCedula());
 		if (p != null) {
 			usuario.setUsTipo("PACIENTE");
-			usuario.setOsPersona(p);
+			usuario.setOsPersona(persona);
 			useOn.guardarUsuario(usuario);
 			System.out.println("Actualizado ->" + "\n" + persona + "\n" + usuario);
 		} else {
 			usuario.setUsTipo("PACIENTE");
-			usuario.setOsPersona(p);
-			perOn.guardarPersona(p);
+			usuario.setOsPersona(persona);
+			perOn.guardarPersona(persona);
 			useOn.guardarUsuario(usuario);
 			System.out.println("Nuevo ->" + "\n" + persona + "\n" + usuario);
 		}
@@ -125,10 +125,7 @@ public class PacienteBean {
 	public String buscarPaciente() {
 		OsPersona p = perOn.read(persona.getPerCedula());
 		if (p != null) {
-			persona.setPerNombre(p.getPerNombre());
-			persona.setPerApellido(p.getPerApellido());
-			persona.setPerDireccion(p.getPerDireccion());
-			//falta metodo para devolver los datos del usuario
+			persona=p;
 			System.out.println("Se ha encontrado la persona exitosamente");
 		} else {
 			System.out.println("No se ha podido encontrar a la persona porque no existe");

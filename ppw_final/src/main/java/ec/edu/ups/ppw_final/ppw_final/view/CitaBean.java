@@ -35,6 +35,20 @@ public class CitaBean {
 		cita = new OsCita();
 		citas = citaOn.findAll();
 	}
+	
+	
+
+	public List<OsCita> getCitas() {
+		return citas;
+	}
+
+
+
+	public void setCitas(List<OsCita> citas) {
+		this.citas = citas;
+	}
+
+
 
 	public int getId() {
 		return id;
