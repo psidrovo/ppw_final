@@ -103,6 +103,7 @@ public class PacienteBean {
 		usuario.setOsPersona(persona);
 		System.out.println("Guardar--> " + "\n" +persona +"\n"+usuario);
 		perOn.guardarPersona(persona);
+		useOn.guardarUsuario(usuario);
 		this.init();
 		return null;
 	}
