@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsUsuario;
 
 @Stateless
@@ -41,5 +42,13 @@ public class ControladorUsuario {
 	public OsUsuario read(String usuario){
 		OsUsuario p = em.find(OsUsuario.class, usuario);
 		return p;
+	}
+	
+	public OsUsuario findByPersona(OsPersona persona) {
+		String jpql = "SELECT p FROM OsUsuario p WHERE osPersona LIKE ?1";
+
+		Query q = em.createQuery(jpql, OsUsuario.class);
+		q.setParameter(1,persona);
+		return (OsUsuario) q.getResultList().get(0);
 	}
 }
