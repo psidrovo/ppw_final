@@ -15,7 +15,7 @@ public class GestionTratamientoON {
 	@Inject
 	private ControladorTratamiento controladorT;
 
-	public void guardarRCMed(OsTratamiento tratamineto) {
+	public void guardarTratamiento(OsTratamiento tratamineto) {
 		OsTratamiento u = controladorT.read(tratamineto.getTrNombre());
 		if (u == null) {
 			controladorT.insert(tratamineto);

@@ -21,22 +21,37 @@ public class CitaBean {
 	private String estado;
 	private String fecha;
 
-	private List<OsCita> citas;
-
 	@Inject
 	private GestionPersonaON perOn;
 	private GestionCitasON citaOn;
 	private OsPersona persona;
 	private OsCita cita;
+	private List<OsPersona> personas;
+	private List<OsCita> citas;
 
 	@PostConstruct
 	private void init() {
 		persona = new OsPersona();
 		cita = new OsCita();
 		citas = citaOn.findAll();
+		personas = perOn.findAll();
 	}
-	
-	
+
+	public List<OsPersona> getPersonas() {
+		return personas;
+	}
+
+
+
+
+
+	public void setPersonas(List<OsPersona> personas) {
+		this.personas = personas;
+	}
+
+
+
+
 
 	public List<OsCita> getCitas() {
 		return citas;
@@ -117,11 +132,14 @@ public class CitaBean {
 	public String guardar() {
 		OsPersona p = perOn.read(persona.getPerCedula());
 		if (p != null) {
-			cita.setOsPersona(p);
-			System.out.println("Guardar Cita ->" + cita + "\n" + " persona:" + p);
+			cita.setOsPersona(persona);
+			//System.out.println("Guardar Cita ->" + cita + "\n" + " persona:" + p);
 			citaOn.guardarCita(cita);
 		} else {
-			System.out.println("no se ha podido guardar la cita porque la persona no existe");
+			perOn.guardarPersona(persona);
+			cita.setOsPersona(persona);
+			citaOn.guardarCita(cita);
+			//System.out.println("no se ha podido guardar la cita porque la persona no existe");
 		}
 
 		this.init();
@@ -131,10 +149,7 @@ public class CitaBean {
 	public String BuscarCita() {
 		OsCita c = citaOn.read(cita.getCtId());
 		if (c != null) {
-			cita.setCtDescripcion(c.getCtDescripcion());
-			cita.setCtEstado(c.getCtDescripcion());
-			cita.setCtFecha(c.getCtFecha());
-			cita.setOsPersona(c.getOsPersona());
+			cita = c;
 		} else {
 			System.out.println("Cita no se ha podido encontrar porque no existe");
 		}
@@ -146,7 +161,7 @@ public class CitaBean {
 	public String EliminarCita() {
 		OsCita c = citaOn.read(cita.getCtId());
 		if (c != null) {
-			citaOn.delete(c.getCtId());
+			citaOn.delete(cita.getCtId());
 			System.out.println("Cita eliminado con exito");
 		} else {
 			System.out.println("Cita no se ha podido eliminar porque no existe");

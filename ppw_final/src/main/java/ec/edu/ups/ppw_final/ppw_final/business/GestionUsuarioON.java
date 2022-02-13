@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ec.edu.ups.ppw_final.ppw_final.controlador.ControladorUsuario;
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsUsuario;
 
 @Stateless
@@ -38,6 +39,11 @@ public class GestionUsuarioON {
 	
 	public OsUsuario read(String usuario) {
 		return controladorU.read(usuario);
+	}
+	
+	public List<OsUsuario> findAll(){
+		
+		return controladorU.findAll();
 	}
 	
 }

@@ -51,4 +51,12 @@ public class ControladorUsuario {
 		q.setParameter(1,persona);
 		return (OsUsuario) q.getResultList().get(0);
 	}
+	
+	public List<OsUsuario> findAll(){
+		String jpql = "SELECT o FROM OsUsuario o";
+		
+		Query q = em.createQuery(jpql, OsUsuario.class);
+		
+		return q.getResultList();
+	}
 }

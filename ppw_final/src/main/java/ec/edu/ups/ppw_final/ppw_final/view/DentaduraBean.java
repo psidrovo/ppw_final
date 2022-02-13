@@ -21,11 +21,23 @@ public class DentaduraBean {
 	@Inject
 	private GestionDentaduraON detOn;
 	private OsDentadura dentadura;
+	private List<OsDentadura>dentaduras;
 	
 	@PostConstruct
 	private void init() {
 		dentadura = new OsDentadura();
+		dentaduras=detOn.findAll();
 	}
+	
+	public List<OsDentadura> getDentaduras() {
+		return dentaduras;
+	}
+
+	public void setDentaduras(List<OsDentadura> dentaduras) {
+		this.dentaduras = dentaduras;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -62,10 +74,10 @@ public class DentaduraBean {
 	public String guardar() {
 		OsDentadura d = detOn.read(dentadura.getDentId());
 		if(d!=null) {
-			detOn.guardarDentadura(d);
+			detOn.guardarDentadura(dentadura);
 			System.out.println("Se ha modificado " + d);
 		}else {
-			detOn.guardarDentadura(d);
+			detOn.guardarDentadura(dentadura);
 			System.out.println("Se ha creado " + d);
 		}
 		this.init();
@@ -75,7 +87,7 @@ public class DentaduraBean {
 	public String Buscar() {
 		OsDentadura d = detOn.read(dentadura.getDentId());
 		if (d != null) {
-			dentadura.setDentCdgMolar(d.getDentCdgMolar());
+			dentadura=d;
 		} else {
 			System.out.println("dentadura no se ha podido encontrar porque no existe");
 		}
@@ -87,7 +99,7 @@ public class DentaduraBean {
 	public String delete() {
 		OsDentadura d = detOn.read(dentadura.getDentId());
 		if (d != null) {
-			detOn.delete(d.getDentId());
+			detOn.delete(dentadura.getDentId());
 		} else {
 			System.out.println("dentadura no se ha podido eliminar porque no existe");
 		}
