@@ -84,7 +84,7 @@ public class PagoBean {
 		pagoOn.guardarDetPago(pago);
 
 		this.init();
-		return null;
+		return "";
 	}
 
 	public String buscarPago() {

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<f:metadata>
+		<!-- <f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam>
+		<f:viewAction action="#{clientesBean.loadDatos()}"></f:viewAction>
+		-->
+		<f:viewParam name="cedulaPaciente" value="#{hstClinicaBean.cedulaPaciente}"/>
+	</f:metadata>
+
+
+</h:head>
+
+<ui:composition template="blank-page.xhtml">
+
+	<ui:define name="content">
+		<p>
+			You've been redirected to this bookmarkable page with button.
+			ViewParameter you've passed is <strong>"#{hstClinicaBean.cedulaPaciente}"</strong>
+		</p>
+
+		<div class="card-header">
+			<h3>Pacientes</h3>
+		</div>
+		<div class="card-body">
+			<h:dataTable value="#{pacienteBean.personas}" var="persona"
+				id="data_table" class="table" a:style="text-align: center">
+				<h:column>
+					<f:facet name="header">Cedula</f:facet>						
+					#{persona.perCedula}
+					</h:column>
+
+				<h:column>
+					<f:facet name="header">Avatar</f:facet>
+						per
+					</h:column>
+
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+						#{persona.perNombre}
+					</h:column>
+
+				<h:column>
+					<f:facet name="header">Deuda</f:facet>
+						0.0
+					</h:column>
+
+				<h:column>
+					<f:facet name="header">Correo</f:facet>
+						#{usuario.usCorreo}
+					</h:column>
+
+			</h:dataTable>
+		</div>
+	
+	</ui:define>
+</ui:composition>
+</html>

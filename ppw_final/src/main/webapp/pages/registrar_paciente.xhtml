@@ -4,7 +4,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
 </h:head>
@@ -14,6 +15,8 @@
 	<ui:define name="content">
 		<div class="container-fluid">
 			<div class="card">
+				<p:growl id="msgs" showDetail="true"
+					skipDetailIfEqualsSummary="true" />
 				<div class="card-header">
 					<h3>Registrar Paciente</h3>
 				</div>
@@ -57,11 +60,9 @@
 								a:placeholder="Contraseña del paciente" a:required="true" />
 						</div>
 						<div class="nav justify-content-center">
-
-							<h:commandButton a:title="Registrar Paciente"
-								action="#{pacienteBean.guardar()}" value="Resgistrar"
-								class="btn btn-success">
-							</h:commandButton>
+							<p:commandButton value="Submit" update="msgs"
+								action="#{pacienteBean.guardarSumit}" icon="pi pi-check" />
+							
 						</div>
 					</h:form>
 				</div>
