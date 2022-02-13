@@ -17,13 +17,13 @@ public class PagoBean {
 
 	private int id;
 	private double valor;
-	
+
 	@Inject
 	private GestionDetPagoON pagoOn;
 	private OsDetPago pago;
 	private OsPersona persona;
-	private List<OsDetPago>pagos;
-	
+	private List<OsDetPago> pagos;
+
 	@PostConstruct
 	private void init() {
 		pago = new OsDetPago();
@@ -78,27 +78,19 @@ public class PagoBean {
 	public void setPagos(List<OsDetPago> pagos) {
 		this.pagos = pagos;
 	}
-	
+
 	public String guardar() {
-		OsDetPago p = pagoOn.read(pago.getDetPgId());
-		if(p != null) {
-			pago.setOsPersona(persona);
-			pagoOn.guardarDetPago(pago);
-			System.out.println("se ha modificado existosamente el detalle de pago");
-		}else {
-			pago.setOsPersona(persona);
-			pagoOn.guardarDetPago(pago);
-			System.out.println("se ha creado existosamente el detalle de pago");
-		}
-		
+		pago.setOsPersona(persona);
+		pagoOn.guardarDetPago(pago);
+
 		this.init();
 		return null;
 	}
-	
+
 	public String buscarPago() {
 		OsDetPago p = pagoOn.read(pago.getDetPgId());
 		if (p != null) {
-			pago=p;
+			pago = p;
 		} else {
 			System.out.println("detalle pago no se ha podido encontrar porque no existe");
 		}
@@ -106,7 +98,7 @@ public class PagoBean {
 		this.init();
 		return null;
 	}
-	
+
 	public String eliminarPago() {
 		OsDetPago p = pagoOn.read(pago.getDetPgId());
 		if (p != null) {
@@ -118,6 +110,5 @@ public class PagoBean {
 		this.init();
 		return null;
 	}
-	
-	
+
 }

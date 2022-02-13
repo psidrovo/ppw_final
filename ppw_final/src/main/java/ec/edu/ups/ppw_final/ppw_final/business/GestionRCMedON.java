@@ -19,8 +19,10 @@ public class GestionRCMedON {
 		OsRcMed u = controladorRCMed.read(medicamento.getRcMedId());
 		if (u == null) {
 			controladorRCMed.insert(medicamento);
+			System.out.println("receta medica creado con exito");
 		} else {
 			controladorRCMed.update(medicamento);
+			System.out.println("receta medica actualizado con exito");
 		}
 	}
 

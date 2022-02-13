@@ -18,8 +18,10 @@ public class GestionMedicamentoON {
 		OsMedicamento u = controladorMediacmiento.read(medicamento.getMdNombre());
 		if (u == null) {
 			controladorMediacmiento.insert(medicamento);
+			System.out.println("medicamineto creado con exito");
 		} else {
 			controladorMediacmiento.update(medicamento);
+			System.out.println("medicamineto actualizado con exito");
 		}
 	}
 

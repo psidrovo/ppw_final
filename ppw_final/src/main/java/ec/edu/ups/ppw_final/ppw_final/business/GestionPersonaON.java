@@ -18,10 +18,10 @@ public class GestionPersonaON {
 		OsPersona u = controladorP.read(persona.getPerCedula());
 		if(u==null) {
 			controladorP.insert(persona);
-			System.out.println("Creado ->" + "\n" + persona );
+			System.out.println("persona creado con exito" );
 		}else {
 			controladorP.update(persona);
-			System.out.println("Actualizado ->" + "\n" + persona);
+			System.out.println("persona actualizada con exito");
 		}
 	}
 	

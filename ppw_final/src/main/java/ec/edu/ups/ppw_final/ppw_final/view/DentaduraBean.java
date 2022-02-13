@@ -72,14 +72,8 @@ public class DentaduraBean {
 	}
 	
 	public String guardar() {
-		OsDentadura d = detOn.read(dentadura.getDentId());
-		if(d!=null) {
+
 			detOn.guardarDentadura(dentadura);
-			System.out.println("Se ha modificado " + d);
-		}else {
-			detOn.guardarDentadura(dentadura);
-			System.out.println("Se ha creado " + d);
-		}
 		this.init();
 		return null;
 	}

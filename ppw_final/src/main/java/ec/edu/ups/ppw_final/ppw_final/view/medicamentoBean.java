@@ -82,13 +82,7 @@ public class medicamentoBean {
 	
 	
 	public String Guardar() {
-		OsMedicamento m = medOn.read(medicamento.getMdNombre());
-		if (m != null) {
-			medOn.guardarMedicamento(m);
-			//System.out.println("Actualizado ->" + "\n" + persona + "\n" + usuario);
-		} else {
-			medOn.guardarMedicamento(m);
-		}
+			medOn.guardarMedicamento(medicamento);
 		this.init();
 		return null;
 	}

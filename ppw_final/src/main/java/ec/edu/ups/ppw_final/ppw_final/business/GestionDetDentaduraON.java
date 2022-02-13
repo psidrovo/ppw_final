@@ -19,8 +19,10 @@ public class GestionDetDentaduraON {
 		OsDetalleDen u = controladorDetD.read(dentadura.getId());
 		if (u == null) {
 			controladorDetD.insert(dentadura);
+			System.out.println("detalle de dentadura creado exitosamente");
 		} else {
 			controladorDetD.update(dentadura);
+			System.out.println("detalle de dentadura actualizado exitosamente");
 		}
 	}
 

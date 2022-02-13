@@ -19,8 +19,10 @@ public class GestionUsuarioON {
 		OsUsuario u = controladorU.read(usuario.getUsCorreo());
 		if(u==null) {
 			controladorU.insert(usuario);
+			System.out.println("usuario creado con exito");
 		}else {
 			controladorU.update(usuario);
+			System.out.println("usuario modificado con exito");
 		}
 	}
 	

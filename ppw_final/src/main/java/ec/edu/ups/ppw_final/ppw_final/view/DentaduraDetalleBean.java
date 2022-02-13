@@ -15,25 +15,25 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
 @Named
 @RequestScoped
 public class DentaduraDetalleBean {
-	
+
 	private int id;
 	private String estadoTrat;
-	
+
 	@Inject
 	private GestionDetDentaduraON denDetOn;
 	private OsDetalleDen detDetdura;
 	@Inject
 	private GestionDentaduraON detOn;
 	private OsDentadura dentadura;
-	private List<OsDetalleDen>detallesDentaduras;
-	
+	private List<OsDetalleDen> detallesDentaduras;
+
 	@PostConstruct
 	private void init() {
 		dentadura = new OsDentadura();
-		detDetdura= new OsDetalleDen();
-		detallesDentaduras= denDetOn.findAll();
+		detDetdura = new OsDetalleDen();
+		detallesDentaduras = denDetOn.findAll();
 	}
-	
+
 	public List<OsDetalleDen> getDetallesDentaduras() {
 		return detallesDentaduras;
 	}
@@ -41,7 +41,7 @@ public class DentaduraDetalleBean {
 	public void setDetallesDentaduras(List<OsDetalleDen> detallesDentaduras) {
 		this.detallesDentaduras = detallesDentaduras;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -81,7 +81,7 @@ public class DentaduraDetalleBean {
 	public void setDentadura(OsDentadura dentadura) {
 		this.dentadura = dentadura;
 	}
-	
+
 	public GestionDetDentaduraON getDenDetOn() {
 		return denDetOn;
 	}
@@ -91,36 +91,17 @@ public class DentaduraDetalleBean {
 	}
 
 	public String guardar() {
-		OsDetalleDen dd = denDetOn.read(detDetdura.getId());
-		if (dd != null) {
-			OsDentadura d = detOn.read(dentadura.getDentId());
-			if(dd.getOsDentadura()==d) {
-				//dd.setOsDentadura(d);
-				denDetOn.guardarDetDentadura(dd);
-				System.out.println("se ha modificado un detalle de dentadura existosamente");
-			}else {
-				System.out.println("la cabecera de dentadura no es similar a la del detalle por ende no se ha podido modificar el detalle");
-			}
-		} else {
-			OsDentadura d = detOn.read(dentadura.getDentId());
-			if(d!=null) {
-				detDetdura.setOsDentadura(d);
-				denDetOn.guardarDetDentadura(detDetdura);
-			}else {
-				System.out.println("la cabecera de dentadura no existe  por ende no se ha podido modificar el detalle");
-
-			}
-			
-		}
+		detDetdura.setOsDentadura(dentadura);
+		denDetOn.guardarDetDentadura(detDetdura);
 
 		this.init();
 		return null;
 	}
-	
+
 	public String buscarDetalle() {
 		OsDetalleDen dd = denDetOn.read(detDetdura.getId());
 		if (dd != null) {
-			detDetdura=dd;
+			detDetdura = dd;
 		} else {
 			System.out.println("detalle no se ha podido encontrar porque no existe");
 		}
@@ -128,7 +109,7 @@ public class DentaduraDetalleBean {
 		this.init();
 		return null;
 	}
-	
+
 	public String eliminarDetalle() {
 		OsDetalleDen dd = denDetOn.read(detDetdura.getId());
 		if (dd != null) {
@@ -140,6 +121,5 @@ public class DentaduraDetalleBean {
 		this.init();
 		return null;
 	}
-	
 
 }

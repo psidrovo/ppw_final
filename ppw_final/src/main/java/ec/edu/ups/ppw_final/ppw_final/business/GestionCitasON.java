@@ -19,8 +19,10 @@ public class GestionCitasON {
 		OsCita u = controladorC.read(cita.getCtId());
 		if(u==null) {
 			controladorC.insert(cita);
+			System.out.println("cita guardado con exito");
 		}else {
 			controladorC.update(cita);
+			System.out.println("cita actualizado con exito");
 		}
 	}
 	

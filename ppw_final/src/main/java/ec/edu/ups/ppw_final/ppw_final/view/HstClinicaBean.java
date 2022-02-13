@@ -24,7 +24,7 @@ public class HstClinicaBean {
 	private String detalle;
 	private String fase;
 	private String fecha;
-	
+
 	@Inject
 	private GestionHstClinicaON hstOn;
 	@Inject
@@ -33,22 +33,22 @@ public class HstClinicaBean {
 	private GestionPersonaON perOn;
 	@Inject
 	private GestionRCMedON RCMedOn;
-	
+
 	private OsPersona persona;
 	private OsDetalleDen detDentadura;
 	private OsRcMed RcMed;
 	private OsHstClinica hstClincia;
-	
+
 	private List<OsHstClinica> hstClinicas;
-	
+
 	@PostConstruct
 	private void init() {
 		persona = new OsPersona();
 		RcMed = new OsRcMed();
 		detDentadura = new OsDetalleDen();
 		hstClincia = new OsHstClinica();
-		hstClinicas= hstOn.findAll();
-		
+		hstClinicas = hstOn.findAll();
+
 	}
 
 	public int getId() {
@@ -154,27 +154,17 @@ public class HstClinicaBean {
 	public void setHstClinicas(List<OsHstClinica> hstClinicas) {
 		this.hstClinicas = hstClinicas;
 	}
-	
+
 	public String guardar() {
-		OsHstClinica h = hstOn.read(hstClincia.getHstClId());
-		if (h != null) {
-			hstClincia.setOsDetalleDen(detDentadura);
-			hstClincia.setOsPersona(persona);
-			hstClincia.setOsRcMed(RcMed);
-			hstOn.guardarHstClinico(hstClincia);
-			//System.out.println("Guardar Cita ->" + cita + "\n" + " persona:" + p);
-		} else {
-			hstClincia.setOsDetalleDen(detDentadura);
-			hstClincia.setOsPersona(persona);
-			hstClincia.setOsRcMed(RcMed);
-			hstOn.guardarHstClinico(hstClincia);
-			//System.out.println("no se ha podido guardar la cita porque la persona no existe");
-		}
+		hstClincia.setOsDetalleDen(detDentadura);
+		hstClincia.setOsPersona(persona);
+		hstClincia.setOsRcMed(RcMed);
+		hstOn.guardarHstClinico(hstClincia);
 
 		this.init();
 		return null;
 	}
-	
+
 	public String Buscar() {
 		OsHstClinica h = hstOn.read(hstClincia.getHstClId());
 		if (h != null) {
@@ -186,7 +176,7 @@ public class HstClinicaBean {
 		this.init();
 		return null;
 	}
-	
+
 	public String EliminarCita() {
 		OsHstClinica h = hstOn.read(hstClincia.getHstClId());
 		if (h != null) {
@@ -198,6 +188,5 @@ public class HstClinicaBean {
 		this.init();
 		return null;
 	}
-	
-	
+
 }

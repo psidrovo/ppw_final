@@ -18,8 +18,10 @@ public class GestionDetPagoON {
 		OsDetPago u = controladorDetP.read(pago.getDetPgId());
 		if (u == null) {
 			controladorDetP.insert(pago);
+			System.out.println("detalle de pago es creado con exito");
 		} else {
 			controladorDetP.update(pago);
+			System.out.println("detalle de pago actualizado con exito");
 		}
 	}
 

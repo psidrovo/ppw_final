@@ -18,16 +18,16 @@ public class TratamientoBean {
 	private String costo;
 	private String descripcion;
 	private String tiempo;
-	
+
 	@Inject
 	private GestionTratamientoON tratamientoOn;
 	private OsTratamiento tratamiento;
-	private List<OsTratamiento>tratamientos;
-	
+	private List<OsTratamiento> tratamientos;
+
 	@PostConstruct
 	private void init() {
-		tratamiento= new OsTratamiento();
-		tratamientos= tratamientoOn.findAll();
+		tratamiento = new OsTratamiento();
+		tratamientos = tratamientoOn.findAll();
 	}
 
 	public String getNombre() {
@@ -85,41 +85,37 @@ public class TratamientoBean {
 	public void setTratamientos(List<OsTratamiento> tratamientos) {
 		this.tratamientos = tratamientos;
 	}
-	
+
 	public String guardar() {
-		OsTratamiento t = tratamientoOn.read(tratamiento.getTrNombre());
-		if(t!= null) {
-			tratamientoOn.guardarTratamiento(tratamiento);
-		}else {
-			tratamientoOn.guardarTratamiento(tratamiento);
-		}
-		
+
+		tratamientoOn.guardarTratamiento(tratamiento);
+
 		this.init();
 		return null;
 	}
-	
+
 	public String buscarTratamiento() {
 		OsTratamiento t = tratamientoOn.read(tratamiento.getTrNombre());
-		if(t != null) {
-			tratamiento=t;
-		}else {
+		if (t != null) {
+			tratamiento = t;
+		} else {
 			System.out.println("No se ha podido encontrar el tratamiento porque no existe");
 		}
-		
+
 		this.init();
 		return null;
 	}
-	
+
 	public String eliminarTratamiento() {
 		OsTratamiento t = tratamientoOn.read(tratamiento.getTrNombre());
-		if(t != null) {
+		if (t != null) {
 			tratamientoOn.delete(tratamiento.getTrNombre());
-		}else {
+		} else {
 			System.out.println("No se ha podido eliminar el tratamiento porque no existe");
 		}
-		
+
 		this.init();
 		return null;
 	}
-	
+
 }

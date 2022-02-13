@@ -19,8 +19,10 @@ public class GestionTratamientoON {
 		OsTratamiento u = controladorT.read(tratamineto.getTrNombre());
 		if (u == null) {
 			controladorT.insert(tratamineto);
+			System.out.println("tratamiento creado con exito");
 		} else {
 			controladorT.update(tratamineto);
+			System.out.println("tratamiento actualizado con exito");
 		}
 	}
 

@@ -131,17 +131,9 @@ public class CitaBean {
 	}
 
 	public String guardar() {
-		OsPersona p = perOn.read(persona.getPerCedula());
-		if (p != null) {
-			cita.setOsPersona(persona);
-			//System.out.println("Guardar Cita ->" + cita + "\n" + " persona:" + p);
-			citaOn.guardarCita(cita);
-		} else {
 			perOn.guardarPersona(persona);
 			cita.setOsPersona(persona);
 			citaOn.guardarCita(cita);
-			//System.out.println("no se ha podido guardar la cita porque la persona no existe");
-		}
 
 		this.init();
 		return null;

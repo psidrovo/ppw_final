@@ -19,8 +19,10 @@ public class GestionDentaduraON {
 		OsDentadura u = controladorD.read(dentadura.getDentId());
 		if (u == null) {
 			controladorD.insert(dentadura);
+			System.out.println("dentadura creado con exito");
 		} else {
 			controladorD.update(dentadura);
+			System.out.println("dentadura actualizado con exito");
 		}
 	}
 

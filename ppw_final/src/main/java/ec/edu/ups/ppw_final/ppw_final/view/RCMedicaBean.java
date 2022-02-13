@@ -20,7 +20,7 @@ public class RCMedicaBean {
 
 	private int id;
 	private String rcMedCol;
-	
+
 	@Inject
 	private GestionRCMedON rcMedOn;
 	@Inject
@@ -28,12 +28,12 @@ public class RCMedicaBean {
 	private OsRcMed rcMed;
 	private OsMedicamento medicamento;
 	private List<OsRcMed> rcMedicas;
-	
+
 	@PostConstruct
 	private void init() {
-		rcMed= new OsRcMed();
-		medicamento= new OsMedicamento();
-		rcMedicas= rcMedOn.findAll();
+		rcMed = new OsRcMed();
+		medicamento = new OsMedicamento();
+		rcMedicas = rcMedOn.findAll();
 	}
 
 	public int getId() {
@@ -91,24 +91,19 @@ public class RCMedicaBean {
 	public void setRcMedicas(List<OsRcMed> rcMedicas) {
 		this.rcMedicas = rcMedicas;
 	}
-	
+
 	public String guardar() {
-		OsRcMed r = rcMedOn.read(rcMed.getRcMedId());
-		if (r != null) {
-			rcMed.setOsMedicamento(medicamento);
-			rcMedOn.guardarRCMed(rcMed);
-		} else {
-			rcMed.setOsMedicamento(medicamento);
-			rcMedOn.guardarRCMed(rcMed);
-		}
+		rcMed.setOsMedicamento(medicamento);
+		rcMedOn.guardarRCMed(rcMed);
+
 		this.init();
 		return null;
 	}
-	
+
 	public String buscarMedicamento() {
 		OsRcMed r = rcMedOn.read(rcMed.getRcMedId());
 		if (r != null) {
-			rcMed=r;
+			rcMed = r;
 			System.out.println("Se ha encontrado la receta medica exitosamente");
 		} else {
 			System.out.println("No se ha podido encontrar a la receta medica porque no existe");
@@ -117,15 +112,15 @@ public class RCMedicaBean {
 		this.init();
 		return null;
 	}
-	
+
 	public String eliminarMedicamento() {
 		OsRcMed r = rcMedOn.read(rcMed.getRcMedId());
-		if(r!=null) {
+		if (r != null) {
 			rcMedOn.delete(rcMed.getRcMedId());
-		}else {
+		} else {
 			System.out.println("No se ha podido eliminar el usuario y la persona porque no existe");
 		}
-		
+
 		this.init();
 		return null;
 	}

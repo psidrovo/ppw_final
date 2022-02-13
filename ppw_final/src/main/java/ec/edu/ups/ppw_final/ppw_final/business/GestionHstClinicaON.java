@@ -19,8 +19,10 @@ public class GestionHstClinicaON {
 		OsHstClinica u = controladorHstC.read(historial.getHstClId());
 		if (u == null) {
 			controladorHstC.insert(historial);
+			System.out.println("historial clinico creado con exito");
 		} else {
 			controladorHstC.update(historial);
+			System.out.println("historial clinico actualizado con exito");
 		}
 	}
 
