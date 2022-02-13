@@ -25,6 +25,8 @@ public class PacienteBean {
 	private GestionPersonaON perOn;
 	@Inject
 	private GestionUsuarioON useOn;
+	
+	
 	private OsPersona persona;
 	private OsUsuario usuario;	
 	private List<OsPersona> personas;
@@ -39,31 +41,13 @@ public class PacienteBean {
 		usuarios=useOn.findAll();
 	}
 	
-	
-
-	public List<OsPersona> getPersonas() {
-		return personas;
-	}
-
-
-
-	public void setPersonas(List<OsPersona> personas) {
-		this.personas = personas;
-	}
-
-
-
 	public List<OsUsuario> getUsuarios() {
 		return usuarios;
 	}
 
-
-
 	public void setUsuarios(List<OsUsuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-
-
 
 	public String getCedula() {
 		return cedula;
@@ -128,8 +112,17 @@ public class PacienteBean {
 	public void setUseOn(GestionUsuarioON useOn) {
 		this.useOn = useOn;
 	}
+	
+	public List<OsPersona> getPersonas() {
+		return personas;
+	}
 
-	public String guardar() {
+	public void setPersonas(List<OsPersona> personas) {
+		this.personas = personas;
+	}
+
+	public String guardar() {		
+		System.out.println(persona.toString()+"\n"+usuario.toString());
 		OsPersona p = perOn.read(persona.getPerCedula());
 		if (p != null) {
 			usuario.setUsTipo("PACIENTE");
@@ -143,7 +136,6 @@ public class PacienteBean {
 			useOn.guardarUsuario(usuario);
 			System.out.println("Nuevo ->" + "\n" + persona + "\n" + usuario);
 		}
-		this.init();
 		return null;
 	}
 
@@ -157,6 +149,14 @@ public class PacienteBean {
 		}
 
 		this.init();
+		return null;
+	}
+	public OsPersona listarPacientes() {
+		for (OsPersona p : personas) {
+			System.out.println(p.toString());			
+			this.init();
+			return p;
+		}
 		return null;
 	}
 	
