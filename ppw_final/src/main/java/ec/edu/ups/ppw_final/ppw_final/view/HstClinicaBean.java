@@ -1,9 +1,13 @@
 package ec.edu.ups.ppw_final.ppw_final.view;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -15,8 +19,8 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsHstClinica;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 
 @Named
-@RequestScoped
-public class HstClinicaBean {
+@ViewScoped
+public class HstClinicaBean implements Serializable{
 
 	private int id;
 	private String detalle;
@@ -24,7 +28,8 @@ public class HstClinicaBean {
 	private String fecha;
 	private String receta;
 	private String tratamiento;
-
+	private String cedulaPaciente;
+	
 	@Inject
 	private GestionHstClinicaON hstOn;
 	@Inject
@@ -38,14 +43,7 @@ public class HstClinicaBean {
 
 	private List<OsHstClinica> hstClinicas;
 
-	@PostConstruct
-	private void init() {
-		persona = new OsPersona();
-		dentadura= new OsDentadura();
-		hstClincia = new OsHstClinica();
-		hstClinicas = hstOn.findAll();
-
-	}
+	
 
 	public String getReceta() {
 		return receta;
@@ -164,8 +162,13 @@ public class HstClinicaBean {
 		hstClincia.setOsDentadura(dentadura);
 		hstOn.guardarHstClinico(hstClincia);
 
-		this.init();
+		//this.init();
 		return null;
+	}
+	
+	public String historiaPaciente (String cedula) {
+		System.out.println("Historial "+ cedula);
+		return "historial_clinico?faces-redirect=true";
 	}
 
 	public String Buscar() {
@@ -176,7 +179,7 @@ public class HstClinicaBean {
 			System.out.println("histroial clinico no se ha podido encontrar porque no existe");
 		}
 
-		this.init();
+		//this.init();
 		return null;
 	}
 
@@ -188,8 +191,16 @@ public class HstClinicaBean {
 		} else {
 			System.out.println("historial clinico no se ha podido eliminar porque no existe");
 		}
-		this.init();
+		//this.init();
 		return null;
+	}
+
+	public String getCedulaPaciente() {
+		return cedulaPaciente;
+	}
+
+	public void setCedulaPaciente(String cedulaPaciente) {
+		this.cedulaPaciente = cedulaPaciente;
 	}
 
 }

@@ -4,7 +4,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
 	<f:metadata>
@@ -22,36 +23,60 @@
 		<div class="card-header">
 			<h3>Pacientes</h3>
 		</div>
-		<div class="card-body">
-			<h:dataTable value="#{pacienteBean.personas}" var="persona"
-				id="data_table" class="table">
-				<h:column>
-					<f:facet name="header">Cedula</f:facet>						
-					#{persona.perCedula}
+		<h:form class="forms-sample">
+			<div class="card-body">
+				<h:dataTable value="#{dtUsuario.usuarios}" var="pacientes"
+					id="data_table" class="table" a:style="text-align: center">
+					<h:column>
+						<f:facet name="header">Cedula</f:facet>
+						#{pacientes.osPersona.perCedula}
+				</h:column>
+
+					<h:column>
+						<f:facet name="header">Avatar</f:facet>
+						<img src="../img/users/user.jpg" class="table-user-thumb" alt="" />
 					</h:column>
 
-				<h:column>
-					<f:facet name="header">Avatar</f:facet>
-						per
+					<h:column>
+						<f:facet name="header">Nombre</f:facet>
+						#{pacientes.osPersona.perNombre}
 					</h:column>
 
-				<h:column>
-					<f:facet name="header">Nombre</f:facet>
-						#{persona.perNombre}
-					</h:column>
-					
-				<h:column>
-					<f:facet name="header">Deuda</f:facet>
+					<h:column>
+						<f:facet name="header">Deuda</f:facet>
 						0.0
 					</h:column>
-					
+
 					<h:column>
-					<f:facet name="header">Correo</f:facet>
-						""
+						<f:facet name="header">Correo</f:facet>
+						#{pacientes.usCorreo}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Acciones</f:facet>						
+						<p:linkButton value="Historia" icon="ik ik-eye text-blue"
+							styleClass="rounded-button" outcome="historial_clinico">
+							<f:param name="cedulaPaciente" value="#{pacientes.osPersona.perCedula}" />
+							<!--f:param name="cedulaPaciente" value= "#{pacientes.osPersona.perCedula}" /-->
+						</p:linkButton>
+						<p:commandLink value="Editar" icon="ik ik-edit-2 text-green"
+							type="button" styleClass="rounded-button ui-button-success"
+							action="#{dtUsuario.historiaPaciente(pacientes.osPersona.perCedula)}">
+						</p:commandLink>
+						<p:commandButton value="Pagos"
+							icon="ik ik-dollar-sign text-orange" type="button"
+							styleClass="rounded-button ui-button-warning"
+							actionListener="#{dtUsuario.historiaPaciente(pacientes.osPersona.perCedula)}">
+						</p:commandButton>
+						<h:commandButton a:title="Registrar Paciente"
+							action="#{dtUsuario.historiaPaciente(pacientes.osPersona.perCedula)}"
+							value="Resgistrar" class="btn btn-success">
+						</h:commandButton>
 					</h:column>
 
-			</h:dataTable>
-		</div>
+				</h:dataTable>
+			</div>
+		</h:form>
+
 	</ui:define>
 </ui:composition>
 </html>

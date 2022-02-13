@@ -1,6 +1,7 @@
 package ec.edu.ups.ppw_final.ppw_final.business;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -43,9 +44,12 @@ public class GestionUsuarioON {
 		return controladorU.read(usuario);
 	}
 	
-	public List<OsUsuario> findAll(){
-		
+	public List<OsUsuario> findAll(){		
 		return controladorU.findAll();
+	}
+	
+	public List<OsUsuario> findAllPacientes(){		
+		return controladorU.findAll().stream().filter(u -> u.getUsTipo().equals("PACIENTE")).collect(Collectors.toList());
 	}
 	
 }

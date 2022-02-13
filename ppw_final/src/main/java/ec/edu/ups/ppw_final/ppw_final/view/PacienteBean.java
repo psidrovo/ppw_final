@@ -4,8 +4,12 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.apache.taglibs.standard.tag.common.xml.ForEachTag;
 
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsUsuario;
@@ -23,38 +27,32 @@ public class PacienteBean {
 	private String correo;
 	private String contrasenia;
 	private String tipo;
-	
+
 	@Inject
 	private GestionPersonaON perOn;
 	@Inject
 	private GestionUsuarioON useOn;
-	
-	
+
 	private OsPersona persona;
-	private OsUsuario usuario;	
+	private OsUsuario usuario;
 	private List<OsPersona> personas;
 	private List<OsUsuario> usuarios;
-	
 
 	@PostConstruct
 	private void init() {
 		persona = new OsPersona();
 		usuario = new OsUsuario();
-		personas= perOn.findAll();
-		usuarios=useOn.findAll();
+		personas = perOn.findAll();
+		usuarios = useOn.findAll();
 	}
-	
-	
+
 	public String getTipo() {
 		return tipo;
 	}
 
-
-
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
 
 	public String getCorreo() {
 		return correo;
@@ -143,7 +141,7 @@ public class PacienteBean {
 	public void setUseOn(GestionUsuarioON useOn) {
 		this.useOn = useOn;
 	}
-	
+
 	public List<OsPersona> getPersonas() {
 		return personas;
 	}
@@ -152,20 +150,33 @@ public class PacienteBean {
 		this.personas = personas;
 	}
 
-	public String guardar() {		
+	public String guardar() {
 
 		usuario.setUsTipo("PACIENTE");
 		perOn.guardarPersona(persona);
 		usuario.setOsPersona(persona);
 		useOn.guardarUsuario(usuario);
+		FacesMessage msg = new FacesMessage("RESGISTRO COMPLETADO");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 		this.init();
 		return null;
+	}
+	
+	public void guardarSumit() {
+
+		usuario.setUsTipo("PACIENTE");
+		perOn.guardarPersona(persona);
+		usuario.setOsPersona(persona);
+		useOn.guardarUsuario(usuario);
+		FacesMessage msg = new FacesMessage("RESGISTRO COMPLETADO");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		this.init();
 	}
 
 	public String buscarPaciente() {
 		OsPersona p = perOn.read(persona.getPerCedula());
 		if (p != null) {
-			persona=p;
+			persona = p;
 			System.out.println("Se ha encontrado la persona exitosamente");
 		} else {
 			System.out.println("No se ha podido encontrar a la persona porque no existe");
@@ -174,25 +185,26 @@ public class PacienteBean {
 		this.init();
 		return null;
 	}
+
 	public OsPersona listarPacientes() {
 		for (OsPersona p : personas) {
-			System.out.println(p.toString());			
+			System.out.println(p.toString());
 			this.init();
 			return p;
 		}
 		return null;
 	}
-	
+
 	public String eliminarPaciente() {
 		OsPersona p = perOn.read(persona.getPerCedula());
 		OsUsuario u = useOn.read(usuario.getUsCorreo());
-		if(u!=null && p!=null) {
+		if (u != null && p != null) {
 			perOn.delete(persona.getPerCedula());
 			useOn.delete(usuario.getUsCorreo());
-		}else {
+		} else {
 			System.out.println("No se ha podido eliminar el usuario y la persona porque no existe");
 		}
-		
+
 		this.init();
 		return null;
 	}
