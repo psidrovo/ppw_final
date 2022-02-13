@@ -27,9 +27,13 @@ public class HstClinicaBean {
 	
 	@Inject
 	private GestionHstClinicaON hstOn;
+	@Inject
 	private GestionDetDentaduraON denDetOn;
+	@Inject
 	private GestionPersonaON perOn;
+	@Inject
 	private GestionRCMedON RCMedOn;
+	
 	private OsPersona persona;
 	private OsDetDentadura detDentadura;
 	private OsRcMed RcMed;

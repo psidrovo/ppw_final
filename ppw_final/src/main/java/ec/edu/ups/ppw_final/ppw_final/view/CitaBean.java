@@ -23,6 +23,7 @@ public class CitaBean {
 
 	@Inject
 	private GestionPersonaON perOn;
+	@Inject
 	private GestionCitasON citaOn;
 	private OsPersona persona;
 	private OsCita cita;

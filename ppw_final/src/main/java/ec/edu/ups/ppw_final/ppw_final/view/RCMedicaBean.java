@@ -23,6 +23,7 @@ public class RCMedicaBean {
 	
 	@Inject
 	private GestionRCMedON rcMedOn;
+	@Inject
 	private GestionMedicamentoON medOn;
 	private OsRcMed rcMed;
 	private OsMedicamento medicamento;

@@ -22,6 +22,7 @@ public class DentaduraDetalleBean {
 	@Inject
 	private GestionDetDentaduraON denDetOn;
 	private OsDetDentadura detDetdura;
+	@Inject
 	private GestionDentaduraON detOn;
 	private OsDentadura dentadura;
 	private List<OsDetDentadura>detallesDentaduras;
