@@ -16,12 +16,30 @@ public class serviciosRest {
 
 	@Inject
 	private GestionDetDentaduraON detDentaduraOn;
+	@Inject
 	private GestionHstClinicaON hstClinicaOn;
+	@Inject
 	private GestionPersonaON personaOn;
+	@Inject
 	private GestionCitasON citasOn;
+	@Inject
 	private GestionDentaduraON dentaduraOn;
+	@Inject
 	private GestionDetPagoON detPagoOn;
+	@Inject
 	private GestionUsuarioON usuarioOn;
 	
+	//servicios detalle dentadura
 	
+	//servicios historial clinico
+	
+	//servicios personas
+	
+	//servicios citas
+	
+	//servicios dentaduras
+	
+	//servicios detalle de pago
+	
+	//servicios usuarios
 }
