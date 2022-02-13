@@ -29,25 +29,21 @@ public class OsHstClinica implements Serializable {
 	@Column(name="hst_cl_fecha")
 	private Date hstClFecha;
 
+	@Column(name="hst_receta")
+	private String hstReceta;
+
+	@Column(name="hst_tratamiento")
+	private String hstTratamiento;
+
 	//bi-directional many-to-one association to OsPersona
 	@ManyToOne
 	@JoinColumn(name="per_cedula_hst_cl_paciente_fk")
 	private OsPersona osPersona;
 
-	//bi-directional many-to-one association to OsRcMed
+	//bi-directional many-to-one association to OsDentadura
 	@ManyToOne
-	@JoinColumn(name="rc_med_id_hst_cl_receta")
-	private OsRcMed osRcMed;
-
-	//bi-directional many-to-one association to OsDetalleDen
-	@ManyToOne
-	@JoinColumn(name="os_detalle_den_id")
-	private OsDetalleDen osDetalleDen;
-
-	//bi-directional many-to-one association to OsTratamiento
-	@ManyToOne
-	@JoinColumn(name="os_tratamiento_tr_nombre")
-	private OsTratamiento osTratamiento;
+	@JoinColumn(name="os_dentadura_dent_id")
+	private OsDentadura osDentadura;
 
 	public OsHstClinica() {
 	}
@@ -84,6 +80,22 @@ public class OsHstClinica implements Serializable {
 		this.hstClFecha = hstClFecha;
 	}
 
+	public String getHstReceta() {
+		return this.hstReceta;
+	}
+
+	public void setHstReceta(String hstReceta) {
+		this.hstReceta = hstReceta;
+	}
+
+	public String getHstTratamiento() {
+		return this.hstTratamiento;
+	}
+
+	public void setHstTratamiento(String hstTratamiento) {
+		this.hstTratamiento = hstTratamiento;
+	}
+
 	public OsPersona getOsPersona() {
 		return this.osPersona;
 	}
@@ -92,28 +104,12 @@ public class OsHstClinica implements Serializable {
 		this.osPersona = osPersona;
 	}
 
-	public OsRcMed getOsRcMed() {
-		return this.osRcMed;
+	public OsDentadura getOsDentadura() {
+		return this.osDentadura;
 	}
 
-	public void setOsRcMed(OsRcMed osRcMed) {
-		this.osRcMed = osRcMed;
-	}
-
-	public OsDetalleDen getOsDetalleDen() {
-		return this.osDetalleDen;
-	}
-
-	public void setOsDetalleDen(OsDetalleDen osDetalleDen) {
-		this.osDetalleDen = osDetalleDen;
-	}
-
-	public OsTratamiento getOsTratamiento() {
-		return this.osTratamiento;
-	}
-
-	public void setOsTratamiento(OsTratamiento osTratamiento) {
-		this.osTratamiento = osTratamiento;
+	public void setOsDentadura(OsDentadura osDentadura) {
+		this.osDentadura = osDentadura;
 	}
 
 }

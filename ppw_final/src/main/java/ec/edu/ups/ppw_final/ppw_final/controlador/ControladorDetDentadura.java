@@ -1,6 +1,6 @@
 package ec.edu.ups.ppw_final.ppw_final.controlador;
 
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
 
 @Stateless

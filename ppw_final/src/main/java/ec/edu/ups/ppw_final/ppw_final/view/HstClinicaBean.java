@@ -7,14 +7,12 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import ec.edu.ups.ppw_final.ppw_final.business.GestionDetDentaduraON;
+import ec.edu.ups.ppw_final.ppw_final.business.GestionDentaduraON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionHstClinicaON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionPersonaON;
-import ec.edu.ups.ppw_final.ppw_final.business.GestionRCMedON;
-import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsHstClinica;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
-import ec.edu.ups.ppw_final.ppw_final.modelo.OsRcMed;
 
 @Named
 @RequestScoped
@@ -24,19 +22,18 @@ public class HstClinicaBean {
 	private String detalle;
 	private String fase;
 	private String fecha;
+	private String receta;
+	private String tratamiento;
 
 	@Inject
 	private GestionHstClinicaON hstOn;
 	@Inject
-	private GestionDetDentaduraON denDetOn;
+	private GestionDentaduraON denOn;
 	@Inject
 	private GestionPersonaON perOn;
-	@Inject
-	private GestionRCMedON RCMedOn;
 
 	private OsPersona persona;
-	private OsDetalleDen detDentadura;
-	private OsRcMed RcMed;
+	private OsDentadura dentadura;
 	private OsHstClinica hstClincia;
 
 	private List<OsHstClinica> hstClinicas;
@@ -44,12 +41,35 @@ public class HstClinicaBean {
 	@PostConstruct
 	private void init() {
 		persona = new OsPersona();
-		RcMed = new OsRcMed();
-		detDentadura = new OsDetalleDen();
+		dentadura= new OsDentadura();
 		hstClincia = new OsHstClinica();
 		hstClinicas = hstOn.findAll();
 
 	}
+
+	public String getReceta() {
+		return receta;
+	}
+
+
+
+	public void setReceta(String receta) {
+		this.receta = receta;
+	}
+
+
+
+	public String getTratamiento() {
+		return tratamiento;
+	}
+
+
+
+	public void setTratamiento(String tratamiento) {
+		this.tratamiento = tratamiento;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -91,12 +111,20 @@ public class HstClinicaBean {
 		this.hstOn = hstOn;
 	}
 
-	public GestionDetDentaduraON getDenDetOn() {
-		return denDetOn;
+	public GestionDentaduraON getDenOn() {
+		return denOn;
 	}
 
-	public void setDenDetOn(GestionDetDentaduraON denDetOn) {
-		this.denDetOn = denDetOn;
+	public void setDenOn(GestionDentaduraON denOn) {
+		this.denOn = denOn;
+	}
+
+	public OsDentadura getDentadura() {
+		return dentadura;
+	}
+
+	public void setDentadura(OsDentadura dentadura) {
+		this.dentadura = dentadura;
 	}
 
 	public GestionPersonaON getPerOn() {
@@ -107,36 +135,12 @@ public class HstClinicaBean {
 		this.perOn = perOn;
 	}
 
-	public GestionRCMedON getRCMedOn() {
-		return RCMedOn;
-	}
-
-	public void setRCMedOn(GestionRCMedON rCMedOn) {
-		RCMedOn = rCMedOn;
-	}
-
 	public OsPersona getPersona() {
 		return persona;
 	}
 
 	public void setPersona(OsPersona persona) {
 		this.persona = persona;
-	}
-
-	public OsDetalleDen getDetDentadura() {
-		return detDentadura;
-	}
-
-	public void setDetDentadura(OsDetalleDen detDentadura) {
-		this.detDentadura = detDentadura;
-	}
-
-	public OsRcMed getRcMed() {
-		return RcMed;
-	}
-
-	public void setRcMed(OsRcMed rcMed) {
-		RcMed = rcMed;
 	}
 
 	public OsHstClinica getHstClincia() {
@@ -156,9 +160,8 @@ public class HstClinicaBean {
 	}
 
 	public String guardar() {
-		hstClincia.setOsDetalleDen(detDentadura);
 		hstClincia.setOsPersona(persona);
-		hstClincia.setOsRcMed(RcMed);
+		hstClincia.setOsDentadura(dentadura);
 		hstOn.guardarHstClinico(hstClincia);
 
 		this.init();

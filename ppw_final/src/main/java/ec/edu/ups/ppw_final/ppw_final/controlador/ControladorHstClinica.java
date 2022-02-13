@@ -1,6 +1,6 @@
 package ec.edu.ups.ppw_final.ppw_final.controlador;
 
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -61,7 +61,7 @@ public class ControladorHstClinica {
 	}
 	
 	public List<OsHstClinica> findAll(){
-		String jpql = "SELECT o FROM OsHstClinica o";
+		String jpql = "SELECT o FROM OsHstClinica oSELECT o FROM OsHstClinica o";
 		
 		Query q = em.createQuery(jpql, OsHstClinica.class);
 		

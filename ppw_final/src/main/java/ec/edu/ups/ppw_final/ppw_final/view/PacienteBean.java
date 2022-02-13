@@ -20,7 +20,10 @@ public class PacienteBean {
 	private String nombre;
 	private String apellido;
 	private String direccion;
-
+	private String correo;
+	private String contrasenia;
+	private String tipo;
+	
 	@Inject
 	private GestionPersonaON perOn;
 	@Inject
@@ -41,6 +44,34 @@ public class PacienteBean {
 		usuarios=useOn.findAll();
 	}
 	
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
 	public List<OsUsuario> getUsuarios() {
 		return usuarios;
 	}

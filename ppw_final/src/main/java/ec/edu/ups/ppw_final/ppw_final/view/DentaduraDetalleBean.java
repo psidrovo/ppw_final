@@ -17,7 +17,7 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
 public class DentaduraDetalleBean {
 
 	private int id;
-	private String estadoTrat;
+	private String cuadrante;
 
 	@Inject
 	private GestionDetDentaduraON denDetOn;
@@ -50,12 +50,12 @@ public class DentaduraDetalleBean {
 		this.id = id;
 	}
 
-	public String getEstadoTrat() {
-		return estadoTrat;
+	public String getCuadrante() {
+		return cuadrante;
 	}
 
-	public void setEstadoTrat(String estadoTrat) {
-		this.estadoTrat = estadoTrat;
+	public void setCuadrante(String cuadrante) {
+		this.cuadrante = cuadrante;
 	}
 
 	public OsDetalleDen getDetDetdura() {

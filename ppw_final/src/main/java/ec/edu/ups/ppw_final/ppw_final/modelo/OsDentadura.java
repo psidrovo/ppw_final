@@ -26,6 +26,10 @@ public class OsDentadura implements Serializable {
 	@OneToMany(mappedBy="osDentadura")
 	private List<OsDetalleDen> osDetalleDens;
 
+	//bi-directional many-to-one association to OsHstClinica
+	@OneToMany(mappedBy="osDentadura")
+	private List<OsHstClinica> osHstClinicas;
+
 	public OsDentadura() {
 	}
 
@@ -65,6 +69,28 @@ public class OsDentadura implements Serializable {
 		osDetalleDen.setOsDentadura(null);
 
 		return osDetalleDen;
+	}
+
+	public List<OsHstClinica> getOsHstClinicas() {
+		return this.osHstClinicas;
+	}
+
+	public void setOsHstClinicas(List<OsHstClinica> osHstClinicas) {
+		this.osHstClinicas = osHstClinicas;
+	}
+
+	public OsHstClinica addOsHstClinica(OsHstClinica osHstClinica) {
+		getOsHstClinicas().add(osHstClinica);
+		osHstClinica.setOsDentadura(this);
+
+		return osHstClinica;
+	}
+
+	public OsHstClinica removeOsHstClinica(OsHstClinica osHstClinica) {
+		getOsHstClinicas().remove(osHstClinica);
+		osHstClinica.setOsDentadura(null);
+
+		return osHstClinica;
 	}
 
 }

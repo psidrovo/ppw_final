@@ -1,7 +1,5 @@
 package ec.edu.ups.ppw_final.ppw_final.controlador;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import javax.ejb.Stateless;
