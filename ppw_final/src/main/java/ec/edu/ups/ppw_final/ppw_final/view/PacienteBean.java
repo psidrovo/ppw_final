@@ -1,5 +1,7 @@
 package ec.edu.ups.ppw_final.ppw_final.view;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -18,10 +20,14 @@ public class PacienteBean {
 	private String nombre;
 	private String apellido;
 	private String direccion;
+	private List<OsPersona> personas;
 
 	@Inject
 	private GestionPersonaON perOn;
+	@Inject
 	private GestionUsuarioON useOn;
+	
+	
 	private OsPersona persona;
 	private OsUsuario usuario;
 
@@ -29,6 +35,11 @@ public class PacienteBean {
 	private void init() {
 		persona = new OsPersona();
 		usuario = new OsUsuario();
+		personas = perOn.findAll();
+		for (OsPersona osPersona : personas) {
+			System.out.println(osPersona.toString());
+		}
+		
 	}
 
 	public String getCedula() {
@@ -94,8 +105,17 @@ public class PacienteBean {
 	public void setUseOn(GestionUsuarioON useOn) {
 		this.useOn = useOn;
 	}
+	
+	public List<OsPersona> getPersonas() {
+		return personas;
+	}
 
-	public String guardar() {
+	public void setPersonas(List<OsPersona> personas) {
+		this.personas = personas;
+	}
+
+	public String guardar() {		
+		System.out.println(persona.toString()+"\n"+usuario.toString());
 		OsPersona p = perOn.read(persona.getPerCedula());
 		if (p != null) {
 			usuario.setUsTipo("PACIENTE");
@@ -109,7 +129,7 @@ public class PacienteBean {
 			useOn.guardarUsuario(usuario);
 			System.out.println("Nuevo ->" + "\n" + persona + "\n" + usuario);
 		}
-		this.init();
+		//this.init();
 		return null;
 		
 		/*
@@ -134,5 +154,15 @@ public class PacienteBean {
 		this.init();
 		return null;
 	}
+	public OsPersona listarPacientes() {
+		for (OsPersona p : personas) {
+			System.out.println(p.toString());			
+			this.init();
+			return p;
+		}
+		return null;
+	}
+
+	
 
 }
