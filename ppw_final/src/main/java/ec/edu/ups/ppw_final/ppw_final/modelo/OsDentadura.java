@@ -22,9 +22,9 @@ public class OsDentadura implements Serializable {
 	@Column(name="dent_cdg_molar")
 	private String dentCdgMolar;
 
-	//bi-directional many-to-one association to OsDetDentadura
+	//bi-directional many-to-one association to OsDetalleDen
 	@OneToMany(mappedBy="osDentadura")
-	private List<OsDetDentadura> osDetDentaduras;
+	private List<OsDetalleDen> osDetalleDens;
 
 	public OsDentadura() {
 	}
@@ -45,26 +45,26 @@ public class OsDentadura implements Serializable {
 		this.dentCdgMolar = dentCdgMolar;
 	}
 
-	public List<OsDetDentadura> getOsDetDentaduras() {
-		return this.osDetDentaduras;
+	public List<OsDetalleDen> getOsDetalleDens() {
+		return this.osDetalleDens;
 	}
 
-	public void setOsDetDentaduras(List<OsDetDentadura> osDetDentaduras) {
-		this.osDetDentaduras = osDetDentaduras;
+	public void setOsDetalleDens(List<OsDetalleDen> osDetalleDens) {
+		this.osDetalleDens = osDetalleDens;
 	}
 
-	public OsDetDentadura addOsDetDentadura(OsDetDentadura osDetDentadura) {
-		getOsDetDentaduras().add(osDetDentadura);
-		osDetDentadura.setOsDentadura(this);
+	public OsDetalleDen addOsDetalleDen(OsDetalleDen osDetalleDen) {
+		getOsDetalleDens().add(osDetalleDen);
+		osDetalleDen.setOsDentadura(this);
 
-		return osDetDentadura;
+		return osDetalleDen;
 	}
 
-	public OsDetDentadura removeOsDetDentadura(OsDetDentadura osDetDentadura) {
-		getOsDetDentaduras().remove(osDetDentadura);
-		osDetDentadura.setOsDentadura(null);
+	public OsDetalleDen removeOsDetalleDen(OsDetalleDen osDetalleDen) {
+		getOsDetalleDens().remove(osDetalleDen);
+		osDetalleDen.setOsDentadura(null);
 
-		return osDetDentadura;
+		return osDetalleDen;
 	}
 
 }

@@ -29,11 +29,6 @@ public class OsHstClinica implements Serializable {
 	@Column(name="hst_cl_fecha")
 	private Date hstClFecha;
 
-	//bi-directional many-to-one association to OsDetDentadura
-	@ManyToOne
-	@JoinColumn(name="det_den_id_hst_cl_det_dentadura")
-	private OsDetDentadura osDetDentadura;
-
 	//bi-directional many-to-one association to OsPersona
 	@ManyToOne
 	@JoinColumn(name="per_cedula_hst_cl_paciente_fk")
@@ -43,6 +38,16 @@ public class OsHstClinica implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="rc_med_id_hst_cl_receta")
 	private OsRcMed osRcMed;
+
+	//bi-directional many-to-one association to OsDetalleDen
+	@ManyToOne
+	@JoinColumn(name="os_detalle_den_id")
+	private OsDetalleDen osDetalleDen;
+
+	//bi-directional many-to-one association to OsTratamiento
+	@ManyToOne
+	@JoinColumn(name="os_tratamiento_tr_nombre")
+	private OsTratamiento osTratamiento;
 
 	public OsHstClinica() {
 	}
@@ -79,14 +84,6 @@ public class OsHstClinica implements Serializable {
 		this.hstClFecha = hstClFecha;
 	}
 
-	public OsDetDentadura getOsDetDentadura() {
-		return this.osDetDentadura;
-	}
-
-	public void setOsDetDentadura(OsDetDentadura osDetDentadura) {
-		this.osDetDentadura = osDetDentadura;
-	}
-
 	public OsPersona getOsPersona() {
 		return this.osPersona;
 	}
@@ -101,6 +98,22 @@ public class OsHstClinica implements Serializable {
 
 	public void setOsRcMed(OsRcMed osRcMed) {
 		this.osRcMed = osRcMed;
+	}
+
+	public OsDetalleDen getOsDetalleDen() {
+		return this.osDetalleDen;
+	}
+
+	public void setOsDetalleDen(OsDetalleDen osDetalleDen) {
+		this.osDetalleDen = osDetalleDen;
+	}
+
+	public OsTratamiento getOsTratamiento() {
+		return this.osTratamiento;
+	}
+
+	public void setOsTratamiento(OsTratamiento osTratamiento) {
+		this.osTratamiento = osTratamiento;
 	}
 
 }

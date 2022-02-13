@@ -4,43 +4,44 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
+
 /**
  * The persistent class for the os_persona database table.
  * 
  */
 @Entity
-@Table(name = "os_persona")
-@NamedQuery(name = "OsPersona.findAll", query = "SELECT o FROM OsPersona o")
+@Table(name="os_persona")
+@NamedQuery(name="OsPersona.findAll", query="SELECT o FROM OsPersona o")
 public class OsPersona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "per_cedula")
+	@Column(name="per_cedula")
 	private String perCedula;
 
-	@Column(name = "per_apellido")
+	@Column(name="per_apellido")
 	private String perApellido;
 
-	@Column(name = "per_direccion")
+	@Column(name="per_direccion")
 	private String perDireccion;
 
-	@Column(name = "per_nombre")
+	@Column(name="per_nombre")
 	private String perNombre;
 
-	// bi-directional many-to-one association to OsCita
-	@OneToMany(mappedBy = "osPersona")
+	//bi-directional many-to-one association to OsCita
+	@OneToMany(mappedBy="osPersona")
 	private List<OsCita> osCitas;
 
-	// bi-directional many-to-one association to OsDetPago
-	@OneToMany(mappedBy = "osPersona")
+	//bi-directional many-to-one association to OsDetPago
+	@OneToMany(mappedBy="osPersona")
 	private List<OsDetPago> osDetPagos;
 
-	// bi-directional many-to-one association to OsHstClinica
-	@OneToMany(mappedBy = "osPersona")
+	//bi-directional many-to-one association to OsHstClinica
+	@OneToMany(mappedBy="osPersona")
 	private List<OsHstClinica> osHstClinicas;
 
-	// bi-directional many-to-one association to OsUsuario
-	@OneToMany(mappedBy = "osPersona")
+	//bi-directional many-to-one association to OsUsuario
+	@OneToMany(mappedBy="osPersona")
 	private List<OsUsuario> osUsuarios;
 
 	public OsPersona() {
@@ -164,12 +165,6 @@ public class OsPersona implements Serializable {
 		osUsuario.setOsPersona(null);
 
 		return osUsuario;
-	}
-
-	@Override
-	public String toString() {
-		return "OsPersona [perCedula=" + perCedula + ", perApellido=" + perApellido + ", perDireccion=" + perDireccion
-				+ ", perNombre=" + perNombre + "]";
 	}
 
 }

@@ -10,7 +10,7 @@ import javax.inject.Named;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionDentaduraON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionDetDentaduraON;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
-import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetDentadura;
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
 
 @Named
 @RequestScoped
@@ -21,24 +21,24 @@ public class DentaduraDetalleBean {
 	
 	@Inject
 	private GestionDetDentaduraON denDetOn;
-	private OsDetDentadura detDetdura;
+	private OsDetalleDen detDetdura;
 	@Inject
 	private GestionDentaduraON detOn;
 	private OsDentadura dentadura;
-	private List<OsDetDentadura>detallesDentaduras;
+	private List<OsDetalleDen>detallesDentaduras;
 	
 	@PostConstruct
 	private void init() {
 		dentadura = new OsDentadura();
-		detDetdura= new OsDetDentadura();
+		detDetdura= new OsDetalleDen();
 		detallesDentaduras= denDetOn.findAll();
 	}
 	
-	public List<OsDetDentadura> getDetallesDentaduras() {
+	public List<OsDetalleDen> getDetallesDentaduras() {
 		return detallesDentaduras;
 	}
 
-	public void setDetallesDentaduras(List<OsDetDentadura> detallesDentaduras) {
+	public void setDetallesDentaduras(List<OsDetalleDen> detallesDentaduras) {
 		this.detallesDentaduras = detallesDentaduras;
 	}
 	
@@ -58,11 +58,11 @@ public class DentaduraDetalleBean {
 		this.estadoTrat = estadoTrat;
 	}
 
-	public OsDetDentadura getDetDetdura() {
+	public OsDetalleDen getDetDetdura() {
 		return detDetdura;
 	}
 
-	public void setDetDetdura(OsDetDentadura detDetdura) {
+	public void setDetDetdura(OsDetalleDen detDetdura) {
 		this.detDetdura = detDetdura;
 	}
 
@@ -91,7 +91,7 @@ public class DentaduraDetalleBean {
 	}
 
 	public String guardar() {
-		OsDetDentadura dd = denDetOn.read(detDetdura.getDetDentId());
+		OsDetalleDen dd = denDetOn.read(detDetdura.getId());
 		if (dd != null) {
 			OsDentadura d = detOn.read(dentadura.getDentId());
 			if(dd.getOsDentadura()==d) {
@@ -118,7 +118,7 @@ public class DentaduraDetalleBean {
 	}
 	
 	public String buscarDetalle() {
-		OsDetDentadura dd = denDetOn.read(detDetdura.getDetDentId());
+		OsDetalleDen dd = denDetOn.read(detDetdura.getId());
 		if (dd != null) {
 			detDetdura=dd;
 		} else {
@@ -130,9 +130,9 @@ public class DentaduraDetalleBean {
 	}
 	
 	public String eliminarDetalle() {
-		OsDetDentadura dd = denDetOn.read(detDetdura.getDetDentId());
+		OsDetalleDen dd = denDetOn.read(detDetdura.getId());
 		if (dd != null) {
-			denDetOn.delete(dd.getDetDentId());
+			denDetOn.delete(dd.getId());
 			System.out.println("detalle eliminado con exito");
 		} else {
 			System.out.println("detalle no se ha podido eliminar porque no existe");

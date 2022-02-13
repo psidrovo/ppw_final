@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ec.edu.ups.ppw_final.ppw_final.controlador.ControladorDetDentadura;
-import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetDentadura;
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
 
 
 @Stateless
@@ -15,8 +15,8 @@ public class GestionDetDentaduraON {
 	@Inject
 	private ControladorDetDentadura controladorDetD;
 
-	public void guardarDetDentadura(OsDetDentadura dentadura) {
-		OsDetDentadura u = controladorDetD.read(dentadura.getDetDentId());
+	public void guardarDetDentadura(OsDetalleDen dentadura) {
+		OsDetalleDen u = controladorDetD.read(dentadura.getId());
 		if (u == null) {
 			controladorDetD.insert(dentadura);
 		} else {
@@ -28,11 +28,11 @@ public class GestionDetDentaduraON {
 		controladorDetD.delete(id);
 	}
 
-	public OsDetDentadura read(int id) {
+	public OsDetalleDen read(int id) {
 		return controladorDetD.read(id);
 	}
 
-	public List<OsDetDentadura> findAll() {
+	public List<OsDetalleDen> findAll() {
 		return controladorDetD.findAll();
 	}
 }

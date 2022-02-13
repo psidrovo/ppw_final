@@ -11,7 +11,7 @@ import ec.edu.ups.ppw_final.ppw_final.business.GestionDetDentaduraON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionHstClinicaON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionPersonaON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionRCMedON;
-import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetDentadura;
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsHstClinica;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsRcMed;
@@ -35,7 +35,7 @@ public class HstClinicaBean {
 	private GestionRCMedON RCMedOn;
 	
 	private OsPersona persona;
-	private OsDetDentadura detDentadura;
+	private OsDetalleDen detDentadura;
 	private OsRcMed RcMed;
 	private OsHstClinica hstClincia;
 	
@@ -45,7 +45,7 @@ public class HstClinicaBean {
 	private void init() {
 		persona = new OsPersona();
 		RcMed = new OsRcMed();
-		detDentadura = new OsDetDentadura();
+		detDentadura = new OsDetalleDen();
 		hstClincia = new OsHstClinica();
 		hstClinicas= hstOn.findAll();
 		
@@ -123,11 +123,11 @@ public class HstClinicaBean {
 		this.persona = persona;
 	}
 
-	public OsDetDentadura getDetDentadura() {
+	public OsDetalleDen getDetDentadura() {
 		return detDentadura;
 	}
 
-	public void setDetDentadura(OsDetDentadura detDentadura) {
+	public void setDetDentadura(OsDetalleDen detDentadura) {
 		this.detDentadura = detDentadura;
 	}
 
@@ -158,13 +158,13 @@ public class HstClinicaBean {
 	public String guardar() {
 		OsHstClinica h = hstOn.read(hstClincia.getHstClId());
 		if (h != null) {
-			hstClincia.setOsDetDentadura(detDentadura);
+			hstClincia.setOsDetalleDen(detDentadura);
 			hstClincia.setOsPersona(persona);
 			hstClincia.setOsRcMed(RcMed);
 			hstOn.guardarHstClinico(hstClincia);
 			//System.out.println("Guardar Cita ->" + cita + "\n" + " persona:" + p);
 		} else {
-			hstClincia.setOsDetDentadura(detDentadura);
+			hstClincia.setOsDetalleDen(detDentadura);
 			hstClincia.setOsPersona(persona);
 			hstClincia.setOsRcMed(RcMed);
 			hstOn.guardarHstClinico(hstClincia);

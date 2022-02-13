@@ -28,9 +28,9 @@ public class OsTratamiento implements Serializable {
 	@Column(name="tr_tiempo")
 	private String trTiempo;
 
-	//bi-directional many-to-one association to OsDetDentadura
+	//bi-directional many-to-one association to OsHstClinica
 	@OneToMany(mappedBy="osTratamiento")
-	private List<OsDetDentadura> osDetDentaduras;
+	private List<OsHstClinica> osHstClinicas;
 
 	public OsTratamiento() {
 	}
@@ -67,26 +67,26 @@ public class OsTratamiento implements Serializable {
 		this.trTiempo = trTiempo;
 	}
 
-	public List<OsDetDentadura> getOsDetDentaduras() {
-		return this.osDetDentaduras;
+	public List<OsHstClinica> getOsHstClinicas() {
+		return this.osHstClinicas;
 	}
 
-	public void setOsDetDentaduras(List<OsDetDentadura> osDetDentaduras) {
-		this.osDetDentaduras = osDetDentaduras;
+	public void setOsHstClinicas(List<OsHstClinica> osHstClinicas) {
+		this.osHstClinicas = osHstClinicas;
 	}
 
-	public OsDetDentadura addOsDetDentadura(OsDetDentadura osDetDentadura) {
-		getOsDetDentaduras().add(osDetDentadura);
-		osDetDentadura.setOsTratamiento(this);
+	public OsHstClinica addOsHstClinica(OsHstClinica osHstClinica) {
+		getOsHstClinicas().add(osHstClinica);
+		osHstClinica.setOsTratamiento(this);
 
-		return osDetDentadura;
+		return osHstClinica;
 	}
 
-	public OsDetDentadura removeOsDetDentadura(OsDetDentadura osDetDentadura) {
-		getOsDetDentaduras().remove(osDetDentadura);
-		osDetDentadura.setOsTratamiento(null);
+	public OsHstClinica removeOsHstClinica(OsHstClinica osHstClinica) {
+		getOsHstClinicas().remove(osHstClinica);
+		osHstClinica.setOsTratamiento(null);
 
-		return osDetDentadura;
+		return osHstClinica;
 	}
 
 }

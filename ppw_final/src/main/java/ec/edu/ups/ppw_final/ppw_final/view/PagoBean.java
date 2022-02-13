@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import ec.edu.ups.ppw_final.ppw_final.business.GestionDetPagoON;
-import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetDentadura;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetPago;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 

@@ -123,17 +123,17 @@ public class PacienteBean {
 
 	public String guardar() {		
 		System.out.println(persona.toString()+"\n"+usuario.toString());
+		usuario.setUsTipo("PACIENTE");
+		usuario.setOsPersona(persona);
+		perOn.guardarPersona(persona);
+		useOn.guardarUsuario(usuario);
 		OsPersona p = perOn.read(persona.getPerCedula());
 		if (p != null) {
 			usuario.setUsTipo("PACIENTE");
 			usuario.setOsPersona(persona);
 			useOn.guardarUsuario(usuario);
-			System.out.println("Actualizado ->" + "\n" + persona + "\n" + usuario);
+			
 		} else {
-			usuario.setUsTipo("PACIENTE");
-			usuario.setOsPersona(persona);
-			perOn.guardarPersona(persona);
-			useOn.guardarUsuario(usuario);
 			System.out.println("Nuevo ->" + "\n" + persona + "\n" + usuario);
 		}
 		return null;

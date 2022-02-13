@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
-import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetDentadura;
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
 
 @Stateless
 public class ControladorDetDentadura {
@@ -42,30 +42,30 @@ public class ControladorDetDentadura {
 	@PersistenceContext
 	private EntityManager em;
 
-	public void insert(OsDetDentadura p) {
+	public void insert(OsDetalleDen p) {
 		em.persist(p);
 
 	}
 
-	public void update(OsDetDentadura p) {
+	public void update(OsDetalleDen p) {
 		em.merge(p);
 	}
 
 
 	public void delete(int id) {
-		OsDetDentadura p = em.find(OsDetDentadura.class, id);
+		OsDetalleDen p = em.find(OsDetalleDen.class, id);
 		em.remove(p);
 	}
 	
-	public OsDetDentadura read(int id){
-		OsDetDentadura p = em.find(OsDetDentadura.class, id);
+	public OsDetalleDen read(int id){
+		OsDetalleDen p = em.find(OsDetalleDen.class, id);
 		return p;
 	}
 	
-	public List<OsDetDentadura> findAll(){
-		String jpql = "SELECT o FROM OsDetDentadura o";
+	public List<OsDetalleDen> findAll(){
+		String jpql = "SELECT o FROM OsDetalleDen o";
 		
-		Query q = em.createQuery(jpql, OsDetDentadura.class);
+		Query q = em.createQuery(jpql, OsDetalleDen.class);
 		
 		return q.getResultList();
 	}

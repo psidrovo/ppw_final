@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
-import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetDentadura;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetPago;
 
 @Stateless
