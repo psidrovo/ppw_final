@@ -23,57 +23,34 @@
 			<h3>Pacientes</h3>
 		</div>
 		<div class="card-body">
-			<table id="data_table" class="table">
-				<thead>
-					<tr>
-						<th>Cedula</th>
-						<th class="nosort">Avatar</th>
-						<th>Nombre</th>
-						<th>Deuda</th>
-						<th>Correo</th>
-						<th class="nosort">&nbsp;</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>001</td>
-						<td><img src="../img/users/women.jpg"
-							class="table-user-thumb" alt="" /></td>
-						<td>Erich Heaney</td>
-						<td>0.00</td>
-						<td>erich@example.com</td>
-						<td>
-							<div class="table-actions">
-								<a title="Abrir Historia Clinica" href="#"><i
-									class="ik ik-eye text-blue"></i></a> <a title="Editar Paciente"
-									href="editar_paciente.xhtml"><i
-									class="ik ik-edit-2 text-green"></i></a> <a
-									title="Abrir Reporte de Pagos" href="pagos_paciente.xhtml"><i
-									class="ik ik-dollar-sign text-orange"></i></a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>002</td>
-						<td><img src="../img/users/men.jpg" class="table-user-thumb"
-							alt="" /></td>
-						<td>Abraham Douglas</td>
-						<td>0.00</td>
-						<td>jgraham@example.com</td>
-						<td>
-							<div class="table-actions">
-								<a title="Abrir Historia Clinica" href="#"><i
-									class="ik ik-eye text-blue"></i></a> <a title="Editar Paciente"
-									href="editar_paciente.xhtml"><i
-									class="ik ik-edit-2 text-green"></i></a> <a
-									title="Abrir Reporte de Pagos" href="pagos_paciente.xhtml"><i
-									class="ik ik-dollar-sign text-orange"></i></a>
-							</div>
-						</td>
-					</tr>
+			<h:dataTable value="#{pacienteBean.personas}" var="persona"
+				id="data_table" class="table">
+				<h:column>
+					<f:facet name="header">Cedula</f:facet>						
+					#{persona.perCedula}
+					</h:column>
 
-				</tbody>
-			</table>
+				<h:column>
+					<f:facet name="header">Avatar</f:facet>
+						per
+					</h:column>
+
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+						#{persona.perNombre}
+					</h:column>
+					
+				<h:column>
+					<f:facet name="header">Deuda</f:facet>
+						0.0
+					</h:column>
+					
+					<h:column>
+					<f:facet name="header">Correo</f:facet>
+						""
+					</h:column>
+
+			</h:dataTable>
 		</div>
 	</ui:define>
 </ui:composition>
