@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+
+	<f:metadata>
+		<!-- <f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam>
+		<f:viewAction action="#{clientesBean.loadDatos()}"></f:viewAction>
+		-->
+	</f:metadata>
+
+
+</h:head>
+
+<ui:composition template="blank-page.xhtml">
+
+	<ui:define name="content">
+		<div class="card-header">
+			<h3>Pacientes</h3>
+		</div>
+		<dir>
+		</dir>
+		<div class="nav justify-content-center">
+			<h:inputText value="#{pacienteBean.persona.perNombre}" a:type="text"
+				class="form-control" id="txtPago"
+				a:placeholder="Ingrese valor a pagar $" a:required="true" />
+			<h:commandButton a:title="Agregar Pago" value="Agregar Pago"
+				class="btn btn-success">
+			</h:commandButton>
+		</div>
+		<div class="card-body">
+			<table id="data_table" class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Fecha</th>
+						<th>Valor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>10/02/2022</td>
+						<td>0.00</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>11/02/2022</td>
+						<td>0.00</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
