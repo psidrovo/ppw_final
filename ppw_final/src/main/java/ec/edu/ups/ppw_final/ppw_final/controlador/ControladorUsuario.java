@@ -27,7 +27,7 @@ public class ControladorUsuario {
 	}
 
 	public List<OsUsuario> Validar(String usuario, String contrasenia) {
-		String jpql = "SELECT p FROM OsUsuario p WHERE usCorreo LIKE ?1 AND usPassword LIKE ?2";
+		String jpql = "SELECT * FROM os_usuario p WHERE p.us_correo LIKE ?1 AND p.us_password LIKE ?2";
 
 		Query q = em.createQuery(jpql, OsUsuario.class);
 		q.setParameter(1,usuario).setParameter(2, contrasenia);
@@ -44,11 +44,11 @@ public class ControladorUsuario {
 		return p;
 	}
 	
-	public OsUsuario findByPersona(OsPersona persona) {
-		String jpql = "SELECT p FROM OsUsuario p WHERE osPersona LIKE ?1";
+	public OsUsuario findByPersona(String cedula) {
+		String jpql = "SELECT * FROM os_usuario p WHERE p.per_cedula_us_persona_fk LIKE ?";
 
 		Query q = em.createQuery(jpql, OsUsuario.class);
-		q.setParameter(1,persona);
+		q.setParameter(1,cedula);
 		return (OsUsuario) q.getResultList().get(0);
 	}
 	

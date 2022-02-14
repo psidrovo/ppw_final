@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsCita;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 
 @Stateless
 public class ControladorDetDentadura {
@@ -67,6 +69,15 @@ public class ControladorDetDentadura {
 		Query q = em.createQuery(jpql, OsDetalleDen.class);
 		
 		return q.getResultList();
+	}
+	
+	public OsDetalleDen findbyDentadura() {
+		String jpql = "select * from os_cita where os_persona_per_cedula like ?1";
+
+		Query q = em.createQuery(jpql, OsPersona.class);
+		q.setParameter(1, cedula);
+		
+		return  (OsCita) q.getResultList().get(0);
 	}
 	
 
