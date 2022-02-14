@@ -3,17 +3,18 @@ package ec.edu.ups.ppw_final.ppw_final.view;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import ec.edu.ups.ppw_final.ppw_final.business.GestionDentaduraON;
+import ec.edu.ups.ppw_final.ppw_final.business.GestionDetDentaduraON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionHstClinicaON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionPersonaON;
-import ec.edu.ups.ppw_final.ppw_final.controlador.ControladorHstClinica;
-import ec.edu.ups.ppw_final.ppw_final.controlador.ControladorPersona;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsHstClinica;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 
@@ -39,7 +40,10 @@ public class HstClinicaBean implements Serializable{
 	private GestionDentaduraON denOn;
 	@Inject
 	private GestionPersonaON perOn;
+	@Inject
+	private GestionDetDentaduraON dtDOn;
 
+	private OsDetalleDen detDentadura;
 	private OsPersona persona;
 	private OsDentadura dentadura;
 	private OsHstClinica hstClincia;
@@ -49,7 +53,9 @@ public class HstClinicaBean implements Serializable{
 	
 	public void init() {	
 		persona=new OsPersona();
-		dentadura=new OsDentadura();
+		detDentadura=new OsDetalleDen();
+		System.out.println("Inicializando");
+		dentadura=new OsDentadura();		
 		hstClincia = new OsHstClinica();
 		hstClinicas = hstOn.findListaPorCedula(cedulaPaciente);
 	}
@@ -167,15 +173,24 @@ public class HstClinicaBean implements Serializable{
 	}
 
 	public String guardar() {
-		persona = perOn.read(cedulaPaciente);
-		dentadura = denOn.read(Integer.parseInt(detalle));
-		System.out.println(dentadura.toString());
+		
+		persona = perOn.read(cedulaPaciente);	
+		int idDentadura= dentadura.getDentId();
+		dentadura = denOn.read(idDentadura);
+		
+
+		detDentadura.setOsDentadura(dentadura);
+		dtDOn.guardarDetDentadura(detDentadura);
+		detDentadura = dtDOn.recuperarUltimoDetalle();
 		hstClincia.setHstClFecha(new java.util.Date());
-		System.out.println(hstClincia.getHstClFecha());
+		System.out.println(hstClincia.getHstClFecha());		
 		hstClincia.setOsPersona(persona);
-		//hstClincia.setOsDentadura(dentadura);
+		hstClincia.setOsDetalleDen(detDentadura);		
 		hstOn.guardarHstClinico(hstClincia);
 		hstClinicas = hstOn.findListaPorCedula(cedulaPaciente);
+		FacesMessage msg = new FacesMessage("RESGISTRO COMPLETADO");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		
 		return null;
 	}
 	
@@ -212,6 +227,22 @@ public class HstClinicaBean implements Serializable{
 
 	public void setCedulaPaciente(String cedulaPaciente) {
 		this.cedulaPaciente = cedulaPaciente;
+	}
+
+	public GestionDetDentaduraON getDtDOn() {
+		return dtDOn;
+	}
+
+	public void setDtDOn(GestionDetDentaduraON dtDOn) {
+		this.dtDOn = dtDOn;
+	}
+
+	public OsDetalleDen getDetDentadura() {
+		return detDentadura;
+	}
+
+	public void setDetDentadura(OsDetalleDen detDentadura) {
+		this.detDentadura = detDentadura;
 	}
 
 }

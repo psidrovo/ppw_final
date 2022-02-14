@@ -54,7 +54,7 @@ public class ControladorDetDentadura {
 	 */
 	public void insert(OsDetalleDen p) {
 		em.persist(p);
-
+	
 	}
 
 	/*
@@ -91,10 +91,8 @@ public class ControladorDetDentadura {
 	 * datos
 	 */
 	public List<OsDetalleDen> findAll(){
-		String jpql = "SELECT o FROM OsDetalleDen o";
-		
-		Query q = em.createQuery(jpql, OsDetalleDen.class);
-		
+		String jpql = "SELECT o FROM OsDetalleDen o";		
+		Query q = em.createQuery(jpql, OsDetalleDen.class);		
 		return q.getResultList();
 	}
 	
@@ -106,12 +104,15 @@ public class ControladorDetDentadura {
 	 */
 	public List<OsDetalleDen> findbyDentadura(int codigo) {
 		String jpql = "select * from os_cita where os_persona_per_cedula like ?1";
-
 		Query q = em.createQuery(jpql, OsPersona.class);
-		q.setParameter(1, codigo);
-		
+		q.setParameter(1, codigo);		
 		return q.getResultList();
 	}
 	
+	public OsDetalleDen recuperarUltimoDetalle(){
+		String jpql = "SELECT o FROM OsDetalleDen o order by id desc";		
+		Query q = em.createQuery(jpql, OsDetalleDen.class);		
+		return (OsDetalleDen) q.getResultList().get(0);
+	}
 
 }
