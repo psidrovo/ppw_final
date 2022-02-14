@@ -12,7 +12,9 @@
 		<!-- <f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam>
 		<f:viewAction action="#{clientesBean.loadDatos()}"></f:viewAction>
 		-->
-		<f:viewParam name="cedulaPaciente" value="#{hstClinicaBean.cedulaPaciente}"/>
+		<f:viewParam name="cedulaPaciente"
+			value="#{hstClinicaBean.cedulaPaciente}" />
+			<f:viewAction action="#{hstClinicaBean.init}" />
 	</f:metadata>
 
 
@@ -30,11 +32,12 @@
 			<h3>Pacientes</h3>
 		</div>
 		<div class="card-body">
-			<h:dataTable value="#{pacienteBean.personas}" var="persona"
-				id="data_table" class="table" a:style="text-align: center">
+			<h:dataTable value="#{hstClinicaBean.hstClinicas}"
+				var="historiaClinica" id="data_table" class="table"
+				a:style="text-align: center">
 				<h:column>
 					<f:facet name="header">Cedula</f:facet>						
-					#{persona.perCedula}
+					#{historiaClinica.hstClFecha}
 					</h:column>
 
 				<h:column>
@@ -43,23 +46,15 @@
 					</h:column>
 
 				<h:column>
-					<f:facet name="header">Nombre</f:facet>
-						#{persona.perNombre}
-					</h:column>
-
-				<h:column>
 					<f:facet name="header">Deuda</f:facet>
 						0.0
 					</h:column>
 
-				<h:column>
-					<f:facet name="header">Correo</f:facet>
-						#{usuario.usCorreo}
-					</h:column>
+
 
 			</h:dataTable>
 		</div>
-	
+
 	</ui:define>
 </ui:composition>
 </html>
