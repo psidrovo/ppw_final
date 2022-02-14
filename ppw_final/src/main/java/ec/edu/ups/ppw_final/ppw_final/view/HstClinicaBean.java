@@ -175,20 +175,17 @@ public class HstClinicaBean implements Serializable{
 	public String guardar() {
 		
 		persona = perOn.read(cedulaPaciente);	
-		System.out.println(dentadura.toString());
-		dentadura = denOn.read(dentadura.getDentId());
-		System.out.println(dentadura.toString());
+		int idDentadura= dentadura.getDentId();
+		dentadura = denOn.read(idDentadura);
+		
+
 		detDentadura.setOsDentadura(dentadura);
-		System.out.println(detDentadura.toString());
 		dtDOn.guardarDetDentadura(detDentadura);
-		System.out.println(detDentadura.toString());
-		
+		detDentadura = dtDOn.recuperarUltimoDetalle();
 		hstClincia.setHstClFecha(new java.util.Date());
-		System.out.println(hstClincia.getHstClFecha());
-		
+		System.out.println(hstClincia.getHstClFecha());		
 		hstClincia.setOsPersona(persona);
-		hstClincia.setOsDetalleDen(detDentadura);
-		
+		hstClincia.setOsDetalleDen(detDentadura);		
 		hstOn.guardarHstClinico(hstClincia);
 		hstClinicas = hstOn.findListaPorCedula(cedulaPaciente);
 		FacesMessage msg = new FacesMessage("RESGISTRO COMPLETADO");
