@@ -2,6 +2,7 @@ package ec.edu.ups.ppw_final.ppw_final.modelo;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -23,6 +24,10 @@ public class OsDetalleDen implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="os_dentadura_dent_id")
 	private OsDentadura osDentadura;
+
+	//bi-directional many-to-one association to OsHstClinica
+	@OneToMany(mappedBy="osDetalleDen")
+	private List<OsHstClinica> osHstClinicas;
 
 	public OsDetalleDen() {
 	}
@@ -49,6 +54,28 @@ public class OsDetalleDen implements Serializable {
 
 	public void setOsDentadura(OsDentadura osDentadura) {
 		this.osDentadura = osDentadura;
+	}
+
+	public List<OsHstClinica> getOsHstClinicas() {
+		return this.osHstClinicas;
+	}
+
+	public void setOsHstClinicas(List<OsHstClinica> osHstClinicas) {
+		this.osHstClinicas = osHstClinicas;
+	}
+
+	public OsHstClinica addOsHstClinica(OsHstClinica osHstClinica) {
+		getOsHstClinicas().add(osHstClinica);
+		osHstClinica.setOsDetalleDen(this);
+
+		return osHstClinica;
+	}
+
+	public OsHstClinica removeOsHstClinica(OsHstClinica osHstClinica) {
+		getOsHstClinicas().remove(osHstClinica);
+		osHstClinica.setOsDetalleDen(null);
+
+		return osHstClinica;
 	}
 
 }

@@ -29,24 +29,24 @@ public class OsHstClinica implements Serializable {
 	@Column(name="hst_cl_fecha")
 	private Date hstClFecha;
 
+	@Column(name="hst_costo")
+	private String hstCosto;
+
 	@Column(name="hst_receta")
 	private String hstReceta;
 
 	@Column(name="hst_tratamiento")
 	private String hstTratamiento;
 
-	@Column(name="hst_costo")
-	private String hstCosto;
-	
+	//bi-directional many-to-one association to OsDetalleDen
+	@ManyToOne
+	@JoinColumn(name="os_detalle_den_id")
+	private OsDetalleDen osDetalleDen;
+
 	//bi-directional many-to-one association to OsPersona
 	@ManyToOne
 	@JoinColumn(name="per_cedula_hst_cl_paciente_fk")
 	private OsPersona osPersona;
-
-	//bi-directional many-to-one association to OsDentadura
-	@ManyToOne
-	@JoinColumn(name="os_dentadura_dent_id")
-	private OsDentadura osDentadura;
 
 	public OsHstClinica() {
 	}
@@ -83,6 +83,14 @@ public class OsHstClinica implements Serializable {
 		this.hstClFecha = hstClFecha;
 	}
 
+	public String getHstCosto() {
+		return this.hstCosto;
+	}
+
+	public void setHstCosto(String hstCosto) {
+		this.hstCosto = hstCosto;
+	}
+
 	public String getHstReceta() {
 		return this.hstReceta;
 	}
@@ -99,6 +107,14 @@ public class OsHstClinica implements Serializable {
 		this.hstTratamiento = hstTratamiento;
 	}
 
+	public OsDetalleDen getOsDetalleDen() {
+		return this.osDetalleDen;
+	}
+
+	public void setOsDetalleDen(OsDetalleDen osDetalleDen) {
+		this.osDetalleDen = osDetalleDen;
+	}
+
 	public OsPersona getOsPersona() {
 		return this.osPersona;
 	}
@@ -107,20 +123,4 @@ public class OsHstClinica implements Serializable {
 		this.osPersona = osPersona;
 	}
 
-	public OsDentadura getOsDentadura() {
-		return this.osDentadura;
-	}
-
-	public void setOsDentadura(OsDentadura osDentadura) {
-		this.osDentadura = osDentadura;
-	}
-
-	public String getHstCosto() {
-		return hstCosto;
-	}
-
-	public void setHstCosto(String hstCosto) {
-		this.hstCosto = hstCosto;
-	}
-	
 }
