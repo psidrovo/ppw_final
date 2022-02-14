@@ -11,6 +11,9 @@
 		<!-- <f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam>
 		<f:viewAction action="#{clientesBean.loadDatos()}"></f:viewAction>
 		-->
+		<f:viewParam name="cedulaPaciente"
+			value="#{pagoBean.cedulaPaciente}" />
+		<f:viewAction action="#{pagoBean.init}" />
 	</f:metadata>
 
 
