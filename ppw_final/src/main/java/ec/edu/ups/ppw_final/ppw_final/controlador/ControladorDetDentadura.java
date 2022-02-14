@@ -71,13 +71,13 @@ public class ControladorDetDentadura {
 		return q.getResultList();
 	}
 	
-	public OsDetalleDen findbyDentadura() {
+	public List<OsDetalleDen> findbyDentadura(int codigo) {
 		String jpql = "select * from os_cita where os_persona_per_cedula like ?1";
 
 		Query q = em.createQuery(jpql, OsPersona.class);
-		q.setParameter(1, cedula);
+		q.setParameter(1, codigo);
 		
-		return  (OsCita) q.getResultList().get(0);
+		return q.getResultList();
 	}
 	
 
