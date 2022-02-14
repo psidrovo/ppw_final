@@ -43,13 +43,13 @@ public class serviciosRest {
 	@Inject
 	private GestionUsuarioON usuarioOn;
 	
-	private OsDetalleDen detalleDen;
+	/*private OsDetalleDen detalleDen;
 	private OsHstClinica hstClinica;
 	private OsPersona persona;
 	private OsCita cita;
 	private OsDentadura dentadura;
 	private OsDetPago detPago;
-	private OsUsuario usuario;
+	private OsUsuario usuario;*/
 	
 //---------------------------------------------------------------------------	
 	//servicios detalle dentadura

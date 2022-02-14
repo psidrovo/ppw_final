@@ -73,7 +73,7 @@ public class DentaduraBean {
 	
 	public String guardar() {
 
-			detOn.guardarDentadura(dentadura);
+		detOn.guardarDentadura(dentadura);
 		this.init();
 		return null;
 	}
