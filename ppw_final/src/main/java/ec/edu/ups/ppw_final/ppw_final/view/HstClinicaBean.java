@@ -51,7 +51,6 @@ public class HstClinicaBean implements Serializable{
 		persona=new OsPersona();
 		dentadura=new OsDentadura();
 		hstClinicas = hstOn.findListaPorCedula(cedulaPaciente);
-		System.out.println(hstClinicas.get(0));
 	}
 
 	public String getReceta() {

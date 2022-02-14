@@ -14,7 +14,7 @@
 		-->
 		<f:viewParam name="cedulaPaciente"
 			value="#{hstClinicaBean.cedulaPaciente}" />
-			<f:viewAction action="#{hstClinicaBean.init}" />
+		<f:viewAction action="#{hstClinicaBean.init}" />
 	</f:metadata>
 
 
@@ -36,21 +36,42 @@
 				var="historiaClinica" id="data_table" class="table"
 				a:style="text-align: center">
 				<h:column>
-					<f:facet name="header">Cedula</f:facet>						
+					<f:facet name="header">id</f:facet>						
+					#{historiaClinica.hstClId}
+					</h:column>
+				<h:column>
+					<f:facet name="header">Fecha</f:facet>						
 					#{historiaClinica.hstClFecha}
 					</h:column>
-
 				<h:column>
-					<f:facet name="header">Avatar</f:facet>
-						per
+					<f:facet name="header">Fase</f:facet>						
+					#{historiaClinica.hstClFase}
 					</h:column>
-
 				<h:column>
-					<f:facet name="header">Deuda</f:facet>
-						0.0
+					<f:facet name="header">Detalle</f:facet>						
+					#{historiaClinica.hstClDetalle}
 					</h:column>
-
-
+				<h:column>
+					<f:facet name="header">Receta</f:facet>						
+					#{historiaClinica.hstReceta}
+					</h:column>
+				<h:column>
+					<f:facet name="header">Tratamiento</f:facet>						
+					#{historiaClinica.hstTratamiento}
+					</h:column>
+				<h:column>
+					<f:facet name="header">Pieza Dental</f:facet>						
+					#{historiaClinica.osDentadura.dentCdgMolar}
+					</h:column>
+				<h:column>
+					<f:facet name="header">Acciones</f:facet>
+					<p:linkButton value="Historia" icon="ik ik-eye text-blue"
+						styleClass="rounded-button" outcome="historial_clinico">
+						<f:param name="cedulaPaciente"
+							value="#{pacientes.osPersona.perCedula}" />
+						<!--f:param name="cedulaPaciente" value= "#{pacientes.osPersona.perCedula}" /-->
+					</p:linkButton>
+				</h:column>
 
 			</h:dataTable>
 		</div>
