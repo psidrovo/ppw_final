@@ -173,7 +173,7 @@ public class HstClinicaBean implements Serializable{
 		hstClincia.setHstClFecha(new java.util.Date());
 		System.out.println(hstClincia.getHstClFecha());
 		hstClincia.setOsPersona(persona);
-		hstClincia.setOsDentadura(dentadura);
+		//hstClincia.setOsDentadura(dentadura);
 		hstOn.guardarHstClinico(hstClincia);
 		hstClinicas = hstOn.findListaPorCedula(cedulaPaciente);
 		return null;
