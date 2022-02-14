@@ -15,8 +15,7 @@ public class GestionPersonaON {
 	private ControladorPersona controladorP;
 	
 	public void guardarPersona(OsPersona persona) {
-		OsPersona u = controladorP.read(persona.getPerCedula());
-		if(u==null) {
+		if(controladorP.read(persona.getPerCedula())==null) {
 			controladorP.insert(persona);
 			System.out.println("persona creado con exito" );
 		}else {

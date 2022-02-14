@@ -93,4 +93,9 @@ public class OsDentadura implements Serializable {
 		return osHstClinica;
 	}
 
+	@Override
+	public String toString() {
+		return "OsDentadura [dentId=" + dentId + ", dentCdgMolar=" + dentCdgMolar + "]";
+	}
+
 }

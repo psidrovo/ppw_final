@@ -1,9 +1,10 @@
 package ec.edu.ups.ppw_final.ppw_final.view;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,11 +13,16 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetPago;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 
 @Named
-@RequestScoped
-public class PagoBean {
+@ViewScoped
+public class PagoBean implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private double valor;
+	private String cedulaPaciente;
 
 	@Inject
 	private GestionDetPagoON pagoOn;
@@ -24,7 +30,7 @@ public class PagoBean {
 	private OsPersona persona;
 	private List<OsDetPago> pagos;
 
-	@PostConstruct
+
 	private void init() {
 		pago = new OsDetPago();
 		persona = new OsPersona();
@@ -109,6 +115,14 @@ public class PagoBean {
 
 		this.init();
 		return null;
+	}
+
+	public String getCedulaPaciente() {
+		return cedulaPaciente;
+	}
+
+	public void setCedulaPaciente(String cedulaPaciente) {
+		this.cedulaPaciente = cedulaPaciente;
 	}
 
 }
