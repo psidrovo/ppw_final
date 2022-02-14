@@ -2,11 +2,8 @@ package ec.edu.ups.ppw_final.ppw_final.view;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,6 +11,8 @@ import javax.inject.Named;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionDentaduraON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionHstClinicaON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionPersonaON;
+import ec.edu.ups.ppw_final.ppw_final.controlador.ControladorHstClinica;
+import ec.edu.ups.ppw_final.ppw_final.controlador.ControladorPersona;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsHstClinica;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
@@ -22,6 +21,10 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 @ViewScoped
 public class HstClinicaBean implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String detalle;
 	private String fase;
@@ -42,8 +45,14 @@ public class HstClinicaBean implements Serializable{
 	private OsHstClinica hstClincia;
 
 	private List<OsHstClinica> hstClinicas;
-
 	
+	
+	public void init() {	
+		persona=new OsPersona();
+		dentadura=new OsDentadura();
+		hstClinicas = hstOn.findListaPorCedula(cedulaPaciente);
+		System.out.println(hstClinicas.get(0));
+	}
 
 	public String getReceta() {
 		return receta;
@@ -161,8 +170,6 @@ public class HstClinicaBean implements Serializable{
 		hstClincia.setOsPersona(persona);
 		hstClincia.setOsDentadura(dentadura);
 		hstOn.guardarHstClinico(hstClincia);
-
-		//this.init();
 		return null;
 	}
 	
@@ -179,7 +186,6 @@ public class HstClinicaBean implements Serializable{
 			System.out.println("histroial clinico no se ha podido encontrar porque no existe");
 		}
 
-		//this.init();
 		return null;
 	}
 
@@ -191,7 +197,6 @@ public class HstClinicaBean implements Serializable{
 		} else {
 			System.out.println("historial clinico no se ha podido eliminar porque no existe");
 		}
-		//this.init();
 		return null;
 	}
 

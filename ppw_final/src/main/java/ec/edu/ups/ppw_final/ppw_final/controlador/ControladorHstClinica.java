@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -61,7 +62,7 @@ public class ControladorHstClinica {
 	}
 	
 	public List<OsHstClinica> findAll(){
-		String jpql = "SELECT o FROM OsHstClinica oSELECT o FROM OsHstClinica o";
+		String jpql = "SELECT o FROM OsHstClinica o";
 		
 		Query q = em.createQuery(jpql, OsHstClinica.class);
 		

@@ -167,4 +167,11 @@ public class OsPersona implements Serializable {
 		return osUsuario;
 	}
 
+	@Override
+	public String toString() {
+		return "OsPersona [perCedula=" + perCedula + ", perApellido=" + perApellido + ", perDireccion=" + perDireccion
+				+ ", perNombre=" + perNombre + "]";
+	}
+	
+
 }
