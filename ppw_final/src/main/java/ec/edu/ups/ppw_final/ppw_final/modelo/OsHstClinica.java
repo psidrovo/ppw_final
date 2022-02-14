@@ -35,6 +35,9 @@ public class OsHstClinica implements Serializable {
 	@Column(name="hst_tratamiento")
 	private String hstTratamiento;
 
+	@Column(name="hst_costo")
+	private String hstCosto;
+	
 	//bi-directional many-to-one association to OsPersona
 	@ManyToOne
 	@JoinColumn(name="per_cedula_hst_cl_paciente_fk")
@@ -112,4 +115,12 @@ public class OsHstClinica implements Serializable {
 		this.osDentadura = osDentadura;
 	}
 
+	public String getHstCosto() {
+		return hstCosto;
+	}
+
+	public void setHstCosto(String hstCosto) {
+		this.hstCosto = hstCosto;
+	}
+	
 }

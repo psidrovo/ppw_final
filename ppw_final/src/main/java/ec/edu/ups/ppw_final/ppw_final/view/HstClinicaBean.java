@@ -50,6 +50,7 @@ public class HstClinicaBean implements Serializable{
 	public void init() {	
 		persona=new OsPersona();
 		dentadura=new OsDentadura();
+		hstClincia = new OsHstClinica();
 		hstClinicas = hstOn.findListaPorCedula(cedulaPaciente);
 	}
 
@@ -166,9 +167,15 @@ public class HstClinicaBean implements Serializable{
 	}
 
 	public String guardar() {
+		persona = perOn.read(cedulaPaciente);
+		dentadura = denOn.read(Integer.parseInt(detalle));
+		System.out.println(dentadura.toString());
+		hstClincia.setHstClFecha(new java.util.Date());
+		System.out.println(hstClincia.getHstClFecha());
 		hstClincia.setOsPersona(persona);
 		hstClincia.setOsDentadura(dentadura);
 		hstOn.guardarHstClinico(hstClincia);
+		hstClinicas = hstOn.findListaPorCedula(cedulaPaciente);
 		return null;
 	}
 	

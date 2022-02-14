@@ -23,59 +23,102 @@
 <ui:composition template="blank-page.xhtml">
 
 	<ui:define name="content">
-		<p>
-			You've been redirected to this bookmarkable page with button.
-			ViewParameter you've passed is <strong>"#{hstClinicaBean.cedulaPaciente}"</strong>
-		</p>
-
 		<div class="card-header">
-			<h3>Pacientes</h3>
+			<h3>Historial Clinico</h3>
 		</div>
-		<div class="card-body">
-			<h:dataTable value="#{hstClinicaBean.hstClinicas}"
-				var="historiaClinica" id="data_table" class="table"
-				a:style="text-align: center">
-				<h:column>
-					<f:facet name="header">id</f:facet>						
+		<h:form>
+			<div class="card" style="align-items: center">
+				<h5 class="p-mt-0">Nueva entrada</h5>
+				<h:panelGrid columns="3" cellpadding="7">
+					<div>
+						<p:outputLabel value="Fase" />
+						<p:inputText id="txtFase"
+							value="#{hstClinicaBean.hstClincia.hstClFase}" />
+					</div>
+					<div>
+						<p:outputLabel value="Detalle" />
+
+						<p:inputText id="txtDetalle"
+							value="#{hstClinicaBean.hstClincia.hstClDetalle}" />
+					</div>
+					<div>
+						<p:outputLabel value="Receta" />
+
+						<p:inputText id="txtReceta"
+							value="#{hstClinicaBean.hstClincia.hstReceta}" />
+					</div>
+					<div>
+						<p:outputLabel value="Tratamiento" />
+
+						<p:inputText id="txtTratamiento"
+							value="#{hstClinicaBean.hstClincia.hstTratamiento}" />
+					</div>
+					<div>
+						<p:outputLabel value="Costo" />
+
+						<p:inputText id="txtCosto"
+							value="#{hstClinicaBean.hstClincia.hstCosto}" />
+					</div>
+					<div>
+						<p:outputLabel value="Dentadura" />
+						
+						<p:inputText id="txtDentadura" value="#{hstClinicaBean.detalle}" />
+					</div>
+				</h:panelGrid>
+				<p:commandButton value="Submit" action="#{hstClinicaBean.guardar()}"
+					update="display" styleClass="p-mt-3" />
+
+			</div>
+			<div class="card-body">
+				<h:dataTable id="display" value="#{hstClinicaBean.hstClinicas}"
+					var="historiaClinica" class="table" a:style="text-align: center">
+					<h:column>
+						<f:facet name="header">id</f:facet>						
 					#{historiaClinica.hstClId}
 					</h:column>
-				<h:column>
-					<f:facet name="header">Fecha</f:facet>						
+					<h:column>
+						<f:facet name="header">Fecha</f:facet>						
 					#{historiaClinica.hstClFecha}
 					</h:column>
-				<h:column>
-					<f:facet name="header">Fase</f:facet>						
+					<h:column>
+						<f:facet name="header">Fase</f:facet>						
 					#{historiaClinica.hstClFase}
 					</h:column>
-				<h:column>
-					<f:facet name="header">Detalle</f:facet>						
+					<h:column>
+						<f:facet name="header">Detalle</f:facet>						
 					#{historiaClinica.hstClDetalle}
 					</h:column>
-				<h:column>
-					<f:facet name="header">Receta</f:facet>						
+					<h:column>
+						<f:facet name="header">Receta</f:facet>						
 					#{historiaClinica.hstReceta}
 					</h:column>
-				<h:column>
-					<f:facet name="header">Tratamiento</f:facet>						
+					<h:column>
+						<f:facet name="header">Tratamiento</f:facet>						
 					#{historiaClinica.hstTratamiento}
 					</h:column>
-				<h:column>
-					<f:facet name="header">Pieza Dental</f:facet>						
+					<h:column>
+						<f:facet name="header">Costo</f:facet>						
+					#{historiaClinica.hstCosto}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Pieza Dental</f:facet>						
 					#{historiaClinica.osDentadura.dentCdgMolar}
 					</h:column>
-				<h:column>
-					<f:facet name="header">Acciones</f:facet>
-					<p:linkButton value="Historia" icon="ik ik-eye text-blue"
-						styleClass="rounded-button" outcome="historial_clinico">
-						<f:param name="cedulaPaciente"
-							value="#{pacientes.osPersona.perCedula}" />
-						<!--f:param name="cedulaPaciente" value= "#{pacientes.osPersona.perCedula}" /-->
-					</p:linkButton>
-				</h:column>
+					<h:column>
+						<f:facet name="header">Acciones</f:facet>
+						<p:linkButton value="Detalle Pieza"
+							icon="ik ik-arrow-right-circle text-white"
+							styleClass="rounded-button ui-button-success"
+							outcome="historial_clinico">
+							<f:param name="cedulaPaciente"
+								value="#{pacientes.osPersona.perCedula}" />
+							<!--f:param name="cedulaPaciente" value= "#{pacientes.osPersona.perCedula}" /-->
+						</p:linkButton>
+					</h:column>
 
-			</h:dataTable>
-		</div>
-
+				</h:dataTable>
+			</div>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>
