@@ -38,29 +38,56 @@ public class ControladorHstClinica {
 		}
 	}*/
 	
+	/*
+	 * Se ha instanciado el Entitymanager para poder realizar las modificacion
+	 * dentro de la base de datos 
+	 */
 	@PersistenceContext
 	private EntityManager em;
 
+	/*
+	 * Este metodo realiza la accion de crear o insertar el objeto dentro
+	 * de la base de datos
+	 * @param p.
+	 */
 	public void insert(OsHstClinica p) {
 		em.persist(p);
 
 	}
 
+	/*
+	 * Este metodo realiza la accion de actualizar el objeto dentro
+	 * de la base de datos
+	 * @param p.
+	 */
 	public void update(OsHstClinica p) {
 		em.merge(p);
 	}
 
-
+	/*
+	 * Este metodo realiza la accion de eliminar el objeto dentro
+	 * de la base de datos y los hace mediante la llave primaria del objeto
+	 * @param id.
+	 */
 	public void delete(int id) {
 		OsHstClinica p = em.find(OsHstClinica.class, id);
 		em.remove(p);
 	}
 	
+	/*
+	 * Este metodo realiza la accion de buscar el objeto dentro
+	 * de la base de datos y los hace mediante la llave primaria del objeto
+	 * @param id.
+	 */
 	public OsHstClinica read(int id){
 		OsHstClinica p = em.find(OsHstClinica.class, id);
 		return p;
 	}
 	
+	/*
+	 * Este metodo retorna todo el listado de historiales clinicos que existe dentro de la base de 
+	 * datos
+	 */
 	public List<OsHstClinica> findAll(){
 		String jpql = "SELECT o FROM OsHstClinica o";
 		

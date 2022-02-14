@@ -12,9 +12,18 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsCita;
 @Stateless
 public class GestionCitasON {
 
+	/*
+	 * se inicializa el controlador Citas para poder realizar las gestiones dentro de la base de datos.
+	 * 
+	 */
 	@Inject
 	private ControladorCitas controladorC;
 	
+	/*
+	 * este metodo recibe un objeto de tipo cita y pregunta dentro de la base de datos si es que existe.
+	 * en caso de que exista solamente actualiza caso contrario crea uno nuevo.
+	 * @param cita.
+	 */
 	public void guardarCita(OsCita cita) {
 		OsCita u = controladorC.read(cita.getCtId());
 		if(u==null) {
@@ -26,15 +35,27 @@ public class GestionCitasON {
 		}
 	}
 	
-	
+	/*
+	 * Este metodo elimina un objeto dentro de la base de datos por medio 
+	 * de la llave primaria
+	 * @param id
+	 */
 	public void delete(int id) {
 		controladorC.delete(id);
 	}
 	
+	/*
+	 * Este metodo busca un objeto dentro de la base de datos por medio 
+	 * de la llave primaria
+	 * @param id
+	 */
 	public OsCita read(int id) {
 		return controladorC.read(id);
 	}
 	
+	/*
+	 * Este metodo devuele todo el listado de citas dentro de la base de datos.
+	 */
 	public List<OsCita> findAll(){
 		return controladorC.findAll();
 	}

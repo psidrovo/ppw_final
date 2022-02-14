@@ -14,6 +14,13 @@ import javax.persistence.*;
 public class OsCita implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * se ha instanciado todos los atributos necesarios para crear 
+	 * el objeto cita. De la misma manera se ha utilizado anotaciones de persistence
+	 * para poder nombrarle a la tabla y a las columnas dentro de la base de datos. 
+	 * de la misma manera se ha utilizado las anotaciones para poder asignar la relacion que
+	 * tendran algunos objetos dentro de la base de datos 
+	 */
 	@Id
 	@Column(name="ct_id")
 	private int ctId;

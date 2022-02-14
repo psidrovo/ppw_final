@@ -40,29 +40,56 @@ public class ControladorDetDentadura {
 		}
 	}*/
 	
+	/*
+	 * Se ha instanciado el Entitymanager para poder realizar las modificacion
+	 * dentro de la base de datos 
+	 */
 	@PersistenceContext
 	private EntityManager em;
 
+	/*
+	 * Este metodo realiza la accion de crear o insertar el objeto dentro
+	 * de la base de datos
+	 * @param p.
+	 */
 	public void insert(OsDetalleDen p) {
 		em.persist(p);
 
 	}
 
+	/*
+	 * Este metodo realiza la accion de actualizar el objeto dentro
+	 * de la base de datos
+	 * @param p.
+	 */
 	public void update(OsDetalleDen p) {
 		em.merge(p);
 	}
 
-
+	/*
+	 * Este metodo realiza la accion de eliminar el objeto dentro
+	 * de la base de datos y los hace mediante la llave primaria del objeto
+	 * @param id.
+	 */
 	public void delete(int id) {
 		OsDetalleDen p = em.find(OsDetalleDen.class, id);
 		em.remove(p);
 	}
 	
+	/*
+	 * Este metodo realiza la accion de buscar el objeto dentro
+	 * de la base de datos y los hace mediante la llave primaria del objeto
+	 * @param id.
+	 */
 	public OsDetalleDen read(int id){
 		OsDetalleDen p = em.find(OsDetalleDen.class, id);
 		return p;
 	}
 	
+	/*
+	 * Este metodo retorna todo el listado de detalles dentaduras que existe dentro de la base de 
+	 * datos
+	 */
 	public List<OsDetalleDen> findAll(){
 		String jpql = "SELECT o FROM OsDetalleDen o";
 		
@@ -71,6 +98,12 @@ public class ControladorDetDentadura {
 		return q.getResultList();
 	}
 	
+	/*
+	 * Este metodo realiza la busqueda de una detalle dentadura mediante el codigo de una dentadura
+	 * una vez que haya encontrado el objeto dentro de la base de datos lo retorna al usuario
+	 * @param codigo.
+	 * 
+	 */
 	public List<OsDetalleDen> findbyDentadura(int codigo) {
 		String jpql = "select * from os_cita where os_persona_per_cedula like ?1";
 

@@ -15,6 +15,13 @@ import java.util.List;
 public class OsDentadura implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * se ha instanciado todos los atributos necesarios para crear 
+	 * el objeto dentadura. De la misma manera se ha utilizado anotaciones de persistence
+	 * para poder nombrar a la tabla y a las columnas dentro de la base de datos. 
+	 * de la misma manera se ha utilizado las anotaciones para poder asignar la relacion que
+	 * tendran algunos objetos dentro de la base de datos 
+	 */
 	@Id
 	@Column(name="dent_id")
 	private int dentId;

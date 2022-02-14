@@ -28,6 +28,9 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsUsuario;
 @Path("servicios")
 public class serviciosRest {
 
+	/*
+	 * Se ha inicializado todos los gestores que existen para realizar acciones CRUD dentro de la base de datos.
+	 */
 	@Inject
 	private GestionDetDentaduraON detDentaduraOn;
 	@Inject
@@ -53,6 +56,12 @@ public class serviciosRest {
 	
 //---------------------------------------------------------------------------	
 	//servicios detalle dentadura
+	
+	/*
+	 * este metodo publicar o realizara la accion de guardar un objeto
+	 * de tipo detalle dentadura.
+	 * @param detDentadura. 
+	 */
 	@POST
 	@Path("guardarDetalleDen")
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -60,6 +69,10 @@ public class serviciosRest {
 		detDentaduraOn.guardarDetDentadura(detDentadura);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de buscar un objeto detalle dentadura mediante la llave primaria
+	 * @param id.
+	 */
 	@POST
 	@Path("readDetalleDen")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -69,6 +82,11 @@ public class serviciosRest {
 		return dd;
 	}
 	
+	/*
+	 * Este metodo realiazara el metodo de eliminar un objeto de tipo detalle dentadura mediante la busqueda de la llaver
+	 * primaria
+	 * @param id
+	 */
 	@POST
 	@Path("deleteDetalleDen")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -76,6 +94,10 @@ public class serviciosRest {
 		detDentaduraOn.delete(id);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de retornar todo un listado de los detalles dentaduras que existan
+	 * dentro de la base de datos.
+	 */
 	@GET
 	@Path("findAllDetalleDen")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -88,6 +110,11 @@ public class serviciosRest {
 //-----------------------------------------------------------------------------------	
 	
 	//servicios historial clinico
+	/*
+	 * este metodo publicar o realizara la accion de guardar un objeto
+	 * de tipo historial clincio .
+	 * @param clinica. 
+	 */
 	@POST
 	@Path("guardarHistorialClinico")
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -95,6 +122,10 @@ public class serviciosRest {
 		hstClinicaOn.guardarHstClinico(clinica);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de buscar un objeto historial clinica  mediante la llave primaria
+	 * @param id.
+	 */
 	@POST
 	@Path("readHistorialClinico")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -104,6 +135,11 @@ public class serviciosRest {
 		return h;
 	}
 	
+	/*
+	 * Este metodo realiazara el metodo de eliminar un objeto de tipo historial clinica mediante la busqueda de la llave
+	 * primaria
+	 * @param id
+	 */
 	@POST
 	@Path("deleteHistorialClinico")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -111,6 +147,10 @@ public class serviciosRest {
 		hstClinicaOn.delete(id);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de retornar todo un listado de los historiales clinicos  que existan
+	 * dentro de la base de datos.
+	 */
 	@GET
 	@Path("findAllHistorialClinico")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -121,6 +161,11 @@ public class serviciosRest {
 	
 //-----------------------------------------------------------------------------------		
 	//servicios personas
+	/*
+	 * este metodo publicar o realizara la accion de guardar un objeto
+	 * de tipo persona.
+	 * @param persona. 
+	 */
 	@POST
 	@Path("guardarPersona")
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -128,6 +173,10 @@ public class serviciosRest {
 		personaOn.guardarPersona(persona);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de buscar un objeto persona  mediante la llave primaria
+	 * @param cedula.
+	 */
 	@POST
 	@Path("readPersona")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -137,6 +186,11 @@ public class serviciosRest {
 		return p;
 	}
 	
+	/*
+	 * Este metodo realiazara el metodo de eliminar un objeto de tipo persona mediante la busqueda de la llave
+	 * primaria
+	 * @param cedula
+	 */
 	@POST
 	@Path("deletePersona")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -144,6 +198,10 @@ public class serviciosRest {
 		personaOn.delete(cedula);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de retornar todo un listado de las personas que existan
+	 * dentro de la base de datos.
+	 */
 	@GET
 	@Path("findAllPersona")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -155,6 +213,11 @@ public class serviciosRest {
 //-----------------------------------------------------------------------------------	
 	
 	//servicios citas
+	/*
+	 * este metodo publicar o realizara la accion de guardar un objeto
+	 * de tipo cita.
+	 * @param cita. 
+	 */
 	@POST
 	@Path("guardarCita")
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -162,6 +225,10 @@ public class serviciosRest {
 		citasOn.guardarCita(cita);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de buscar un objeto cita  mediante la llave primaria
+	 * @param id.
+	 */
 	@POST
 	@Path("readCita")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -171,6 +238,11 @@ public class serviciosRest {
 		return c;
 	}
 	
+	/*
+	 * Este metodo realiazara el metodo de eliminar un objeto de tipo cita mediante la busqueda de la llave
+	 * primaria
+	 * @param id
+	 */
 	@POST
 	@Path("deleteCita")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -178,6 +250,10 @@ public class serviciosRest {
 		citasOn.delete(id);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de retornar todo un listado de las citas que existan
+	 * dentro de la base de datos.
+	 */
 	@GET
 	@Path("findAllCita")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -188,6 +264,11 @@ public class serviciosRest {
 //-----------------------------------------------------------------------------------
 	
 	//servicios dentaduras
+	/*
+	 * este metodo publicar o realizara la accion de guardar un objeto
+	 * de tipo dentadura.
+	 * @param dentadura. 
+	 */
 	@POST
 	@Path("guardarDentadura")
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -195,6 +276,10 @@ public class serviciosRest {
 		dentaduraOn.guardarDentadura(dentadura);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de buscar un objeto dentadura  mediante la llave primaria
+	 * @param id.
+	 */
 	@POST
 	@Path("readDentadura")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -204,6 +289,11 @@ public class serviciosRest {
 		return d;
 	}
 	
+	/*
+	 * Este metodo realiazara el metodo de eliminar un objeto de dentadura mediante la busqueda de la llave
+	 * primaria
+	 * @param id
+	 */
 	@POST
 	@Path("deleteDentadura")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -211,6 +301,10 @@ public class serviciosRest {
 		dentaduraOn.delete(id);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de retornar todo un listado de las dentaduras que existan
+	 * dentro de la base de datos.
+	 */
 	@GET
 	@Path("findAllDentadura")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -221,6 +315,11 @@ public class serviciosRest {
 	
 //-----------------------------------------------------------------------------------
 	//servicios detalle de pago
+	/*
+	 * este metodo publicar o realizara la accion de guardar un objeto
+	 * de tipo detalle pago.
+	 * @param pago. 
+	 */
 	@POST
 	@Path("guardarDetallePago")
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -228,6 +327,10 @@ public class serviciosRest {
 		detPagoOn.guardarDetPago(pago);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de buscar un objeto detalle pago  mediante la llave primaria
+	 * @param id.
+	 */
 	@POST
 	@Path("readDetallePago")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -237,6 +340,11 @@ public class serviciosRest {
 		return p;
 	}
 	
+	/*
+	 * Este metodo realiazara el metodo de eliminar un objeto de detalle pago mediante la busqueda de la llave
+	 * primaria
+	 * @param id
+	 */
 	@POST
 	@Path("deleteDetallePago")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -244,6 +352,10 @@ public class serviciosRest {
 		detPagoOn.delete(id);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de retornar todo un listado de los detalles pagos que existan
+	 * dentro de la base de datos.
+	 */
 	@GET
 	@Path("findAllDetallePago")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -254,6 +366,11 @@ public class serviciosRest {
 	
 //-----------------------------------------------------------------------------------
 	//servicios usuarios
+	/*
+	 * este metodo publicara o realizara la accion de guardar un objeto
+	 * de tipo usuario.
+	 * @param usuario. 
+	 */
 	@POST
 	@Path("guardarUsuarios")
 	@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -261,6 +378,10 @@ public class serviciosRest {
 		usuarioOn.guardarUsuario(usuario);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de buscar un objeto usuario mediante la llave primaria
+	 * @param correo.
+	 */
 	@POST
 	@Path("readUsuarios")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -270,6 +391,11 @@ public class serviciosRest {
 		return u;
 	}
 	
+	/*
+	 * Este metodo realiazara el metodo de eliminar un objeto de usuario mediante la busqueda de la llave
+	 * primaria
+	 * @param correo
+	 */
 	@POST
 	@Path("deleteUsuarios")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -277,6 +403,10 @@ public class serviciosRest {
 		usuarioOn.delete(correo);
 	}
 	
+	/*
+	 * Este metodo realizara la accion de retornar todo un listado de los usuarios que existan
+	 * dentro de la base de datos.
+	 */
 	@GET
 	@Path("findAllUsuarios")
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -285,6 +415,13 @@ public class serviciosRest {
 		return usuarios;
 	}
 	
+	/*
+	 * Este metodo se utilizara para validar si es que el usuario existe o no. Este metodo
+	 * recibe dos objetos en su parametro de tipo String. si es que existe regresara el usuario caso contrario 
+	 * retornara null.
+	 * @param correo
+	 * @param contrasenia
+	 */
 	@POST
 	@Path("validarUsuarios")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)

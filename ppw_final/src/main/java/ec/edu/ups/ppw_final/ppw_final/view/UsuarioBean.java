@@ -15,11 +15,18 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsUsuario;
 @RequestScoped
 public class UsuarioBean {
 
+	/*
+	 * Se han creado los siguientes atributos que pertenencen a un usuario 
+	 * de la misma manera se ganerado los getters y setter de cada atributo
+	 */
 	private String usCorreo;
 	private String usPassword;
 	private String usTipo;
 	
-	
+	/*
+	 * se ha creado unos atributos adicionales para realizar gestiones dentro de la base de datos
+	 * y tambien se han instanciado objetos de tipo usuario,persona y List para poder utilizarlo dentro de la interfaz.
+	 */
 	@Inject
 	private GestionUsuarioON useOn;
 	
@@ -28,6 +35,9 @@ public class UsuarioBean {
 
 	private List<OsUsuario> usuarios;
 	
+	/*
+	 * se ha creado un controlador el cual Inicializa  los objetos que se utilizaran en la interfaz
+	 */
 	@PostConstruct
 	private void init() {
 		persona = new OsPersona();
@@ -91,6 +101,10 @@ public class UsuarioBean {
 		this.usuarios = usuarios;
 	}
 	
+	/*
+	 *Este metodo nos ayuda a redirigir los datos de un paciente a otra vista
+	 *@param cedula.
+	 */
 	public String historiaPaciente (String cedula) {
 		System.out.println("Historial "+ this.usCorreo);
 		return "historial_clinico?faces-redirect=true";
