@@ -49,7 +49,6 @@ public class ControladorPersona{
 	
 	public OsPersona read(String cedula){
 		OsPersona p = em.find(OsPersona.class, cedula);
-		System.out.println(p.toString());
 		return p;
 	}
 	

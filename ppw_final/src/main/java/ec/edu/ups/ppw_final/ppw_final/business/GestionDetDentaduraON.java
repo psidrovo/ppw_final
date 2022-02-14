@@ -37,4 +37,8 @@ public class GestionDetDentaduraON {
 	public List<OsDetalleDen> findAll() {
 		return controladorDetD.findAll();
 	}
+	
+	public OsDetalleDen recuperarUltimoDetalle() {
+		return controladorDetD.recuperarUltimoDetalle();
+	}
 }

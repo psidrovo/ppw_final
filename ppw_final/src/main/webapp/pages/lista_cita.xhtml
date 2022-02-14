@@ -25,20 +25,15 @@
 		</div>
 		<h:form class="forms-sample">
 			<div class="card-body">
-				<h:dataTable value="#{dtUsuario.usuarios}" var="pacientes"
+				<h:dataTable value="#{citaBean}" var="citas"
 					id="data_table" class="table" a:style="text-align: center">
 					<h:column>
-						<f:facet name="header">Cedula</f:facet>
-						#{pacientes.osPersona.perCedula}
+						<f:facet name="header">Id</f:facet>
+						#{citas.id}
 				</h:column>
 
 					<h:column>
-						<f:facet name="header">Avatar</f:facet>
-						<img src="../img/users/user.jpg" class="table-user-thumb" alt="" />
-					</h:column>
-
-					<h:column>
-						<f:facet name="header">Nombre</f:facet>
+						<f:facet name="header">Estado</f:facet>
 						#{pacientes.osPersona.perNombre}
 					</h:column>
 					<h:column>
