@@ -78,4 +78,9 @@ public class OsDetalleDen implements Serializable {
 		return osHstClinica;
 	}
 
+	@Override
+	public String toString() {
+		return "OsDetalleDen [id=" + id + ", cuadrante=" + cuadrante + "]";
+	}
+
 }

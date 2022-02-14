@@ -24,13 +24,14 @@
 
 	<ui:define name="content">
 		<div class="card-header">
+			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 			<h3>Historial Clinico</h3>
 		</div>
 		<h:form>
 			<div class="card" style="align-items: center">
 				<h5 class="p-mt-0">Nueva entrada</h5>
 				<h:panelGrid columns="3" cellpadding="7">
-					<div>
+					<div>					
 						<p:outputLabel value="Fase" />
 						<p:inputText id="txtFase"
 							value="#{hstClinicaBean.hstClincia.hstClFase}" />
@@ -61,8 +62,15 @@
 					</div>
 					<div>
 						<p:outputLabel value="Dentadura" />
-						
-						<p:inputText id="txtDentadura" value="#{hstClinicaBean.detalle}" />
+
+						<p:inputText a:type="number" id="txtDentadura"
+							value="#{hstClinicaBean.dentadura.dentId}" />
+					</div>
+					<div>
+						<p:outputLabel value="Cuadrante" />
+
+						<p:inputText id="txtDetalleDentadura"
+							value="#{hstClinicaBean.detDentadura.cuadrante}" />
 					</div>
 				</h:panelGrid>
 				<p:commandButton value="Submit" action="#{hstClinicaBean.guardar()}"
@@ -103,6 +111,10 @@
 					<h:column>
 						<f:facet name="header">Pieza Dental</f:facet>						
 					#{historiaClinica.osDentadura.dentCdgMolar}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Cuadrante</f:facet>						
+					#{historiaClinica.osDetalleDen.cuadrante}
 					</h:column>
 					<h:column>
 						<f:facet name="header">Acciones</f:facet>
