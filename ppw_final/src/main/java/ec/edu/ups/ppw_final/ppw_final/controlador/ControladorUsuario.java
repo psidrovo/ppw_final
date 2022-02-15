@@ -48,7 +48,7 @@ public class ControladorUsuario {
 	 * @return List<OsUsuario>
 	 */
 	public List<OsUsuario> Validar(String usuario, String contrasenia) {
-		String jpql = "SELECT * FROM os_usuario p WHERE p.us_correo LIKE ?1 AND p.us_password LIKE ?2";
+		String jpql = "SELECT p FROM os_usuario p WHERE p.us_correo LIKE ?1 AND p.us_password LIKE ?2";
 
 		Query q = em.createQuery(jpql, OsUsuario.class);
 		q.setParameter(1,usuario).setParameter(2, contrasenia);
