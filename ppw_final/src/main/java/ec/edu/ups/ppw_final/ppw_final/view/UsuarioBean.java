@@ -16,27 +16,29 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsUsuario;
 public class UsuarioBean {
 
 	/**
-	 * Se han creado los siguientes atributos que pertenencen a un usuario 
-	 * de la misma manera se ganerado los getters y setter de cada atributo
+	 * Se han creado los siguientes atributos que pertenencen a un usuario de la
+	 * misma manera se ganerado los getters y setter de cada atributo
 	 */
 	private String usCorreo;
 	private String usPassword;
 	private String usTipo;
-	
+
 	/**
-	 * se ha creado unos atributos adicionales para realizar gestiones dentro de la base de datos
-	 * y tambien se han instanciado objetos de tipo usuario,persona y List para poder utilizarlo dentro de la interfaz.
+	 * se ha creado unos atributos adicionales para realizar gestiones dentro de la
+	 * base de datos y tambien se han instanciado objetos de tipo usuario,persona y
+	 * List para poder utilizarlo dentro de la interfaz.
 	 */
 	@Inject
 	private GestionUsuarioON useOn;
-	
+
 	private OsUsuario usuario;
 	private OsPersona persona;
 
 	private List<OsUsuario> usuarios;
-	
+
 	/**
-	 * se ha creado un controlador el cual Inicializa  los objetos que se utilizaran en la interfaz
+	 * se ha creado un controlador el cual Inicializa los objetos que se utilizaran
+	 * en la interfaz
 	 */
 	@PostConstruct
 	private void init() {
@@ -100,19 +102,29 @@ public class UsuarioBean {
 	public void setUsuarios(List<OsUsuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-	
+
 	/**
-	 *Este metodo nos ayuda a redirigir los datos de un paciente a otra vista
-	 *@param cedula.
-	 *@return String.
+	 * Este metodo nos ayuda a redirigir los datos de un paciente a otra vista
+	 * 
+	 * @param cedula.
+	 * @return String.
 	 */
-	public String historiaPaciente (String cedula) {
-		System.out.println("Historial "+ this.usCorreo);
+	public String historiaPaciente(String cedula) {
+		System.out.println("Historial " + this.usCorreo);
 		return "historial_clinico?faces-redirect=true";
 	}
-	
+
 	public String inicioSesion() {
-		return null;
+		usuario = useOn.read(usCorreo);
+		if (usuario != null) {
+			if (usuario.getUsTipo().equals("ODONTOLOGO")) {
+				return "lista_pacientes";
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
 	}
-	
+
 }

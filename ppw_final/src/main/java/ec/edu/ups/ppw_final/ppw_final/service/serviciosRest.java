@@ -9,6 +9,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
 
 import ec.edu.ups.ppw_final.ppw_final.business.GestionCitasON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionDentaduraON;
@@ -185,9 +186,10 @@ public class serviciosRest {
 	@Path("readPersona")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public OsPersona readPersona(@QueryParam("cedula") String cedula) {
+	public Response readPersona(@QueryParam("cedula") String cedula) {
 		OsPersona p= personaOn.read(cedula);
-		return p;
+		return Response.ok(p).build();
+		//return p;
 	}
 	
 	/**

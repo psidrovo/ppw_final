@@ -73,26 +73,25 @@
 
 						<p>Bienvenido!</p>
 						<div class="card-body">
-							<h:form class="forms-sample">
+							<h:form outcome="lista_pacientes" class="forms-sample">
 								<div class="form-group">
 									<span class="ui-float-label"> <p:inputText
 											value="#{dtUsuario.usCorreo}" a:type="text"
 											class="form-control" id="txtCorreo" a:required="true" /> <p:outputLabel
 											for="@previous" value="Correo Electronico" />
 									</span>
-								</div>								
+								</div>
 								<div class="form-group">
 									<span class="ui-float-label"> <p:password
 											id="inlineFeedback" required="true"
-											value="#{dtUsuario.usPassword}"
-											toggleMask="true" redisplay="true" /> <p:outputLabel
-											for="@previous" value="Contraseña" />
+											value="#{dtUsuario.usPassword}" toggleMask="true"
+											redisplay="true" /> <p:outputLabel for="@previous"
+											value="Contraseña" />
 									</span>
 								</div>
 								<div class="nav justify-content-center">
-									<p:linkButton value="Iniciar Sesion" outcome="lista_pacientes"
-										action="#{dtUsuario.inicioSesion()}"/>
-
+									<h:commandButton  value="Iniciar Sesion"										
+										action="#{dtUsuario.inicioSesion()}" />
 								</div>
 							</h:form>
 						</div>

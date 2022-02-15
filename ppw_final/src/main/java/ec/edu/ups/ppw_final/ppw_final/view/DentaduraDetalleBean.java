@@ -54,10 +54,8 @@ public class DentaduraDetalleBean {
 		detDetdura = new OsDetalleDen();
 		System.out.println(dentaduraSeleccionada + " " + cedulaPaciente);
 		histortiasClinicas = hstON.findAll();
-		System.out.println(histortiasClinicas.toString());
 		histortiasClinicas = histortiasClinicas.stream()
 				.filter(p -> p.getOsPersona().getPerCedula().equals(cedulaPaciente)).collect(Collectors.toList());
-		System.out.println(histortiasClinicas.toString());
 		histortiasClinicas = histortiasClinicas.stream()
 				.filter(d -> d.getOsDetalleDen().getOsDentadura().getDentCdgMolar().equals(dentaduraSeleccionada))
 				.collect(Collectors.toList());

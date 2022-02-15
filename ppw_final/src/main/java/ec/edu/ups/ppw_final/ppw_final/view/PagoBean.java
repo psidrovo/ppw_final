@@ -40,12 +40,10 @@ public class PagoBean implements Serializable{
 	private OsPersona persona;
 	private List<OsDetPago> pagos;
 
-
-	public void init() {
 	/**
 	 * Se ha creado un constructor en el cual se Inicializa los objetos.
 	 */
-	private void init() {
+	public void init() {
 		pago = new OsDetPago();
 		persona = new OsPersona();
 		pagos = pagoOn.findAll().stream().filter(pg -> pg.getOsPersona().getPerCedula().equals(cedulaPaciente)).collect(Collectors.toList());

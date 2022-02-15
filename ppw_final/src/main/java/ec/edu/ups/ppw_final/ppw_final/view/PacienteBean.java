@@ -19,11 +19,10 @@ import ec.edu.ups.ppw_final.ppw_final.business.GestionUsuarioON;
 public class PacienteBean implements Serializable{
 
 	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	 * se ha creado todos los atributos que contiene un paciente
 	 */
+	private static final long serialVersionUID = 1L;
+	 
 	private String cedula;
 	private String nombre;
 	private String apellido;
@@ -47,15 +46,10 @@ public class PacienteBean implements Serializable{
 	private List<OsPersona> personas;
 	private List<OsUsuario> usuarios;
 
-<<<<<<< HEAD
-	public void init() {
-=======
 	/**
 	 * Se ha creado un constructor en el cual se Inicializa los objetos.
 	 */
-	@PostConstruct
-	private void init() {
->>>>>>> d92e8cb53e96e090c7c1619b90958debc32663f6
+	public void init() {
 		persona = new OsPersona();
 		usuario = new OsUsuario();
 		personas = perOn.findAll();

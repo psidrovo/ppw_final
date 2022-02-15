@@ -20,11 +20,10 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 public class CitaBean implements Serializable {
 
 	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	 * se ha creado todos los atributos que contienen una cita
 	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int id;
 	private String descripcion;
 	private String estado;
@@ -43,16 +42,11 @@ public class CitaBean implements Serializable {
 	private OsCita cita;
 	private List<OsPersona> personas;
 	private List<OsCita> citas;
-
-<<<<<<< HEAD
-	public void init() {
-=======
 	/**
 	 * Se ha creado un constructor en el cual se Inicializa los objetos.
 	 */
-	@PostConstruct
-	private void init() {
->>>>>>> d92e8cb53e96e090c7c1619b90958debc32663f6
+
+	public void init() {	
 		persona = new OsPersona();
 		cita = new OsCita();
 		citas = citaOn.findAll();
