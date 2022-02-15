@@ -4,16 +4,16 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
 	<f:metadata>
 		<!-- <f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam>
 		<f:viewAction action="#{clientesBean.loadDatos()}"></f:viewAction>
 		-->
-		<f:viewParam name="cedulaPaciente"
-			value="#{pagoBean.cedulaPaciente}" />
-		<f:viewAction action="#{pagoBean.init}" />
+		<f:viewParam name="cedulaPaciente" value="#{pagoBean.cedulaPaciente}" />
+		<f:viewAction action="#{pagoBean.init()}" />
 	</f:metadata>
 
 
@@ -23,42 +23,39 @@
 
 	<ui:define name="content">
 		<div class="card-header">
-			<h3>Pacientes</h3>
+			<h3>Pagos</h3>
 		</div>
-		<dir>
-		</dir>
-		<div class="nav justify-content-center">
-			<h:inputText value="#{pacienteBean.persona.perNombre}" a:type="text"
-				class="form-control" id="txtPago"
-				a:placeholder="Ingrese valor a pagar $" a:required="true" />
-			<h:commandButton a:title="Agregar Pago" value="Agregar Pago"
-				class="btn btn-success">
-			</h:commandButton>
-		</div>
-		<div class="card-body">
-			<table id="data_table" class="table">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Fecha</th>
-						<th>Valor</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>10/02/2022</td>
-						<td>0.00</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>11/02/2022</td>
-						<td>0.00</td>
-					</tr>
+		<h:form>			
+			<div class="card" style="align-items: center">
+				<h5 class="p-mt-0">Nueva Pago</h5>
+				<h:panelGrid columns="3" cellpadding="7">
+					<div>
+						<p:outputLabel value="Valor" />
+						<p:inputText id="txtValor"
+							value="#{pagoBean.pago.detPgValor}" />
+					</div>
+				</h:panelGrid>
+				<p:commandButton value="Registrar Pago"
+					action="#{pagoBean.guardar()}" update="display"
+					styleClass="p-mt-3" />
 
-				</tbody>
-			</table>
-		</div>
+			</div>
+
+			<div class="card-body">
+				<h:dataTable id="display" value="#{pagoBean.pagos}" var="pago"
+					class="table" a:style="text-align: center">
+					<h:column>
+						<f:facet name="header">Id</f:facet>						
+					#{pago.detPgId}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Pago</f:facet>						
+					#{pago.detPgValor}
+					</h:column>
+				</h:dataTable>
+			</div>
+
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

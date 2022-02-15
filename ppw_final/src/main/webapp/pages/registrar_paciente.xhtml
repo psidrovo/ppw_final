@@ -53,19 +53,23 @@
 						<div class="form-group">
 							<span class="ui-float-label"> <p:inputText
 									value="#{pacienteBean.usuario.usCorreo}" a:type="email"
-									class="form-control" id="txtEmail" a:required="true" /> 
-								<p:outputLabel for="@previous" value="Correo Electronico" />
+									class="form-control" id="txtEmail" a:required="true" /> <p:outputLabel
+									for="@previous" value="Correo Electronico" />
 							</span>
 						</div>
+
 						<div class="form-group">
-							<span class="ui-float-label"> <p:inputText
-									value="#{pacienteBean.usuario.usPassword}" a:type="password"
-									class="form-control" id="txtPassword" a:required="true" /> <p:outputLabel
+							<span class="ui-float-label"> <p:password
+									id="inlineFeedback" required="true"
+									value="#{pacienteBean.usuario.usPassword}" feedback="true"
+									inline="true" promptLabel="Ingresa tu contraseña"
+									weakLabel="Débil" goodLabel="Buena" strongLabel="Fuerte"
+									toggleMask="true" redisplay="true" /> <p:outputLabel
 									for="@previous" value="Contraseña del paciente" />
 							</span>
 						</div>
 						<div class="nav justify-content-center">
-							<p:commandButton value="Submit" update="msgs"
+							<p:commandButton value="Registrar" update="msgs"
 								action="#{pacienteBean.guardarSumit}" icon="pi pi-check" />
 
 						</div>

@@ -9,9 +9,7 @@
 <h:head>
 
 	<f:metadata>
-		<!-- <f:viewParam name="id" value="#{clientesBean.cedula}"></f:viewParam>
-		<f:viewAction action="#{clientesBean.loadDatos()}"></f:viewAction>
-		-->
+		<f:viewAction action="#{citaBean.init()}" />
 	</f:metadata>
 
 
@@ -20,57 +18,58 @@
 <ui:composition template="blank-page.xhtml">
 
 	<ui:define name="content">
+		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 		<div class="card-header">
-			<h3>Pacientes</h3>
+			<h3>Citas Odontologicas</h3>
 		</div>
 		<h:form class="forms-sample">
-			<div class="card-body">
-				<h:dataTable value="#{citaBean}" var="citas"
-					id="data_table" class="table" a:style="text-align: center">
+			<p:growl id="message" showDetail="true" />
+			<div class="card-body">			
+				<h:dataTable id="display" value="#{citaBean.citas}" var="cita" 
+					class="table" a:style="text-align: center">
 					<h:column>
 						<f:facet name="header">Id</f:facet>
-						#{citas.id}
-				</h:column>
-
+						#{cita.ctId}
+					</h:column>
 					<h:column>
+						<f:facet name="header">Paciente</f:facet>
+						#{cita.osPersona.perNombre}  #{cita.osPersona.perApellido}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Fecha</f:facet>
+						#{cita.ctFecha}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Descripcion</f:facet>
+						#{cita.ctDescripcion}
+					</h:column>
+					<h:column id="txtEstado">
 						<f:facet name="header">Estado</f:facet>
-						#{pacientes.osPersona.perNombre}
-					</h:column>
-					<h:column>
-						<f:facet name="header">Apellido</f:facet>
-						#{pacientes.osPersona.perApellido}
-					</h:column>
-					<h:column>
-						<f:facet name="header">Deuda</f:facet>
-						0.0
+						#{cita.ctEstado}
 					</h:column>
 
-					<h:column>
-						<f:facet name="header">Correo</f:facet>
-						#{pacientes.usCorreo}
-					</h:column>
 					<h:column>
 						<f:facet name="header">Acciones</f:facet>
-						<p:linkButton value="Historia" icon="ik ik-eye text-white"
-							styleClass="rounded-button" outcome="historial_clinico">
-							<f:param name="cedulaPaciente"
-								value="#{pacientes.osPersona.perCedula}" />
-							<!--f:param name="cedulaPaciente" value= "#{pacientes.osPersona.perCedula}" /-->
-						</p:linkButton>
-						<p:linkButton value="Pagos" icon="ik ik-dollar-sign text-white"
-							styleClass="rounded-button ui-button-success"
-							outcome="pagos_paciente">
-							<f:param name="cedulaPaciente"
-								value="#{pacientes.osPersona.perCedula}" />
-							<!--f:param name="cedulaPaciente" value= "#{pacientes.osPersona.perCedula}" /-->
-						</p:linkButton>
-
+						<div class="nav justify-content-center">
+							<p:commandButton
+								action="#{citaBean.actualizarCitaConfirmar(cita.ctId)}"
+								value="Confirmar" update="msgs" 
+								styleClass="rounded-button ui-button-success"
+								icon="pi pi-check-circle"  />
+						</div>
+						<div class="nav justify-content-center">
+							<p:commandButton
+								action="#{citaBean.actualizarCitaRechazar(cita.ctId)}"
+								value="Rechazar" update="msgs"
+								styleClass="rounded-button ui-button-danger"
+								icon="pi pi-times-circle" />
+						</div>
 					</h:column>
 
 				</h:dataTable>
 			</div>
-		</h:form>
 
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

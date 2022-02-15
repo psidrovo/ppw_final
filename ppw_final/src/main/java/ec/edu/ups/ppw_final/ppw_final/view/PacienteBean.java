@@ -1,15 +1,15 @@
 package ec.edu.ups.ppw_final.ppw_final.view;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.apache.taglibs.standard.tag.common.xml.ForEachTag;
 
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsUsuario;
@@ -17,9 +17,13 @@ import ec.edu.ups.ppw_final.ppw_final.business.GestionPersonaON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionUsuarioON;
 
 @Named
-@RequestScoped
-public class PacienteBean {
+@ViewScoped
+public class PacienteBean implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String cedula;
 	private String nombre;
 	private String apellido;
@@ -38,8 +42,7 @@ public class PacienteBean {
 	private List<OsPersona> personas;
 	private List<OsUsuario> usuarios;
 
-	@PostConstruct
-	private void init() {
+	public void init() {
 		persona = new OsPersona();
 		usuario = new OsUsuario();
 		personas = perOn.findAll();

@@ -177,8 +177,6 @@ public class HstClinicaBean implements Serializable{
 		persona = perOn.read(cedulaPaciente);	
 		int idDentadura= dentadura.getDentId();
 		dentadura = denOn.read(idDentadura);
-		
-
 		detDentadura.setOsDentadura(dentadura);
 		dtDOn.guardarDetDentadura(detDentadura);
 		detDentadura = dtDOn.recuperarUltimoDetalle();
