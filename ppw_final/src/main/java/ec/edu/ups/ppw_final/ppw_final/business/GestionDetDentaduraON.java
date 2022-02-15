@@ -63,4 +63,8 @@ public class GestionDetDentaduraON {
 	public OsDetalleDen recuperarUltimoDetalle() {
 		return controladorDetD.recuperarUltimoDetalle();
 	}
+	
+	public List<OsDetalleDen> encontrarDetalleDentadura(String cedulaPaciente, String dentadura) {
+		return controladorDetD.encontrarDetalleDentadura(cedulaPaciente,dentadura);
+	}
 }

@@ -31,7 +31,7 @@
 			<div class="card" style="align-items: center">
 				<h5 class="p-mt-0">Nueva entrada</h5>
 				<h:panelGrid columns="3" cellpadding="7">
-					<div>					
+					<div>
 						<p:outputLabel value="Fase" />
 						<p:inputText id="txtFase"
 							value="#{hstClinicaBean.hstClincia.hstClFase}" />
@@ -121,9 +121,11 @@
 						<p:linkButton value="Detalle Pieza"
 							icon="ik ik-arrow-right-circle text-white"
 							styleClass="rounded-button ui-button-success"
-							outcome="historial_clinico">
+							outcome="detalle_dental">
 							<f:param name="cedulaPaciente"
-								value="#{pacientes.osPersona.perCedula}" />
+								value="#{hstClinicaBean.cedulaPaciente}" />
+							<f:param name="piezaDental"
+								value="#{historiaClinica.osDetalleDen.osDentadura.dentCdgMolar}" />
 							<!--f:param name="cedulaPaciente" value= "#{pacientes.osPersona.perCedula}" /-->
 						</p:linkButton>
 					</h:column>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<f:metadata>
+		<f:viewParam name="cedulaPaciente"
+			value="#{dentaduraDetalleBean.cedulaPaciente}" />
+		<f:viewParam name="piezaDental"
+			value="#{dentaduraDetalleBean.dentaduraSeleccionada}" />
+		<f:viewAction action="#{dentaduraDetalleBean.init()}" />
+	</f:metadata>
+
+
+</h:head>
+
+<ui:composition template="blank-page.xhtml">
+
+	<ui:define name="content">
+		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+		<div class="card-header">
+			<h3>Detalle Dental</h3>
+		</div>
+		<h:form class="forms-sample">
+			<p:growl id="message" showDetail="true" />
+			<div class="card-body">
+				<h:dataTable id="display"
+					value="#{dentaduraDetalleBean.histortiasClinicas}" var="detalles"
+					class="table" a:style="text-align: center">
+					<h:column>
+						<f:facet name="header">Detalle Dental</f:facet>
+						#{detalles.hstClDetalle}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Cuadrante</f:facet>
+						#{detalles.osDetalleDen.cuadrante}
+					</h:column>
+				</h:dataTable>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

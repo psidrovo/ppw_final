@@ -154,7 +154,6 @@ public class PacienteBean implements Serializable{
 	}
 
 	public String guardar() {
-
 		usuario.setUsTipo("PACIENTE");
 		perOn.guardarPersona(persona);
 		usuario.setOsPersona(persona);
@@ -166,7 +165,7 @@ public class PacienteBean implements Serializable{
 	}
 	
 	public void guardarSumit() {
-
+		System.out.println(persona.toString());
 		usuario.setUsTipo("PACIENTE");
 		perOn.guardarPersona(persona);
 		usuario.setOsPersona(persona);

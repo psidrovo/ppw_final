@@ -130,4 +130,10 @@ public class OsHstClinica implements Serializable {
 		this.osPersona = osPersona;
 	}
 
+	@Override
+	public String toString() {
+		return "OsHstClinica [hstClId=" + hstClId + ", hstClDetalle=" + hstClDetalle + ", hstClFase=" + hstClFase
+				+ ", hstClFecha=" + hstClFecha + ", hstCosto=" + hstCosto + ", hstReceta=" + hstReceta
+				+ ", hstTratamiento=" + hstTratamiento + "]";
+	}	
 }

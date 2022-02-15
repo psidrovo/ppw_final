@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html class="no-js" lang="en" xml:lang="en"
-	xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
 
-<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<title>Iniciar | OdontSoft</title>
 
-<title>Iniciar | OdontSoft</title>
+	<meta name="description" content="" />
 
-<meta name="description" content="" />
+	<meta name="keywords" content="" />
 
-<meta name="keywords" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="../favicon.ico" type="image/x-icon" />
+	<link
+		href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800"
+		rel="stylesheet" />
 
-<link rel="icon" href="../favicon.ico" type="image/x-icon" />
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800"
-	rel="stylesheet" />
+	<link rel="stylesheet"
+		href="../plugins/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="../plugins/fontawesome-free/css/all.min.css" />
+	<link rel="stylesheet"
+		href="../plugins/ionicons/dist/css/ionicons.min.css" />
+	<link rel="stylesheet"
+		href="../plugins/icon-kit/dist/css/iconkit.min.css" />
+	<link rel="stylesheet"
+		href="../plugins/perfect-scrollbar/css/perfect-scrollbar.css" />
+	<link rel="stylesheet" href="../dist/css/theme.min.css" />
 
-<link rel="stylesheet"
-	href="../plugins/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="../plugins/fontawesome-free/css/all.min.css" />
-<link rel="stylesheet"
-	href="../plugins/ionicons/dist/css/ionicons.min.css" />
-<link rel="stylesheet"
-	href="../plugins/icon-kit/dist/css/iconkit.min.css" />
-<link rel="stylesheet"
-	href="../plugins/perfect-scrollbar/css/perfect-scrollbar.css" />
-<link rel="stylesheet" href="../dist/css/theme.min.css" />
+	<script src="https://www.google-analytics.com/analytics.js"></script>
+	<script src="../src/js/vendor/modernizr-2.8.3.min.js"></script>
+</h:head>
 
-<script src="https://www.google-analytics.com/analytics.js"></script>
-<script src="../src/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
-
-<body>
+<h:body>
 	<!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -70,37 +72,31 @@
 						<h3>INICIAR SESION</h3>
 
 						<p>Bienvenido!</p>
-						<form action="../index.html">
-
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Email"
-									required="" /> <i class="ik ik-user" />
-							</div>
-
-							<div class="form-group">
-								<input type="password" class="form-control"
-									placeholder="Contraseña" required="" /> <i class="ik ik-lock" />
-							</div>
-
-							<div class="row">
-
-								<div class="col text-left">
-									<label class="custom-control custom-checkbox"> <input
-										type="checkbox" class="custom-control-input"
-										id="item_checkbox" name="item_checkbox" value="option1" /> <span
-										class="custom-control-label">&nbsp;Recordarme</span>
-									</label>
+						<div class="card-body">
+							<h:form class="forms-sample">
+								<div class="form-group">
+									<span class="ui-float-label"> <p:inputText
+											value="#{dtUsuario.usCorreo}" a:type="text"
+											class="form-control" id="txtCorreo" a:required="true" /> <p:outputLabel
+											for="@previous" value="Correo Electronico" />
+									</span>
+								</div>								
+								<div class="form-group">
+									<span class="ui-float-label"> <p:password
+											id="inlineFeedback" required="true"
+											value="#{dtUsuario.usPassword}"
+											toggleMask="true" redisplay="true" /> <p:outputLabel
+											for="@previous" value="Contraseña" />
+									</span>
 								</div>
+								<div class="nav justify-content-center">
+									<p:linkButton value="Iniciar Sesion" outcome="lista_pacientes"
+										action="#{dtUsuario.inicioSesion()}"/>
 
-								<div class="col text-right">
-									<a href="forgot-password.html">Olvidaste tu contraseña ?</a>
 								</div>
-							</div>
+							</h:form>
+						</div>
 
-							<div class="sign-btn text-center">
-								<button class="btn btn-theme">Iniciar</button>
-							</div>
-						</form>
 
 						<div class="register">
 
@@ -140,5 +136,5 @@
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
 
-</body>
+</h:body>
 </html>
