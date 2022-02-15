@@ -1,5 +1,6 @@
 package ec.edu.ups.ppw_final.ppw_final.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -80,7 +81,8 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public OsDetalleDen readDetDentadura(@QueryParam("id") int id) {
 		OsDetalleDen dd= detDentaduraOn.read(id);
-		return dd;
+		OsDetalleDen dNuevo = new OsDetalleDen(dd.getId(), dd.getCuadrante());
+		return dNuevo;
 	}
 	
 	/**
@@ -105,7 +107,12 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public List<OsDetalleDen> findAllDetalleDen(){
 		List<OsDetalleDen> detalles = detDentaduraOn.findAll();
-		return detalles;
+		List<OsDetalleDen> detallesnuevos = new ArrayList<>();
+		for (OsDetalleDen osDetalleDen : detalles) {
+			OsDetalleDen d = new OsDetalleDen(osDetalleDen.getId(), osDetalleDen.getCuadrante());
+			detallesnuevos.add(d);
+		}
+		return detallesnuevos;
 	}
 	
 	
@@ -135,7 +142,9 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public OsHstClinica readHistorialClinico(@QueryParam("id") int id) {
 		OsHstClinica h= hstClinicaOn.read(id);
-		return h;
+		OsHstClinica dNuevo = new OsHstClinica(h.getHstClId(),h.getHstClDetalle(),h.getHstClFase(),h.getHstClFecha(),h.getHstCosto(),
+				h.getHstReceta(),h.getHstTratamiento());
+		return dNuevo;
 	}
 	
 	/**
@@ -160,7 +169,13 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public List<OsHstClinica> findAllHistorialClinico(){
 		List<OsHstClinica> historiales = hstClinicaOn.findAll();
-		return historiales;
+		List<OsHstClinica> detallesnuevos = new ArrayList<>();
+		for (OsHstClinica osDetalleDen : historiales) {
+			OsHstClinica dNuevo = new OsHstClinica(osDetalleDen.getHstClId(),osDetalleDen.getHstClDetalle(),osDetalleDen.getHstClFase(),osDetalleDen.getHstClFecha(),osDetalleDen.getHstCosto(),
+					osDetalleDen.getHstReceta(),osDetalleDen.getHstTratamiento());
+			detallesnuevos.add(dNuevo);
+		}
+		return detallesnuevos;
 	}
 	
 //-----------------------------------------------------------------------------------		
@@ -186,9 +201,10 @@ public class serviciosRest {
 	@Path("readPersona")
 	//@Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-	public Response readPersona(@QueryParam("cedula") String cedula) {
+	public OsPersona readPersona(@QueryParam("cedula") String cedula) {
 		OsPersona p= personaOn.read(cedula);
-		return Response.ok(p).build();
+		OsPersona dNuevo = new OsPersona(p.getPerCedula(),p.getPerApellido(),p.getPerDireccion(),p.getPerNombre());
+		return dNuevo;
 		//return p;
 	}
 	
@@ -214,7 +230,13 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public List<OsPersona> findAllPersona(){
 		List<OsPersona> personas = personaOn.findAll();
-		return personas;
+		List<OsPersona> detallesnuevos = new ArrayList<>();
+		for (OsPersona osDetalleDen : personas) {
+			OsPersona dNuevo = new OsPersona(osDetalleDen.getPerCedula(), osDetalleDen.getPerApellido(),
+					osDetalleDen.getPerDireccion(),osDetalleDen.getPerNombre());
+			detallesnuevos.add(dNuevo);
+		}
+		return detallesnuevos;
 	}
 	
 //-----------------------------------------------------------------------------------	

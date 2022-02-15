@@ -42,6 +42,15 @@ public class OsCita implements Serializable {
 	public OsCita() {
 	}
 
+	public OsCita(int ctId, String ctDescripcion, String ctEstado, String ctFecha) {
+		this.ctId = ctId;
+		this.ctDescripcion = ctDescripcion;
+		this.ctEstado = ctEstado;
+		this.ctFecha = ctFecha;
+	}
+
+
+
 	public int getCtId() {
 		return this.ctId;
 	}

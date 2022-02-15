@@ -32,6 +32,13 @@ public class OsDentadura implements Serializable {
 	//bi-directional many-to-one association to OsDetalleDen
 	@OneToMany(mappedBy="osDentadura")
 	private List<OsDetalleDen> osDetalleDens;
+	
+	
+
+	public OsDentadura(int dentId, String dentCdgMolar) {
+		this.dentId = dentId;
+		this.dentCdgMolar = dentCdgMolar;
+	}
 
 	public OsDentadura() {
 	}

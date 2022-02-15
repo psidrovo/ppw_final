@@ -57,6 +57,21 @@ public class OsHstClinica implements Serializable {
 
 	public OsHstClinica() {
 	}
+	
+	
+
+	public OsHstClinica(int hstClId, String hstClDetalle, String hstClFase, Date hstClFecha, String hstCosto,
+			String hstReceta, String hstTratamiento) {
+		this.hstClId = hstClId;
+		this.hstClDetalle = hstClDetalle;
+		this.hstClFase = hstClFase;
+		this.hstClFecha = hstClFecha;
+		this.hstCosto = hstCosto;
+		this.hstReceta = hstReceta;
+		this.hstTratamiento = hstTratamiento;
+	}
+
+
 
 	public int getHstClId() {
 		return this.hstClId;

@@ -53,6 +53,17 @@ public class OsPersona implements Serializable {
 
 	public OsPersona() {
 	}
+	
+	
+
+	public OsPersona(String perCedula, String perApellido, String perDireccion, String perNombre) {
+		this.perCedula = perCedula;
+		this.perApellido = perApellido;
+		this.perDireccion = perDireccion;
+		this.perNombre = perNombre;
+	}
+
+
 
 	public String getPerCedula() {
 		return this.perCedula;
