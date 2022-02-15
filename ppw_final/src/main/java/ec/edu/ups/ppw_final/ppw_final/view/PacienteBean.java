@@ -22,6 +22,8 @@ public class PacienteBean implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	 * se ha creado todos los atributos que contiene un paciente
+	 */
 	private String cedula;
 	private String nombre;
 	private String apellido;
@@ -30,6 +32,11 @@ public class PacienteBean implements Serializable{
 	private String contrasenia;
 	private String tipo;
 
+	/**
+	 * se ha creado los atributos adicionales para poder utilizarlos
+	 * y manipular la base de datos.
+	 * 
+	 */
 	@Inject
 	private GestionPersonaON perOn;
 	@Inject
@@ -40,7 +47,15 @@ public class PacienteBean implements Serializable{
 	private List<OsPersona> personas;
 	private List<OsUsuario> usuarios;
 
+<<<<<<< HEAD
 	public void init() {
+=======
+	/**
+	 * Se ha creado un constructor en el cual se Inicializa los objetos.
+	 */
+	@PostConstruct
+	private void init() {
+>>>>>>> d92e8cb53e96e090c7c1619b90958debc32663f6
 		persona = new OsPersona();
 		usuario = new OsUsuario();
 		personas = perOn.findAll();
@@ -152,6 +167,11 @@ public class PacienteBean implements Serializable{
 		this.personas = personas;
 	}
 
+	/**
+	 * Este metodo realiza la accion de guardar una paciente con su usuario en caso de que no exista 
+	 * una vez creada la persona se lo asignara al objeto cita y se creara el objeto cita
+	 * @return String.
+	 */
 	public String guardar() {
 		usuario.setUsTipo("PACIENTE");
 		perOn.guardarPersona(persona);
@@ -163,6 +183,10 @@ public class PacienteBean implements Serializable{
 		return null;
 	}
 	
+	/**
+	 *  Este metodo realiza la accion de guardar una paciente con su usuario en caso de que no exista 
+	 * una vez creada la persona se lo asignara al objeto cita y se creara el objeto cita
+	 */
 	public void guardarSumit() {
 		System.out.println(persona.toString());
 		usuario.setUsTipo("PACIENTE");
@@ -174,6 +198,11 @@ public class PacienteBean implements Serializable{
 		this.init();
 	}
 
+	/**
+	 * este metodo realizara la busqueda del objeto paciente medianta la llave primaria.
+	 * en caso de no encontrar el objeto se imprimira un mensaje en consola que no ha encontrado el objeto
+	 * @return String.
+	 */
 	public String buscarPaciente() {
 		OsPersona p = perOn.read(persona.getPerCedula());
 		if (p != null) {
@@ -187,6 +216,10 @@ public class PacienteBean implements Serializable{
 		return null;
 	}
 
+	/**
+	 * Este metodo retorna todo el listado de paciente que se encuentra dentro de la base de datos.
+	 * @return OsPersona
+	 */
 	public OsPersona listarPacientes() {
 		for (OsPersona p : personas) {
 			System.out.println(p.toString());
@@ -196,6 +229,12 @@ public class PacienteBean implements Serializable{
 		return null;
 	}
 
+	/**
+	 * este metodo realiza la eliminacion de un objeto paciente mediante la llave primaria. en caso
+	 * de que no encuentro el objeto se imprimira un mensaje en consola informando al usuario de que no 
+	 * se ha podidio eliminar a persona o el usuario.
+	 * @return String.
+	 */
 	public String eliminarPaciente() {
 		OsPersona p = perOn.read(persona.getPerCedula());
 		OsUsuario u = useOn.read(usuario.getUsCorreo());

@@ -15,7 +15,7 @@ import java.util.List;
 public class OsPersona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	/*
+	/**
 	 * se ha instanciado todos los atributos necesarios para crear 
 	 * el objeto persona. De la misma manera se ha utilizado anotaciones de persistence
 	 * para poder nombrar a la tabla y a las columnas dentro de la base de datos. 

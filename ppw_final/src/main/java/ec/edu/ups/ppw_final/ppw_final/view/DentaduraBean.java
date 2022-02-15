@@ -14,15 +14,25 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
 @RequestScoped
 public class DentaduraBean {
 
-	
+	/**
+	 * se ha creado todos los atributos que contienen una dentdura
+	 */
 	private int id;
 	private String codigoMolar;
 	
+	/**
+	 * se ha creado los atributos adicionales para poder utilizarlos
+	 * y manipular la base de datos.
+	 * 
+	 */
 	@Inject
 	private GestionDentaduraON detOn;
 	private OsDentadura dentadura;
 	private List<OsDentadura>dentaduras;
 	
+	/**
+	 * Se ha creado un constructor en el cual se Inicializa los objetos.
+	 */
 	@PostConstruct
 	private void init() {
 		dentadura = new OsDentadura();
@@ -71,6 +81,10 @@ public class DentaduraBean {
 		this.dentadura = dentadura;
 	}
 	
+	/**
+	 * Este metodo realiza la accion de guardar una dentadura
+	 * @return String.
+	 */
 	public String guardar() {
 
 		detOn.guardarDentadura(dentadura);
@@ -78,6 +92,11 @@ public class DentaduraBean {
 		return null;
 	}
 	
+	/**
+	 * este metodo realizara la busqueda del objeto dentadura medianta la llave primaria.
+	 * en caso de no encontrar el objeto se imprimira un mensaje en consola que no ha encontrado el objeto
+	 * @return String
+	 */
 	public String Buscar() {
 		OsDentadura d = detOn.read(dentadura.getDentId());
 		if (d != null) {
@@ -90,6 +109,12 @@ public class DentaduraBean {
 		return null;
 	}
 	
+	/**
+	 * este metodo realiza la eliminacion de un objeto dentadura mediante la llave primaria. en caso
+	 * de que no encuentro el objeto se imprimira un mensaje en consola informando al usuario de que no 
+	 * se ha podidio eliminar la cita.
+	 * @return String
+	 */
 	public String delete() {
 		OsDentadura d = detOn.read(dentadura.getDentId());
 		if (d != null) {

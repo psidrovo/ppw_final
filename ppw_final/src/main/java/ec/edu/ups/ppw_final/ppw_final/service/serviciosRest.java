@@ -28,7 +28,7 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsUsuario;
 @Path("servicios")
 public class serviciosRest {
 
-	/*
+	/**
 	 * Se ha inicializado todos los gestores que existen para realizar acciones CRUD dentro de la base de datos.
 	 */
 	@Inject
@@ -57,7 +57,7 @@ public class serviciosRest {
 //---------------------------------------------------------------------------	
 	//servicios detalle dentadura
 	
-	/*
+	/**
 	 * este metodo publicar o realizara la accion de guardar un objeto
 	 * de tipo detalle dentadura.
 	 * @param detDentadura. 
@@ -69,7 +69,7 @@ public class serviciosRest {
 		detDentaduraOn.guardarDetDentadura(detDentadura);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de buscar un objeto detalle dentadura mediante la llave primaria
 	 * @param id.
 	 */
@@ -82,7 +82,7 @@ public class serviciosRest {
 		return dd;
 	}
 	
-	/*
+	/**
 	 * Este metodo realiazara el metodo de eliminar un objeto de tipo detalle dentadura mediante la busqueda de la llaver
 	 * primaria
 	 * @param id
@@ -94,9 +94,10 @@ public class serviciosRest {
 		detDentaduraOn.delete(id);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de retornar todo un listado de los detalles dentaduras que existan
 	 * dentro de la base de datos.
+	 * @return List<OsdetalleDen>
 	 */
 	@GET
 	@Path("findAllDetalleDen")
@@ -110,7 +111,7 @@ public class serviciosRest {
 //-----------------------------------------------------------------------------------	
 	
 	//servicios historial clinico
-	/*
+	/**
 	 * este metodo publicar o realizara la accion de guardar un objeto
 	 * de tipo historial clincio .
 	 * @param clinica. 
@@ -122,9 +123,10 @@ public class serviciosRest {
 		hstClinicaOn.guardarHstClinico(clinica);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de buscar un objeto historial clinica  mediante la llave primaria
 	 * @param id.
+	 * @return OsHstClinica
 	 */
 	@POST
 	@Path("readHistorialClinico")
@@ -135,7 +137,7 @@ public class serviciosRest {
 		return h;
 	}
 	
-	/*
+	/**
 	 * Este metodo realiazara el metodo de eliminar un objeto de tipo historial clinica mediante la busqueda de la llave
 	 * primaria
 	 * @param id
@@ -147,9 +149,10 @@ public class serviciosRest {
 		hstClinicaOn.delete(id);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de retornar todo un listado de los historiales clinicos  que existan
 	 * dentro de la base de datos.
+	 * @return List<OsHstClinica>
 	 */
 	@GET
 	@Path("findAllHistorialClinico")
@@ -161,7 +164,7 @@ public class serviciosRest {
 	
 //-----------------------------------------------------------------------------------		
 	//servicios personas
-	/*
+	/**
 	 * este metodo publicar o realizara la accion de guardar un objeto
 	 * de tipo persona.
 	 * @param persona. 
@@ -173,9 +176,10 @@ public class serviciosRest {
 		personaOn.guardarPersona(persona);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de buscar un objeto persona  mediante la llave primaria
 	 * @param cedula.
+	 * @return OsPersona
 	 */
 	@POST
 	@Path("readPersona")
@@ -186,7 +190,7 @@ public class serviciosRest {
 		return p;
 	}
 	
-	/*
+	/**
 	 * Este metodo realiazara el metodo de eliminar un objeto de tipo persona mediante la busqueda de la llave
 	 * primaria
 	 * @param cedula
@@ -198,9 +202,10 @@ public class serviciosRest {
 		personaOn.delete(cedula);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de retornar todo un listado de las personas que existan
 	 * dentro de la base de datos.
+	 * @return List<OsPersona>
 	 */
 	@GET
 	@Path("findAllPersona")
@@ -213,7 +218,7 @@ public class serviciosRest {
 //-----------------------------------------------------------------------------------	
 	
 	//servicios citas
-	/*
+	/**
 	 * este metodo publicar o realizara la accion de guardar un objeto
 	 * de tipo cita.
 	 * @param cita. 
@@ -225,9 +230,10 @@ public class serviciosRest {
 		citasOn.guardarCita(cita);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de buscar un objeto cita  mediante la llave primaria
 	 * @param id.
+	 * @return OsCita
 	 */
 	@POST
 	@Path("readCita")
@@ -238,7 +244,7 @@ public class serviciosRest {
 		return c;
 	}
 	
-	/*
+	/**
 	 * Este metodo realiazara el metodo de eliminar un objeto de tipo cita mediante la busqueda de la llave
 	 * primaria
 	 * @param id
@@ -250,9 +256,10 @@ public class serviciosRest {
 		citasOn.delete(id);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de retornar todo un listado de las citas que existan
 	 * dentro de la base de datos.
+	 * @return List<OsCita>
 	 */
 	@GET
 	@Path("findAllCita")
@@ -264,7 +271,7 @@ public class serviciosRest {
 //-----------------------------------------------------------------------------------
 	
 	//servicios dentaduras
-	/*
+	/**
 	 * este metodo publicar o realizara la accion de guardar un objeto
 	 * de tipo dentadura.
 	 * @param dentadura. 
@@ -276,9 +283,10 @@ public class serviciosRest {
 		dentaduraOn.guardarDentadura(dentadura);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de buscar un objeto dentadura  mediante la llave primaria
 	 * @param id.
+	 * @return OsDentadura
 	 */
 	@POST
 	@Path("readDentadura")
@@ -289,7 +297,7 @@ public class serviciosRest {
 		return d;
 	}
 	
-	/*
+	/**
 	 * Este metodo realiazara el metodo de eliminar un objeto de dentadura mediante la busqueda de la llave
 	 * primaria
 	 * @param id
@@ -301,9 +309,10 @@ public class serviciosRest {
 		dentaduraOn.delete(id);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de retornar todo un listado de las dentaduras que existan
 	 * dentro de la base de datos.
+	 * @return List<OsDentadura>
 	 */
 	@GET
 	@Path("findAllDentadura")
@@ -315,7 +324,7 @@ public class serviciosRest {
 	
 //-----------------------------------------------------------------------------------
 	//servicios detalle de pago
-	/*
+	/**
 	 * este metodo publicar o realizara la accion de guardar un objeto
 	 * de tipo detalle pago.
 	 * @param pago. 
@@ -327,9 +336,10 @@ public class serviciosRest {
 		detPagoOn.guardarDetPago(pago);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de buscar un objeto detalle pago  mediante la llave primaria
 	 * @param id.
+	 * @return OsDetPago
 	 */
 	@POST
 	@Path("readDetallePago")
@@ -340,7 +350,7 @@ public class serviciosRest {
 		return p;
 	}
 	
-	/*
+	/**
 	 * Este metodo realiazara el metodo de eliminar un objeto de detalle pago mediante la busqueda de la llave
 	 * primaria
 	 * @param id
@@ -352,9 +362,10 @@ public class serviciosRest {
 		detPagoOn.delete(id);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de retornar todo un listado de los detalles pagos que existan
 	 * dentro de la base de datos.
+	 * @return List<OsDetPago>
 	 */
 	@GET
 	@Path("findAllDetallePago")
@@ -366,7 +377,7 @@ public class serviciosRest {
 	
 //-----------------------------------------------------------------------------------
 	//servicios usuarios
-	/*
+	/**
 	 * este metodo publicara o realizara la accion de guardar un objeto
 	 * de tipo usuario.
 	 * @param usuario. 
@@ -378,9 +389,10 @@ public class serviciosRest {
 		usuarioOn.guardarUsuario(usuario);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de buscar un objeto usuario mediante la llave primaria
 	 * @param correo.
+	 * @return OsUsuario
 	 */
 	@POST
 	@Path("readUsuarios")
@@ -391,7 +403,7 @@ public class serviciosRest {
 		return u;
 	}
 	
-	/*
+	/**
 	 * Este metodo realiazara el metodo de eliminar un objeto de usuario mediante la busqueda de la llave
 	 * primaria
 	 * @param correo
@@ -403,9 +415,10 @@ public class serviciosRest {
 		usuarioOn.delete(correo);
 	}
 	
-	/*
+	/**
 	 * Este metodo realizara la accion de retornar todo un listado de los usuarios que existan
 	 * dentro de la base de datos.
+	 * @return List<OsUsuario>
 	 */
 	@GET
 	@Path("findAllUsuarios")
@@ -415,12 +428,13 @@ public class serviciosRest {
 		return usuarios;
 	}
 	
-	/*
+	/**
 	 * Este metodo se utilizara para validar si es que el usuario existe o no. Este metodo
 	 * recibe dos objetos en su parametro de tipo String. si es que existe regresara el usuario caso contrario 
 	 * retornara null.
 	 * @param correo
 	 * @param contrasenia
+	 * @return OsUsuario
 	 */
 	@POST
 	@Path("validarUsuarios")
