@@ -93,7 +93,7 @@ public class ControladorDentadura {
 	public List<OsDentadura> findAll(){
 		String jpql = "SELECT o FROM OsDentadura o";
 		
-		Query q = em.createQuery(jpql, OsCita.class);
+		Query q = em.createQuery(jpql, OsDentadura.class);
 		
 		return q.getResultList();
 	}
