@@ -38,6 +38,16 @@ public class OsUsuario implements Serializable {
 
 	public OsUsuario() {
 	}
+	
+	
+
+	public OsUsuario(String usCorreo, String usPassword, String usTipo) {
+		this.usCorreo = usCorreo;
+		this.usPassword = usPassword;
+		this.usTipo = usTipo;
+	}
+
+
 
 	public String getUsCorreo() {
 		return this.usCorreo;

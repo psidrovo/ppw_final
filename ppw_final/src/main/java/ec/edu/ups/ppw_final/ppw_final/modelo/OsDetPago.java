@@ -36,6 +36,13 @@ public class OsDetPago implements Serializable {
 	public OsDetPago() {
 	}
 
+	public OsDetPago(int detPgId, double detPgValor) {
+		this.detPgId = detPgId;
+		this.detPgValor = detPgValor;
+	}
+
+
+
 	public int getDetPgId() {
 		return this.detPgId;
 	}

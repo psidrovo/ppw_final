@@ -38,6 +38,13 @@ public class OsDetalleDen implements Serializable {
 	public OsDetalleDen() {
 	}
 
+	public OsDetalleDen(int id, String cuadrante) {
+		this.id = id;
+		this.cuadrante = cuadrante;
+	}
+
+
+
 	public int getId() {
 		return this.id;
 	}
