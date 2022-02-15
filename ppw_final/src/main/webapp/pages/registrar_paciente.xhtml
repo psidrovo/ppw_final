@@ -7,7 +7,9 @@
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-
+	<f:metadata>
+		<f:viewAction action="#{pacienteBean.init}" />
+	</f:metadata>
 </h:head>
 
 <ui:composition template="blank-page.xhtml">

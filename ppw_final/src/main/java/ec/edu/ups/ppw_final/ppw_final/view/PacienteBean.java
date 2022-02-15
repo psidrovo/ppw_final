@@ -3,8 +3,6 @@ package ec.edu.ups.ppw_final.ppw_final.view;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -47,6 +45,7 @@ public class PacienteBean implements Serializable{
 		usuario = new OsUsuario();
 		personas = perOn.findAll();
 		usuarios = useOn.findAll();
+		System.out.println(personas.toString());
 	}
 
 	public String getTipo() {
