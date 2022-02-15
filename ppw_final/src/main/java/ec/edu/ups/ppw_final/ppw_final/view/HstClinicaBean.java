@@ -23,7 +23,7 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 public class HstClinicaBean implements Serializable{
 
 	/**
-	 * 
+	 * se ha creado todos los atributos que contienen una cita
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
@@ -34,6 +34,11 @@ public class HstClinicaBean implements Serializable{
 	private String tratamiento;
 	private String cedulaPaciente;
 	
+	/**
+	 * se ha creado los atributos adicionales para poder utilizarlos
+	 * y manipular la base de datos.
+	 * 
+	 */
 	@Inject
 	private GestionHstClinicaON hstOn;
 	@Inject
@@ -50,7 +55,9 @@ public class HstClinicaBean implements Serializable{
 
 	private List<OsHstClinica> hstClinicas;
 	
-	
+	/**
+	 * Se ha creado un constructor en el cual se Inicializa los objetos.
+	 */
 	public void init() {	
 		persona=new OsPersona();
 		detDentadura=new OsDetalleDen();
@@ -172,6 +179,12 @@ public class HstClinicaBean implements Serializable{
 		this.hstClinicas = hstClinicas;
 	}
 
+	/**
+	 * Este metodo guarda un objeto de tipo histroial clinica en el cual,
+	 * primero se asigna su respectiva persona y detalle de dentadura. una vez asignado se guarda el historial 
+	 * dentro de la base de datos.
+	 * @return String.
+	 */
 	public String guardar() {
 		
 		persona = perOn.read(cedulaPaciente);	
@@ -194,11 +207,22 @@ public class HstClinicaBean implements Serializable{
 		return null;
 	}
 	
+	/**
+	 * Este metodo encuentra el historial clinica mediante la persona relacionada a ella.
+	 * una vez encontrada carga los datos encontrados en la pagina a la que se redirecciona
+	 * @param cedula
+	 * @return String.
+	 */
 	public String historiaPaciente (String cedula) {
 		System.out.println("Historial "+ cedula);
 		return "historial_clinico?faces-redirect=true";
 	}
 
+	/**
+	 * este metodo realizara la busqueda del objeto historial cinica medianta la llave primaria.
+	 * en caso de no encontrar el objeto se imprimira un mensaje en consola que no ha encontrado el objeto
+	 * @return String
+	 */
 	public String Buscar() {
 		OsHstClinica h = hstOn.read(hstClincia.getHstClId());
 		if (h != null) {
@@ -210,6 +234,12 @@ public class HstClinicaBean implements Serializable{
 		return null;
 	}
 
+	/**
+	 * este metodo realiza la eliminacion de un objeto histroail clinica mediante la llave primaria. en caso
+	 * de que no encuentro el objeto se imprimira un mensaje en consola informando al usuario de que no 
+	 * se ha podidio eliminar el historial clinico.
+	 * @return
+	 */
 	public String EliminarCita() {
 		OsHstClinica h = hstOn.read(hstClincia.getHstClId());
 		if (h != null) {

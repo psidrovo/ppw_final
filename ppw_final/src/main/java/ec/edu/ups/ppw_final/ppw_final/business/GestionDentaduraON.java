@@ -12,14 +12,14 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
 @Stateless
 public class GestionDentaduraON {
 
-	/*
+	/**
 	 * se inicializa el controlador dentaduras para poder realizar las gestiones dentro de la base de datos.
 	 * 
 	 */
 	@Inject
 	private ControladorDentadura controladorD;
 
-	/*
+	/**
 	 * este metodo recibe un objeto de tipo dentadura y pregunta dentro de la base de datos si es que existe.
 	 * en caso de que exista solamente actualiza caso contrario crea uno nuevo.
 	 * @param dentadura.
@@ -35,7 +35,7 @@ public class GestionDentaduraON {
 		}
 	}
 
-	/*
+	/**
 	 * Este metodo elimina un objeto dentro de la base de datos por medio 
 	 * de la llave primaria
 	 * @param id
@@ -44,17 +44,19 @@ public class GestionDentaduraON {
 		controladorD.delete(id);
 	}
 
-	/*
+	/**
 	 * Este metodo busca un objeto dentro de la base de datos por medio 
 	 * de la llave primaria
 	 * @param id
+	 * @return OsDentadura
 	 */
 	public OsDentadura read(int id) {
 		return controladorD.read(id);
 	}
 
-	/*
+	/**
 	 * Este metodo devuele todo el listado de citas dentro de la base de datos.
+	 * @return List<OsDentadura>
 	 */
 	public List<OsDentadura> findAll() {
 		return controladorD.findAll();

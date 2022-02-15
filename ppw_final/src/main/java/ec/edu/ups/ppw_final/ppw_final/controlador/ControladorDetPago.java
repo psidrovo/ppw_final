@@ -37,14 +37,14 @@ public class ControladorDetPago {
 		}
 	}*/
 	
-	/*
+	/**
 	 * Se ha instanciado el Entitymanager para poder realizar las modificacion
 	 * dentro de la base de datos 
 	 */
 	@PersistenceContext
 	private EntityManager em;
 
-	/*
+	/**
 	 * Este metodo realiza la accion de crear o insertar el objeto dentro
 	 * de la base de datos
 	 * @param p.
@@ -54,7 +54,7 @@ public class ControladorDetPago {
 
 	}
 
-	/*
+	/**
 	 * Este metodo realiza la accion de actualizar el objeto dentro
 	 * de la base de datos
 	 * @param p.
@@ -63,7 +63,7 @@ public class ControladorDetPago {
 		em.merge(p);
 	}
 
-	/*
+	/**
 	 * Este metodo realiza la accion de eliminar el objeto dentro
 	 * de la base de datos y los hace mediante la llave primaria del objeto
 	 * @param id.
@@ -73,19 +73,21 @@ public class ControladorDetPago {
 		em.remove(p);
 	}
 	
-	/*
+	/**
 	 * Este metodo realiza la accion de buscar el objeto dentro
 	 * de la base de datos y los hace mediante la llave primaria del objeto
 	 * @param id.
+	 * @return OsDetPago
 	 */
 	public OsDetPago read(int id){
 		OsDetPago p = em.find(OsDetPago.class, id);
 		return p;
 	}
 	
-	/*
+	/**
 	 * Este metodo retorna todo el listado de detalles pagos que existe dentro de la base de 
 	 * datos
+	 * @return List<OsDetPago>
 	 */
 	public List<OsDetPago> findAll(){
 		String jpql = "SELECT o FROM OsDetPago o";

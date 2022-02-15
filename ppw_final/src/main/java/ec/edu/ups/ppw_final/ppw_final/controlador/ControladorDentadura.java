@@ -37,14 +37,14 @@ public class ControladorDentadura {
 		}
 	}*/
 	
-	/*
+	/**
 	 * Se ha instanciado el Entity manager para poder realizar las modificacion
 	 * dentro de la base de datos 
 	 */
 	@PersistenceContext
 	private EntityManager em;
 
-	/*
+	/**
 	 * Este metodo realiza la accion de crear o insertar el objeto dentro
 	 * de la base de datos
 	 * @param p.
@@ -54,7 +54,7 @@ public class ControladorDentadura {
 
 	}
 
-	/*
+	/**
 	 * Este metodo realiza la accion de actualizar el objeto dentro
 	 * de la base de datos
 	 * @param p.
@@ -64,7 +64,7 @@ public class ControladorDentadura {
 	}
 
 
-	/*
+	/**
 	 * Este metodo realiza la accion de eliminar el objeto dentro
 	 * de la base de datos y los hace mediante la llave primaria del objeto
 	 * @param id.
@@ -74,19 +74,21 @@ public class ControladorDentadura {
 		em.remove(p);
 	}
 	
-	/*
+	/**
 	 * Este metodo realiza la accion de buscar el objeto dentro
 	 * de la base de datos y los hace mediante la llave primaria del objeto
 	 * @param id.
+	 * @return OsDentadura
 	 */
 	public OsDentadura read(int id){
 		OsDentadura p = em.find(OsDentadura.class, id);
 		return p;
 	}
 	
-	/*
+	/**
 	 * Este metodo retorna todo el listado de dentaduras que existe dentro de la base de 
 	 * datos
+	 * @return List<OsDentadura>
 	 */
 	public List<OsDentadura> findAll(){
 		String jpql = "SELECT o FROM OsDentadura o";

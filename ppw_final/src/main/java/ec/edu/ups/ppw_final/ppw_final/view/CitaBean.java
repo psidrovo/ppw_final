@@ -16,11 +16,19 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 @RequestScoped
 public class CitaBean {
 
+	/**
+	 * se ha creado todos los atributos que contienen una cita
+	 */
 	private int id;
 	private String descripcion;
 	private String estado;
 	private String fecha;
 
+	/**
+	 * se ha creado los atributos adicionales para poder utilizarlos
+	 * y manipular la base de datos.
+	 * 
+	 */
 	@Inject
 	private GestionPersonaON perOn;
 	@Inject
@@ -30,6 +38,9 @@ public class CitaBean {
 	private List<OsPersona> personas;
 	private List<OsCita> citas;
 
+	/**
+	 * Se ha creado un constructor en el cual se Inicializa los objetos.
+	 */
 	@PostConstruct
 	private void init() {
 		persona = new OsPersona();
@@ -130,6 +141,10 @@ public class CitaBean {
 		this.cita = cita;
 	}
 
+	/**
+	 * Este metodo realiza la accion de guardar una persona en caso de que no exista 
+	 * una vez creada la persona se lo asignara al objeto cita y se creara el objeto cita
+	 */
 	public String guardar() {
 			perOn.guardarPersona(persona);
 			cita.setOsPersona(persona);
@@ -139,6 +154,10 @@ public class CitaBean {
 		return null;
 	}
 
+	/**
+	 * este metodo realizara la busqueda del objeto cita medianta la llave primaria.
+	 * en caso de no encontrar el objeto se imprimira un mensaje en consola que no ha encontrado el objeto
+	 */
 	public String BuscarCita() {
 		OsCita c = citaOn.read(cita.getCtId());
 		if (c != null) {
@@ -151,6 +170,11 @@ public class CitaBean {
 		return null;
 	}
 
+	/**
+	 * este metodo realiza la eliminacion de un objeto cita mediante la llave primaria. en caso
+	 * de que no encuentro el objeto se imprimira un mensaje en consola informando al usuario de que no 
+	 * se ha podidio eliminar la cita.
+	 */
 	public String EliminarCita() {
 		OsCita c = citaOn.read(cita.getCtId());
 		if (c != null) {

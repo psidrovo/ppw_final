@@ -17,13 +17,17 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 public class PagoBean implements Serializable{
 
 	/**
-	 * 
+	 * se ha creado todos los atributos que contienen una pago
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private double valor;
 	private String cedulaPaciente;
 
+	/**
+	 * se ha creado los atributos adicionales para poder utilizarlos
+	 * y manipular la base de datos.
+	 */
 	@Inject
 	private GestionDetPagoON pagoOn;
 	private OsDetPago pago;
@@ -31,6 +35,9 @@ public class PagoBean implements Serializable{
 	private List<OsDetPago> pagos;
 
 
+	/**
+	 * Se ha creado un constructor en el cual se Inicializa los objetos.
+	 */
 	private void init() {
 		pago = new OsDetPago();
 		persona = new OsPersona();
@@ -85,6 +92,11 @@ public class PagoBean implements Serializable{
 		this.pagos = pagos;
 	}
 
+	/**
+	 * Este metodo realiza la accion de guardar un pago en caso de que no exista 
+	 * una vez creada la persona se lo asignara al objeto cita y se creara el objeto cita
+	 * @return String
+	 */
 	public String guardar() {
 		pago.setOsPersona(persona);
 		pagoOn.guardarDetPago(pago);
@@ -93,6 +105,11 @@ public class PagoBean implements Serializable{
 		return "";
 	}
 
+	/**
+	 * este metodo realizara la busqueda del objeto pago medianta la llave primaria.
+	 * en caso de no encontrar el objeto se imprimira un mensaje en consola que no ha encontrado el objeto
+	 * @return String
+	 */
 	public String buscarPago() {
 		OsDetPago p = pagoOn.read(pago.getDetPgId());
 		if (p != null) {
@@ -105,6 +122,12 @@ public class PagoBean implements Serializable{
 		return null;
 	}
 
+	/**
+	 * este metodo realiza la eliminacion de un objeto pago mediante la llave primaria. en caso
+	 * de que no encuentro el objeto se imprimira un mensaje en consola informando al usuario de que no 
+	 * se ha podidio eliminar el pago.
+	 * @return String
+	 */
 	public String eliminarPago() {
 		OsDetPago p = pagoOn.read(pago.getDetPgId());
 		if (p != null) {

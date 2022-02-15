@@ -13,14 +13,14 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 @Stateless
 public class ControladorCitas {
 
-	/*
+	/**
 	 * Se ha instanciado el Entitymanager para poder realizar las modificacion
 	 * dentro de la base de datos 
 	 */
 	@PersistenceContext
 	private EntityManager em;
 	
-	/*
+	/**
 	 * Este metodo realiza la accion de crear o insertar el objeto dentro
 	 * de la base de datos
 	 * @param p.
@@ -30,7 +30,7 @@ public class ControladorCitas {
 
 	}
 
-	/*
+	/**
 	 * Este metodo realiza la accion de actualizar el objeto dentro
 	 * de la base de datos
 	 * @param p.
@@ -39,7 +39,7 @@ public class ControladorCitas {
 		em.merge(p);
 	}
 
-	/*
+	/**
 	 * Este metodo realiza la accion de eliminar el objeto dentro
 	 * de la base de datos y los hace mediante la llave primaria del objeto
 	 * @param id.
@@ -49,19 +49,21 @@ public class ControladorCitas {
 		em.remove(p);
 	}
 
-	/*
+	/**
 	 * Este metodo realiza la accion de buscar el objeto dentro
 	 * de la base de datos y los hace mediante la llave primaria del objeto
 	 * @param id.
+	 * @return OsCita
 	 */
 	public OsCita read(int id) {
 		OsCita p = em.find(OsCita.class, id);
 		return p;
 	}
 
-	/*
+	/**
 	 * Este metodo retorna todo el listado de citas que existe dentro de la base de 
 	 * datos
+	 * @return List<OsCita>
 	 */
 	public List<OsCita> findAll() {
 		String jpql = "SELECT o FROM OsCita o";
@@ -71,11 +73,11 @@ public class ControladorCitas {
 		return  q.getResultList();
 	}
 
-	/*
+	/**
 	 * Este metodo realiza la busqueda de una persona mediante la cedula de una persona
 	 * una vez que haya encontrado el objeto dentro de la base de datos lo retorna al usuario
 	 * @param cedula.
-	 * 
+	 * @return OsCita
 	 */
 	public OsCita findPersona(String cedula) {
 		String jpql = "select * from os_cita where os_persona_per_cedula like ?1";

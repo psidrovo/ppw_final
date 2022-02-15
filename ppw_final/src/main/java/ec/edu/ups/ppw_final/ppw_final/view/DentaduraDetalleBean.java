@@ -16,9 +16,17 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
 @RequestScoped
 public class DentaduraDetalleBean {
 
+	/**
+	 * se ha creado todos los atributos que contienen un detalle dentadura
+	 */
 	private int id;
 	private String cuadrante;
 
+	/**
+	 * se ha creado los atributos adicionales para poder utilizarlos
+	 * y manipular la base de datos.
+	 * 
+	 */
 	@Inject
 	private GestionDetDentaduraON denDetOn;
 	private OsDetalleDen detDetdura;
@@ -27,6 +35,9 @@ public class DentaduraDetalleBean {
 	private OsDentadura dentadura;
 	private List<OsDetalleDen> detallesDentaduras;
 
+	/**
+	 * Se ha creado un constructor en el cual se Inicializa los objetos.
+	 */
 	@PostConstruct
 	private void init() {
 		dentadura = new OsDentadura();
@@ -90,6 +101,11 @@ public class DentaduraDetalleBean {
 		this.denDetOn = denDetOn;
 	}
 
+	/**
+	 * Este metodo realiza la accion de guardar un objeto detalle dentadura.Primero asigna la dentadura a la que pertenece
+	 * este detalle y luego lo crea o graba dentro de la base de datos
+	 * @return String
+	 */
 	public String guardar() {
 		detDetdura.setOsDentadura(dentadura);
 		denDetOn.guardarDetDentadura(detDetdura);
@@ -98,6 +114,11 @@ public class DentaduraDetalleBean {
 		return null;
 	}
 
+	/**
+	 * este metodo realizara la busqueda del objeto detalle dentadura medianta la llave primaria.
+	 * en caso de no encontrar el objeto se imprimira un mensaje en consola que no ha encontrado el objeto
+	 *  @return String
+	 */
 	public String buscarDetalle() {
 		OsDetalleDen dd = denDetOn.read(detDetdura.getId());
 		if (dd != null) {
@@ -110,6 +131,12 @@ public class DentaduraDetalleBean {
 		return null;
 	}
 
+	/**
+	 * este metodo realiza la eliminacion de un objeto detalle dentadura mediante la llave primaria. en caso
+	 * de que no encuentro el objeto se imprimira un mensaje en consola informando al usuario de que no 
+	 * se ha podidio eliminar la cita.
+	 *  @return String
+	 */
 	public String eliminarDetalle() {
 		OsDetalleDen dd = denDetOn.read(detDetdura.getId());
 		if (dd != null) {
