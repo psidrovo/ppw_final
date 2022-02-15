@@ -265,7 +265,9 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public OsCita readCita(@QueryParam("id") int id) {
 		OsCita c= citasOn.read(id);
-		return c;
+		OsCita dNuevo = new OsCita(c.getCtId(), c.getCtDescripcion(), c.getCtEstado(), c.getCtFecha());
+		return dNuevo;
+		
 	}
 	
 	/**
@@ -290,7 +292,12 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public List<OsCita> findAllCita(){
 		List<OsCita> citas = citasOn.findAll();
-		return citas;
+		List<OsCita> detallesnuevos = new ArrayList<>();
+		for (OsCita c : citas) {
+			OsCita dNuevo = new OsCita(c.getCtId(), c.getCtDescripcion(), c.getCtEstado(), c.getCtFecha());
+			detallesnuevos.add(dNuevo);
+		}
+		return detallesnuevos;
 	}
 //-----------------------------------------------------------------------------------
 	
@@ -318,7 +325,8 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public OsDentadura readDentadura(@QueryParam("id") int id) {
 		OsDentadura d= dentaduraOn.read(id);
-		return d;
+		OsDentadura dNuevo = new OsDentadura(d.getDentId(),d.getDentCdgMolar());
+		return dNuevo;
 	}
 	
 	/**
@@ -343,7 +351,12 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public List<OsDentadura> findAllDentadura(){
 		List<OsDentadura> dentaduras = dentaduraOn.findAll();
-		return dentaduras;
+		List<OsDentadura> detallesnuevos = new ArrayList<>();
+		for (OsDentadura d : dentaduras) {
+			OsDentadura dNuevo = new OsDentadura(d.getDentId(),d.getDentCdgMolar());
+			detallesnuevos.add(dNuevo);
+		}
+		return detallesnuevos;
 	}
 	
 //-----------------------------------------------------------------------------------
@@ -371,7 +384,8 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public OsDetPago readDetallePago(@QueryParam("id") int id) {
 		OsDetPago p= detPagoOn.read(id);
-		return p;
+		OsDetPago dNuevo = new OsDetPago(p.getDetPgId(), p.getDetPgValor());
+		return dNuevo;
 	}
 	
 	/**
@@ -396,7 +410,12 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public List<OsDetPago> findAllDetallePago(){
 		List<OsDetPago> pagos = detPagoOn.findAll();
-		return pagos;
+		List<OsDetPago> detallesnuevos = new ArrayList<>();
+		for (OsDetPago p : pagos) {
+			OsDetPago dNuevo = new OsDetPago(p.getDetPgId(), p.getDetPgValor());
+			detallesnuevos.add(dNuevo);
+		}
+		return detallesnuevos;
 	}
 	
 //-----------------------------------------------------------------------------------
@@ -424,7 +443,8 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public OsUsuario readUsuarios(@QueryParam("correo") String correo) {
 		OsUsuario u= usuarioOn.read(correo);
-		return u;
+		OsUsuario dNuevo = new OsUsuario(u.getUsCorreo(),u.getUsPassword(),u.getUsTipo());
+		return dNuevo;
 	}
 	
 	/**
@@ -449,7 +469,12 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public List<OsUsuario> findAllUsuarios(){
 		List<OsUsuario> usuarios = usuarioOn.findAll();
-		return usuarios;
+		List<OsUsuario> detallesnuevos = new ArrayList<>();
+		for (OsUsuario u : usuarios) {
+			OsUsuario dNuevo = new OsUsuario(u.getUsCorreo(),u.getUsPassword(),u.getUsTipo());
+			detallesnuevos.add(dNuevo);
+		}
+		return detallesnuevos;
 	}
 	
 	/**
@@ -466,7 +491,8 @@ public class serviciosRest {
 	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
 	public OsUsuario validarUsuarios(@QueryParam("correo") String correo,@QueryParam("contrasenia") String contrasenia) {
 		OsUsuario u= usuarioOn.validar(correo, contrasenia);
-		return u;
+		OsUsuario dNuevo = new OsUsuario(u.getUsCorreo(),u.getUsPassword(),u.getUsTipo());
+		return dNuevo;
 	}
 	
 	
