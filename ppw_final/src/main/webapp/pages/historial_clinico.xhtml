@@ -30,52 +30,66 @@
 		<h:form>
 			<div class="card" style="align-items: center">
 				<h5 class="p-mt-0">Nueva entrada</h5>
-				<h:panelGrid columns="3" cellpadding="7">
-					<div>					
-						<p:outputLabel value="Fase" />
-						<p:inputText id="txtFase"
-							value="#{hstClinicaBean.hstClincia.hstClFase}" />
-					</div>
-					<div>
-						<p:outputLabel value="Detalle" />
+				<div class="row">
+					<div class="column">
 
-						<p:inputText id="txtDetalle"
-							value="#{hstClinicaBean.hstClincia.hstClDetalle}" />
-					</div>
-					<div>
-						<p:outputLabel value="Receta" />
 
-						<p:inputText id="txtReceta"
-							value="#{hstClinicaBean.hstClincia.hstReceta}" />
-					</div>
-					<div>
-						<p:outputLabel value="Tratamiento" />
+						<div class="card">
+							<h5>Codigo Dental</h5>
+							<img src="../img/auth/dentadura.jpg" alt="imagen" />
 
-						<p:inputText id="txtTratamiento"
-							value="#{hstClinicaBean.hstClincia.hstTratamiento}" />
+						</div>
 					</div>
-					<div>
-						<p:outputLabel value="Costo" />
+					<div class="column">
+						<h:panelGrid columns="3" cellpadding="20">
 
-						<p:inputText id="txtCosto"
-							value="#{hstClinicaBean.hstClincia.hstCosto}" />
+							<div>
+								<p:outputLabel value="Fase" />
+								<p:inputText id="txtFase"
+									value="#{hstClinicaBean.hstClincia.hstClFase}" />
+							</div>
+							<div>
+								<p:outputLabel value="Detalle" />
+
+								<p:inputText id="txtDetalle"
+									value="#{hstClinicaBean.hstClincia.hstClDetalle}" />
+							</div>
+							<div>
+								<p:outputLabel value="Receta" />
+
+								<p:inputText id="txtReceta"
+									value="#{hstClinicaBean.hstClincia.hstReceta}" />
+							</div>
+							<div>
+								<p:outputLabel value="Tratamiento" />
+
+								<p:inputText id="txtTratamiento"
+									value="#{hstClinicaBean.hstClincia.hstTratamiento}" />
+							</div>
+							<div>
+								<p:outputLabel value="Costo" />
+
+								<p:inputText id="txtCosto"
+									value="#{hstClinicaBean.hstClincia.hstCosto}" />
+							</div>
+							<div>
+								<p:outputLabel value="Dentadura" />
+
+								<p:inputText a:type="number" id="txtDentadura"
+									value="#{hstClinicaBean.dentadura.dentId}" />
+							</div>
+							<div>
+								<p:outputLabel value="Cuadrante" />
+
+								<p:inputText id="txtDetalleDentadura"
+									value="#{hstClinicaBean.detDentadura.cuadrante}" />
+							</div>
+						</h:panelGrid>
+						<p:commandButton value="Submit"
+							action="#{hstClinicaBean.guardar()}" update="display"
+							styleClass="p-mt-3" />
 					</div>
-					<div>
-						<p:outputLabel value="Dentadura" />
-
-						<p:inputText a:type="number" id="txtDentadura"
-							value="#{hstClinicaBean.dentadura.dentId}" />
-					</div>
-					<div>
-						<p:outputLabel value="Cuadrante" />
-
-						<p:inputText id="txtDetalleDentadura"
-							value="#{hstClinicaBean.detDentadura.cuadrante}" />
-					</div>
-				</h:panelGrid>
-				<p:commandButton value="Submit" action="#{hstClinicaBean.guardar()}"
-					update="display" styleClass="p-mt-3" />
-
+				</div>
 			</div>
 			<div class="card-body">
 				<h:dataTable id="display" value="#{hstClinicaBean.hstClinicas}"
@@ -110,7 +124,7 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">Pieza Dental</f:facet>						
-					#{historiaClinica.osDentadura.dentCdgMolar}
+					#{historiaClinica.osDetalleDen.osDentadura.dentCdgMolar}
 					</h:column>
 					<h:column>
 						<f:facet name="header">Cuadrante</f:facet>						
@@ -121,9 +135,11 @@
 						<p:linkButton value="Detalle Pieza"
 							icon="ik ik-arrow-right-circle text-white"
 							styleClass="rounded-button ui-button-success"
-							outcome="historial_clinico">
+							outcome="detalle_dental">
 							<f:param name="cedulaPaciente"
-								value="#{pacientes.osPersona.perCedula}" />
+								value="#{hstClinicaBean.cedulaPaciente}" />
+							<f:param name="piezaDental"
+								value="#{historiaClinica.osDetalleDen.osDentadura.dentCdgMolar}" />
 							<!--f:param name="cedulaPaciente" value= "#{pacientes.osPersona.perCedula}" /-->
 						</p:linkButton>
 					</h:column>

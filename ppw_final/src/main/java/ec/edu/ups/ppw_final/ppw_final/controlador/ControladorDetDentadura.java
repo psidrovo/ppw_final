@@ -122,4 +122,10 @@ public class ControladorDetDentadura {
 		return (OsDetalleDen) q.getResultList().get(0);
 	}
 
+	public List<OsDetalleDen> encontrarDetalleDentadura(String cedulaPaciente, String dentadura) {
+		String jpql = "SELECT o FROM OsDetalleDen o order by id desc";		
+		Query q = em.createQuery(jpql, OsDetalleDen.class);		
+		return q.getResultList();
+	}
+
 }

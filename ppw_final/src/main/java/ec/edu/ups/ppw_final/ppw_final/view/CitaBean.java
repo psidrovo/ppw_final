@@ -1,9 +1,12 @@
 package ec.edu.ups.ppw_final.ppw_final.view;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -13,10 +16,13 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsCita;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 
 @Named
-@RequestScoped
-public class CitaBean {
+@ViewScoped
+public class CitaBean implements Serializable {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	 * se ha creado todos los atributos que contienen una cita
 	 */
 	private int id;
@@ -38,44 +44,35 @@ public class CitaBean {
 	private List<OsPersona> personas;
 	private List<OsCita> citas;
 
+<<<<<<< HEAD
+	public void init() {
+=======
 	/**
 	 * Se ha creado un constructor en el cual se Inicializa los objetos.
 	 */
 	@PostConstruct
 	private void init() {
+>>>>>>> d92e8cb53e96e090c7c1619b90958debc32663f6
 		persona = new OsPersona();
 		cita = new OsCita();
 		citas = citaOn.findAll();
-		personas = perOn.findAll();
 	}
 
 	public List<OsPersona> getPersonas() {
 		return personas;
 	}
 
-
-
-
-
 	public void setPersonas(List<OsPersona> personas) {
 		this.personas = personas;
 	}
-
-
-
-
 
 	public List<OsCita> getCitas() {
 		return citas;
 	}
 
-
-
 	public void setCitas(List<OsCita> citas) {
 		this.citas = citas;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -146,9 +143,9 @@ public class CitaBean {
 	 * una vez creada la persona se lo asignara al objeto cita y se creara el objeto cita
 	 */
 	public String guardar() {
-			perOn.guardarPersona(persona);
-			cita.setOsPersona(persona);
-			citaOn.guardarCita(cita);
+		perOn.guardarPersona(persona);
+		cita.setOsPersona(persona);
+		citaOn.guardarCita(cita);
 
 		this.init();
 		return null;
@@ -187,4 +184,24 @@ public class CitaBean {
 		return null;
 	}
 
+	public String actualizarCitaConfirmar(int id) {
+		cita = citaOn.read(id);
+		cita.setCtEstado("CONFIRMADO");
+		citaOn.guardarCita(cita);
+		FacesMessage msg = new FacesMessage("CITA CONFIRMADA");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		citas = citaOn.findAll();
+		
+		return null;
+	}
+	public String actualizarCitaRechazar(int id) {
+		cita = citaOn.read(id);
+		cita.setCtEstado("RECHAZADO");
+		citaOn.guardarCita(cita);
+		FacesMessage msg = new FacesMessage("CITA RECHAZADA");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		citas = citaOn.findAll();
+		
+		return null;
+	}
 }

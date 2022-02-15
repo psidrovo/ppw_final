@@ -1,15 +1,13 @@
 package ec.edu.ups.ppw_final.ppw_final.view;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.apache.taglibs.standard.tag.common.xml.ForEachTag;
 
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsUsuario;
@@ -17,10 +15,13 @@ import ec.edu.ups.ppw_final.ppw_final.business.GestionPersonaON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionUsuarioON;
 
 @Named
-@RequestScoped
-public class PacienteBean {
+@ViewScoped
+public class PacienteBean implements Serializable{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	 * se ha creado todos los atributos que contiene un paciente
 	 */
 	private String cedula;
@@ -46,15 +47,20 @@ public class PacienteBean {
 	private List<OsPersona> personas;
 	private List<OsUsuario> usuarios;
 
+<<<<<<< HEAD
+	public void init() {
+=======
 	/**
 	 * Se ha creado un constructor en el cual se Inicializa los objetos.
 	 */
 	@PostConstruct
 	private void init() {
+>>>>>>> d92e8cb53e96e090c7c1619b90958debc32663f6
 		persona = new OsPersona();
 		usuario = new OsUsuario();
 		personas = perOn.findAll();
 		usuarios = useOn.findAll();
+		System.out.println(personas.toString());
 	}
 
 	public String getTipo() {
@@ -167,7 +173,6 @@ public class PacienteBean {
 	 * @return String.
 	 */
 	public String guardar() {
-
 		usuario.setUsTipo("PACIENTE");
 		perOn.guardarPersona(persona);
 		usuario.setOsPersona(persona);
@@ -183,7 +188,7 @@ public class PacienteBean {
 	 * una vez creada la persona se lo asignara al objeto cita y se creara el objeto cita
 	 */
 	public void guardarSumit() {
-
+		System.out.println(persona.toString());
 		usuario.setUsTipo("PACIENTE");
 		perOn.guardarPersona(persona);
 		usuario.setOsPersona(persona);

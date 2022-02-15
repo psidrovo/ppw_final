@@ -111,4 +111,8 @@ public class UsuarioBean {
 		return "historial_clinico?faces-redirect=true";
 	}
 	
+	public String inicioSesion() {
+		return null;
+	}
+	
 }

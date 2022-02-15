@@ -1,6 +1,8 @@
 package ec.edu.ups.ppw_final.ppw_final.view;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -9,8 +11,10 @@ import javax.inject.Named;
 
 import ec.edu.ups.ppw_final.ppw_final.business.GestionDentaduraON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionDetDentaduraON;
+import ec.edu.ups.ppw_final.ppw_final.business.GestionHstClinicaON;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDentadura;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetalleDen;
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsHstClinica;
 
 @Named
 @RequestScoped
@@ -21,6 +25,8 @@ public class DentaduraDetalleBean {
 	 */
 	private int id;
 	private String cuadrante;
+	private String cedulaPaciente;
+	private String dentaduraSeleccionada;
 
 	/**
 	 * se ha creado los atributos adicionales para poder utilizarlos
@@ -28,21 +34,33 @@ public class DentaduraDetalleBean {
 	 * 
 	 */
 	@Inject
-	private GestionDetDentaduraON denDetOn;
+	private GestionDetDentaduraON denDetON;
 	private OsDetalleDen detDetdura;
 	@Inject
-	private GestionDentaduraON detOn;
+	private GestionDentaduraON detON;
+	@Inject
+	private GestionHstClinicaON hstON;
+
 	private OsDentadura dentadura;
 	private List<OsDetalleDen> detallesDentaduras;
+	private List<OsHstClinica> histortiasClinicas;
 
 	/**
 	 * Se ha creado un constructor en el cual se Inicializa los objetos.
 	 */
 	@PostConstruct
-	private void init() {
+	public void init() {
 		dentadura = new OsDentadura();
 		detDetdura = new OsDetalleDen();
-		detallesDentaduras = denDetOn.findAll();
+		System.out.println(dentaduraSeleccionada + " " + cedulaPaciente);
+		histortiasClinicas = hstON.findAll();
+		System.out.println(histortiasClinicas.toString());
+		histortiasClinicas = histortiasClinicas.stream()
+				.filter(p -> p.getOsPersona().getPerCedula().equals(cedulaPaciente)).collect(Collectors.toList());
+		System.out.println(histortiasClinicas.toString());
+		histortiasClinicas = histortiasClinicas.stream()
+				.filter(d -> d.getOsDetalleDen().getOsDentadura().getDentCdgMolar().equals(dentaduraSeleccionada))
+				.collect(Collectors.toList());
 	}
 
 	public List<OsDetalleDen> getDetallesDentaduras() {
@@ -78,11 +96,11 @@ public class DentaduraDetalleBean {
 	}
 
 	public GestionDentaduraON getDetOn() {
-		return detOn;
+		return detON;
 	}
 
 	public void setDetOn(GestionDentaduraON detOn) {
-		this.detOn = detOn;
+		this.detON = detOn;
 	}
 
 	public OsDentadura getDentadura() {
@@ -94,11 +112,11 @@ public class DentaduraDetalleBean {
 	}
 
 	public GestionDetDentaduraON getDenDetOn() {
-		return denDetOn;
+		return denDetON;
 	}
 
 	public void setDenDetOn(GestionDetDentaduraON denDetOn) {
-		this.denDetOn = denDetOn;
+		this.denDetON = denDetOn;
 	}
 
 	/**
@@ -108,7 +126,7 @@ public class DentaduraDetalleBean {
 	 */
 	public String guardar() {
 		detDetdura.setOsDentadura(dentadura);
-		denDetOn.guardarDetDentadura(detDetdura);
+		denDetON.guardarDetDentadura(detDetdura);
 
 		this.init();
 		return null;
@@ -120,7 +138,7 @@ public class DentaduraDetalleBean {
 	 *  @return String
 	 */
 	public String buscarDetalle() {
-		OsDetalleDen dd = denDetOn.read(detDetdura.getId());
+		OsDetalleDen dd = denDetON.read(detDetdura.getId());
 		if (dd != null) {
 			detDetdura = dd;
 		} else {
@@ -138,9 +156,9 @@ public class DentaduraDetalleBean {
 	 *  @return String
 	 */
 	public String eliminarDetalle() {
-		OsDetalleDen dd = denDetOn.read(detDetdura.getId());
+		OsDetalleDen dd = denDetON.read(detDetdura.getId());
 		if (dd != null) {
-			denDetOn.delete(dd.getId());
+			denDetON.delete(dd.getId());
 			System.out.println("detalle eliminado con exito");
 		} else {
 			System.out.println("detalle no se ha podido eliminar porque no existe");
@@ -149,4 +167,36 @@ public class DentaduraDetalleBean {
 		return null;
 	}
 
+	public String getCedulaPaciente() {
+		return cedulaPaciente;
+	}
+
+	public void setCedulaPaciente(String cedulaPaciente) {
+		this.cedulaPaciente = cedulaPaciente;
+	}
+
+	public String getDentaduraSeleccionada() {
+		return dentaduraSeleccionada;
+	}
+
+	public void setDentaduraSeleccionada(String dentaduraSeleccionada) {
+		this.dentaduraSeleccionada = dentaduraSeleccionada;
+	}
+
+	public GestionHstClinicaON getHstON() {
+		return hstON;
+	}
+
+	public void setHstON(GestionHstClinicaON hstON) {
+		this.hstON = hstON;
+	}
+
+	public List<OsHstClinica> getHistortiasClinicas() {
+		return histortiasClinicas;
+	}
+
+	public void setHistortiasClinicas(List<OsHstClinica> histortiasClinicas) {
+		this.histortiasClinicas = histortiasClinicas;
+	}
+	
 }

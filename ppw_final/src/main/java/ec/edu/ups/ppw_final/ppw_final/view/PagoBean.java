@@ -2,6 +2,8 @@ package ec.edu.ups.ppw_final.ppw_final.view;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -9,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import ec.edu.ups.ppw_final.ppw_final.business.GestionDetPagoON;
+import ec.edu.ups.ppw_final.ppw_final.business.GestionPersonaON;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsDetPago;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
 
@@ -30,18 +33,22 @@ public class PagoBean implements Serializable{
 	 */
 	@Inject
 	private GestionDetPagoON pagoOn;
+	@Inject
+	private GestionPersonaON perOn;
+	
 	private OsDetPago pago;
 	private OsPersona persona;
 	private List<OsDetPago> pagos;
 
 
+	public void init() {
 	/**
 	 * Se ha creado un constructor en el cual se Inicializa los objetos.
 	 */
 	private void init() {
 		pago = new OsDetPago();
 		persona = new OsPersona();
-		pagos = pagoOn.findAll();
+		pagos = pagoOn.findAll().stream().filter(pg -> pg.getOsPersona().getPerCedula().equals(cedulaPaciente)).collect(Collectors.toList());
 	}
 
 	public int getId() {
@@ -98,6 +105,8 @@ public class PagoBean implements Serializable{
 	 * @return String
 	 */
 	public String guardar() {
+		System.out.println("Entrando a Guardar");
+		persona = perOn.read(cedulaPaciente);
 		pago.setOsPersona(persona);
 		pagoOn.guardarDetPago(pago);
 
