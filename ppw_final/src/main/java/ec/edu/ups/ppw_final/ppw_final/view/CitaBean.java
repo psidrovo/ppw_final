@@ -12,8 +12,10 @@ import javax.inject.Named;
 
 import ec.edu.ups.ppw_final.ppw_final.business.GestionCitasON;
 import ec.edu.ups.ppw_final.ppw_final.business.GestionPersonaON;
+import ec.edu.ups.ppw_final.ppw_final.business.GestionUsuarioON;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsCita;
 import ec.edu.ups.ppw_final.ppw_final.modelo.OsPersona;
+import ec.edu.ups.ppw_final.ppw_final.modelo.OsUsuario;
 
 @Named
 @ViewScoped
@@ -38,10 +40,14 @@ public class CitaBean implements Serializable {
 	private GestionPersonaON perOn;
 	@Inject
 	private GestionCitasON citaOn;
+	@Inject
+	private GestionUsuarioON usOn;
 	private OsPersona persona;
 	private OsCita cita;
+	private OsUsuario usuario;
 	private List<OsPersona> personas;
 	private List<OsCita> citas;
+	
 	/**
 	 * Se ha creado un constructor en el cual se Inicializa los objetos.
 	 */
@@ -49,6 +55,7 @@ public class CitaBean implements Serializable {
 	public void init() {	
 		persona = new OsPersona();
 		cita = new OsCita();
+		setUsuario(new OsUsuario());
 		citas = citaOn.findAll();
 	}
 
@@ -197,5 +204,23 @@ public class CitaBean implements Serializable {
 		citas = citaOn.findAll();
 		
 		return null;
+	}
+	public String enviarCorreo(int id) {
+		cita = citaOn.read(id);
+		persona = perOn.read(cita.getOsPersona().getPerCedula());
+		usuario=persona.getOsUsuarios().get(0);
+		usuario = usOn.read(usuario.getUsCorreo());
+		citaOn.enviarCorreo(cita,persona,usuario);
+		
+		return descripcion;
+		
+	}
+
+	public OsUsuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(OsUsuario usuario) {
+		this.usuario = usuario;
 	}
 }
