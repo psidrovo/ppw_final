@@ -72,4 +72,5 @@ public class GestionHstClinicaON {
 	public List<OsHstClinica> findListaPorCedula(String cedula) {
 		return controladorHstC.findAll().stream().filter(p->p.getOsPersona().getPerCedula().equals(cedula)).collect(Collectors.toList());
 	}
+	
 }

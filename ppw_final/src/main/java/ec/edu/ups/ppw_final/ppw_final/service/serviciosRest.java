@@ -135,6 +135,21 @@ public class serviciosRest {
 	public void guardarHistorialClinico(OsHstClinica clinica) {
 		hstClinicaOn.guardarHstClinico(clinica);
 	}
+	
+	@GET
+	@Path("HistorialCFindAllByCedula")
+	@Produces(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+	public List<OsHstClinica>findbyCedula(@QueryParam("cedula") String cedula){
+		List<OsHstClinica> historiales = hstClinicaOn.findListaPorCedula(cedula);
+		List<OsHstClinica> detallesnuevos = new ArrayList<>();
+		for (OsHstClinica osDetalleDen : historiales) {
+			OsHstClinica dNuevo = new OsHstClinica(osDetalleDen.getHstClId(), osDetalleDen.getHstClDetalle(),
+					osDetalleDen.getHstClFase(), osDetalleDen.getHstClFecha(), osDetalleDen.getHstCosto(),
+					osDetalleDen.getHstReceta(), osDetalleDen.getHstTratamiento());
+			detallesnuevos.add(dNuevo);
+		}
+		return detallesnuevos;
+	}
 
 	/**
 	 * Este metodo realizara la accion de buscar un objeto historial clinica

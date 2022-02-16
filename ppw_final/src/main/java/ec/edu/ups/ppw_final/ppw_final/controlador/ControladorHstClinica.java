@@ -14,40 +14,34 @@ import ec.edu.ups.ppw_final.ppw_final.modelo.OsHstClinica;
 @Stateless
 public class ControladorHstClinica {
 
-	/*@Override
-	public List<OsHstClinica> findAll() {
-		Query consulta = getEm().createNamedQuery("OsHstClinica.findAll");
-		var lista = consulta.getResultList();
+	/*
+	 * @Override public List<OsHstClinica> findAll() { Query consulta =
+	 * getEm().createNamedQuery("OsHstClinica.findAll"); var lista =
+	 * consulta.getResultList();
+	 * 
+	 * if (lista.size() > 0) { //Collections.sort(lista, (OsHstClinica o1,
+	 * OsHstClinica o2) -> o1.getHstClId().compareTo(o2.getHstClId())); } return
+	 * consulta.getResultList(); }
+	 * 
+	 * @Override public int codigo() { var lista = findAll();
+	 * 
+	 * if (lista.size() > 0) { //Collections.sort(lista, (OsHstClinica o1,
+	 * OsHstClinica o2) -> o1.getHstClId().compareTo(o2.getHstClId())); //return
+	 * (int) (lista.get(lista.size() - 1).getHstClId() + 1); return 0; } else {
+	 * return 1; } }
+	 */
 
-		if (lista.size() > 0) {
-			//Collections.sort(lista, (OsHstClinica o1, OsHstClinica o2) -> o1.getHstClId().compareTo(o2.getHstClId()));
-		}
-		return consulta.getResultList();
-	}
-
-	@Override
-	public int codigo() {
-		var lista = findAll();
-
-		if (lista.size() > 0) {
-			//Collections.sort(lista, (OsHstClinica o1, OsHstClinica o2) -> o1.getHstClId().compareTo(o2.getHstClId()));
-			//return (int) (lista.get(lista.size() - 1).getHstClId() + 1);
-			return 0;
-		} else {
-			return 1;
-		}
-	}*/
-	
 	/**
 	 * Se ha instanciado el Entitymanager para poder realizar las modificacion
-	 * dentro de la base de datos 
+	 * dentro de la base de datos
 	 */
 	@PersistenceContext
 	private EntityManager em;
 
 	/**
-	 * Este metodo realiza la accion de crear o insertar el objeto dentro
-	 * de la base de datos
+	 * Este metodo realiza la accion de crear o insertar el objeto dentro de la base
+	 * de datos
+	 * 
 	 * @param p.
 	 */
 	public void insert(OsHstClinica p) {
@@ -56,8 +50,9 @@ public class ControladorHstClinica {
 	}
 
 	/**
-	 * Este metodo realiza la accion de actualizar el objeto dentro
-	 * de la base de datos
+	 * Este metodo realiza la accion de actualizar el objeto dentro de la base de
+	 * datos
+	 * 
 	 * @param p.
 	 */
 	public void update(OsHstClinica p) {
@@ -65,36 +60,48 @@ public class ControladorHstClinica {
 	}
 
 	/**
-	 * Este metodo realiza la accion de eliminar el objeto dentro
-	 * de la base de datos y los hace mediante la llave primaria del objeto
+	 * Este metodo realiza la accion de eliminar el objeto dentro de la base de
+	 * datos y los hace mediante la llave primaria del objeto
+	 * 
 	 * @param id.
 	 */
 	public void delete(int id) {
 		OsHstClinica p = em.find(OsHstClinica.class, id);
 		em.remove(p);
 	}
-	
+
 	/**
-	 * Este metodo realiza la accion de buscar el objeto dentro
-	 * de la base de datos y los hace mediante la llave primaria del objeto
+	 * Este metodo realiza la accion de buscar el objeto dentro de la base de datos
+	 * y los hace mediante la llave primaria del objeto
+	 * 
 	 * @param id.
 	 * @return OsHstClinica
 	 */
-	public OsHstClinica read(int id){
+	public OsHstClinica read(int id) {
 		OsHstClinica p = em.find(OsHstClinica.class, id);
 		return p;
 	}
-	
+
 	/**
-	 * Este metodo retorna todo el listado de historiales clinicos que existe dentro de la base de 
-	 * datos
+	 * Este metodo retorna todo el listado de historiales clinicos que existe dentro
+	 * de la base de datos
+	 * 
 	 * @return List<OsHstClinica>
 	 */
-	public List<OsHstClinica> findAll(){
+	public List<OsHstClinica> findAll() {
 		String jpql = "SELECT o FROM OsHstClinica o";
-		
+
 		Query q = em.createQuery(jpql, OsHstClinica.class);
-		
+
+		return q.getResultList();
+	}
+
+	public List<OsHstClinica> findByCedula(String cedula) {
+		String jpql = "SELECT p FROM os_hst_clinica p where p.per_cedula_hst_cl_paciente_fk like ?1";
+
+		Query q = em.createQuery(jpql, OsHstClinica.class);
+		q.setParameter(1, cedula);
+
 		return q.getResultList();
 	}
 }
