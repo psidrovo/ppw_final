@@ -126,5 +126,12 @@ public class UsuarioBean {
 			return null;
 		}
 	}
+	
+	public String guardar() {
+		persona.setPerCedula("9999999999");
+		usuario.setOsPersona(persona);
+		useOn.guardarUsuario(usuario);
+		return null;
+	}
 
 }
