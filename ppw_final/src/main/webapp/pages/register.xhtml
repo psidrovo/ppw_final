@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html class="no-js" lang="en" xml:lang="en"
-	xmlns="http://www.w3.org/1999/xhtml">
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
 <head>
 
 <meta charset="utf-8" />
@@ -66,47 +71,36 @@
 						<h3>Se parte de OdontSoft</h3>
 
 						<p>Esto te tomara algunos pasos</p>
-						<form action="../index.html">
+					</div>
+					<h:form class="forms-sample">
+						<div class="form-group">
+							<p:outputLabel value="Correo Electronico" />
+							<p:inputText value="#{dtUsuario.usuario.usCorreo}" a:type="email"
+								class="form-control" id="txtEmail" a:required="true" />
 
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Email"
-									required="" /> <i class="ik ik-user" />
-							</div>
-
-							<div class="form-group">
-								<input type="password" class="form-control"
-									placeholder="Contraseña" required="" /> <i class="ik ik-lock" />
-							</div>
-
-							<div class="form-group">
-								<input type="password" class="form-control"
-									placeholder="Confirmar Contraseña" required="" /> <i
-									class="ik ik-eye-off" />
-							</div>
-
-							<div class="row">
-
-								<div class="col-12 text-left">
-									<label class="custom-control custom-checkbox"> <input
-										type="checkbox" class="custom-control-input"
-										id="item_checkbox" name="item_checkbox" value="option1" /> <span
-										class="custom-control-label">&nbsp;Acepto los <a
-											href="#">Terminos y condiciones</a></span>
-									</label>
-								</div>
-							</div>
-
-							<div class="sign-btn text-center">
-								<button class="btn btn-theme">Crear Cuenta</button>
-							</div>
-						</form>
-
-						<div class="register">
-
-							<p>
-								Ya tienes una cuenta? <a href="login.xhtml">Inicia Sesion</a>
-							</p>
 						</div>
+
+						<div class="form-group">
+							<p:outputLabel value="Contraseña del paciente" />
+							<p:password id="inlineFeedback" required="true"
+								value="#{dtUsuario.usuario.usPassword}" feedback="true"
+								inline="true" promptLabel="Ingresa tu contraseña"
+								weakLabel="Débil" goodLabel="Buena" strongLabel="Fuerte"
+								toggleMask="true" redisplay="true" />
+						</div>
+						
+						<div class="nav justify-content-center">
+							<p:commandButton value="Registrar"
+								action="#{dtUsuario.guardar()}" icon="pi pi-check" />
+
+						</div>
+					</h:form>
+
+					<div class="register">
+
+						<p>
+							Ya tienes una cuenta? <a href="login.xhtml">Inicia Sesion</a>
+						</p>
 					</div>
 				</div>
 			</div>

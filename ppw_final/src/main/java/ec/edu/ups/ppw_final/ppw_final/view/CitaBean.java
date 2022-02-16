@@ -2,6 +2,7 @@ package ec.edu.ups.ppw_final.ppw_final.view;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -208,10 +209,8 @@ public class CitaBean implements Serializable {
 	public String enviarCorreo(int id) {
 		cita = citaOn.read(id);
 		persona = perOn.read(cita.getOsPersona().getPerCedula());
-		usuario=persona.getOsUsuarios().get(0);
-		usuario = usOn.read(usuario.getUsCorreo());
-		citaOn.enviarCorreo(cita,persona,usuario);
-		
+		usuario=usOn.findAll().stream().filter(c -> c.getOsPersona().getPerCedula().equals(persona.getPerCedula())).collect(Collectors.toList()).get(0);
+		citaOn.enviarCorreo(cita,persona,usuario);		
 		return descripcion;
 		
 	}
